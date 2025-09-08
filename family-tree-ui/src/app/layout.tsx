@@ -1,3 +1,4 @@
+import Providers from './providers'
 import type { Metadata } from "next";
 import { Inter, Vazirmatn } from "next/font/google";
 import "./globals.css";
@@ -26,11 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body
+      <body suppressHydrationWarning
         className={`${inter.variable} ${vazirmatn.variable} font-vazirmatn antialiased`}
       >
         <Navigation />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
