@@ -1,0 +1,4040 @@
+=== Block 1 ===
+Name: شاه نظر
+Father: محمديار
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 2 ===
+Name: 
+Father: 
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 3 ===
+Name: شاه داد
+Father: شاه نظر
+Children: كلبي, امير شاه
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 4 ===
+Name: كلبي
+Father: شادي
+Children: رسول داد, غلام علي, عليداد, نيكيدار, گلناز
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 5 ===
+Name: رس
+Father: اد
+Children: سمندر, قلندر, اميربيگم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 6 ===
+Name: ملا سمندر
+Father: رسول داد
+Children: مهتاب, فضل احمد, خورشيد, سلمان, قربان, محمدعلي۔, نادعلي, جمعه خان, مينا, صنوبر, بختو
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 7 ===
+Name: ح فضلي احمد
+Father: ملاسمندر
+Children: علي احمد, فاطمه, علي رضا, ليلا, عبدالاحمد, صغرا, مهدي, جاويد, خالق نظر, سيماگل
+Birth: ۱۳۱۰۔ ھ ش۔ 1931 م۔ در شیخ علی
+Residence: شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 8 ===
+Name: علي احمد
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 9 ===
+Name: علي رضا
+Father: ح فضلي احمد
+Children: پسر۔ ۲-پسر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 10 ===
+Name: پسر علی رضا۔
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 11 ===
+Name: پسر علیرضا
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 12 ===
+Name: عبدالاحمد
+Father: ح فضلي احمد
+Children: پسر - پسر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 13 ===
+Name: پسری
+Father: عبدالاحمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 14 ===
+Name: ۔ پسری
+Father: عبدالاحمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 15 ===
+Name: محمد مهدي
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 16 ===
+Name: جاويد
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 17 ===
+Name: خالق نظر
+Father: ح فضلي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 18 ===
+Name: ح سلمان
+Father: ملاسمندر
+Children: مرضيه, حسينداد, حسن رضا, صابره, نفيسه, سجاد علي
+Birth: ۱۳۳۰ ھ ش۔ 1951 م۔ در شیخ علی
+Residence: کراچی- جدہ
+Death: false
+--- End Block ---
+
+=== Block 19 ===
+Name: حسينداد
+Father: ح سلمان
+Children: سنبل, میثم۔ ۳- ردا۔ ۴- عباس آرین۔
+Birth: ۱۳۶۳ ھ ش۔ 1984 م  در شیخ علی
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 20 ===
+Name: میثم
+Father: حسینداد
+Children: None
+Birth: کراچی
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 21 ===
+Name: عباس آرین
+Father: حسینداد
+Children: None
+Birth: کراچی
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 22 ===
+Name: حسن رضا
+Father: ح سلمان
+Children: None
+Birth: کراچی
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 23 ===
+Name: سجاد علي
+Father: ح سلمان
+Children: None
+Birth: کراچی
+Residence: کراچی
+Death: false
+--- End Block ---
+
+=== Block 24 ===
+Name: ح قربان زوار
+Father: ملاسمندر
+Children: راضيه ھمسرحسین, بلقيس, خادم علي, بصيره, ليلا, ذاكرحسين, علي حسين
+Birth: ۱۳۳۲ ھ ش۔  1953 م۔  در شیخ علی۔
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 25 ===
+Name: خادم حسین
+Father: ح قربان
+Children: عرفان حسین۔ ۲- دختری۔
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 26 ===
+Name: عرفان حسین
+Father: خادم حسین
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 27 ===
+Name: ذاكرحسين
+Father: ح قربان
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 28 ===
+Name: علي حسين
+Father: ح قربان
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 29 ===
+Name: ح محمدعلي
+Father: ملاسمندر
+Children: شير علي, لطيفه, محمدپيروز, نفيسه, نوروز علي, رقيه, فاطمه, قاسم علی ۹- روح اللہ
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 30 ===
+Name: 
+Father: 
+Children: None
+Birth: ۱۳۳۴ ھ ش۔ 1955 م۔ در شیخ علی۔
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 31 ===
+Name: ۔ شيرعلي
+Father: ح محمدعلي
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 32 ===
+Name: محمدفیروز رسولی
+Father: ح محمدعلي
+Children: None
+Birth: کابل
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 33 ===
+Name: نوروزعلي
+Father: ح محمدعلي
+Children: None
+Birth: کابل
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 34 ===
+Name: قاسمعلی
+Father: ح محمدعلي
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 35 ===
+Name: ۔ روح اللہ
+Father: ح م علی
+Children: None
+Birth: کابل
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 36 ===
+Name: ح نادعلي
+Father: ملاسمندر
+Children: حميد الله, حبيب الله, ذبيح الله, فاطمه, محمد مهدي
+Birth: ۱۳۳۸ ھ ش۔ 1959 م۔ در شیخ علی
+Residence: گرجستان - دوبئی
+Death: false
+--- End Block ---
+
+=== Block 37 ===
+Name: حميد الله
+Father: ح نادعلي
+Children: None
+Birth: کراچی
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 38 ===
+Name: حبيب الله
+Father: ح نادعلي
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 39 ===
+Name: 
+Father: 
+Children: None
+Birth: کراچی
+Residence: دوبئی
+Death: false
+--- End Block ---
+
+=== Block 40 ===
+Name: ابوذر
+Father: ح نادعلي
+Children: None
+Birth: کراچی
+Residence: دوبئی
+Death: false
+--- End Block ---
+
+=== Block 41 ===
+Name: محمدمهدي
+Father: ح نادعلي
+Children: None
+Birth: کراچی
+Residence: دوبئی
+Death: false
+--- End Block ---
+
+=== Block 42 ===
+Name: ح جمعه خان
+Father: ملاسمندر
+Children: محمدمهدي مرحوم, زهرا, حورا
+Birth: ۱۳۴۲ ھ ش۔ 1963 م۔ در شیخ علی
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 43 ===
+Name: محمد
+Father: ح جمعه خان
+Children: None
+Birth: لبنان
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 44 ===
+Name: ملاقلندر
+Father: رس
+Children: غلام حسين مرحوم, قريش, سكندر, عبدالرزاق, عبد القيوم مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 45 ===
+Name: صوفي سكندر
+Father: ملاقلندر
+Children: جليل مرحوم, رحيمه, نيكيدار, محمدرضا, حكيمه, فاطمه مرحومہ۔, عبدالله, خيرالله
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 46 ===
+Name: محمدرضا
+Father: صوفي سكندر
+Children: حمیداللہ ۲-حفیظ اللہ ۳- دختر ۴- دختر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 47 ===
+Name: حمیداللہ
+Father: محمدرضا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 48 ===
+Name: حفیظ اللہ
+Father: محمدرضا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 49 ===
+Name: عبدالله
+Father: صوفي سكندر
+Children: پسر۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 50 ===
+Name: پسری
+Father: عبدالله
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 51 ===
+Name: خيرالله
+Father: صوفي سكندر
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 52 ===
+Name: قاضي عبدالرزاق
+Father: ملاقلندر
+Children: ذوالفقارعلي مرحوم, يعقوب علي, محمدعلي, زبيده, سكينه, حبیب اللہ, اسمعیٰل۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 53 ===
+Name: يعقوب علي
+Father: قاضي عبدالرزاق
+Children: زھرا۔ ۲- زینب۔
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 54 ===
+Name: محمدعلي
+Father: قاضي عبدالرزاق
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 55 ===
+Name: حبیب اللہ
+Father: قاضي عبدالرزاق
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 56 ===
+Name: اسمعیل
+Father: قاضي عبدالرزاق
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 57 ===
+Name: غلام علي
+Father: كلبي
+Children: سلطان علي, نظرعلي, سنگي زن خانعلي, گلندام زن پيوندعلي
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 58 ===
+Name: سلطانعلي
+Father: غلام علي
+Children: نيكبخت
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 59 ===
+Name: سخيداد
+Father: سلطانعلي
+Children: مزاري زن داود, حسينداد, معصومہ ھمسر؟؟؟ ۴- آمنہ ۵- عبدالعزیز ۶- میرویس۔
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 60 ===
+Name: حسينداد
+Father: سخيداد
+Children: دختری۔
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 61 ===
+Name: عبدالعزیز
+Father: سخيداد
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 62 ===
+Name: میرویس
+Father: سخيداد
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 63 ===
+Name: نظرعلي
+Father: غلام علي
+Children: غلام حيد, خوبان
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 64 ===
+Name: غلام حيدر
+Father: نظرعلي
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 65 ===
+Name: 
+Father: 
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 66 ===
+Name: محمد نعيم
+Father: غلام حيدر
+Children: خالده, شكيلا, صفيه, نرگس, دختر, مهدی. ۷-مصطفی
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 67 ===
+Name: مهدی
+Father: محمد نعيم
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 68 ===
+Name: مصطفی
+Father: محمد نعيم
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 69 ===
+Name: عبدالغني
+Father: غلام حيدر
+Children: پسر, واحده., دختر ۴- دختر ۵- پسر
+Birth: گوهرگان پلخمری
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 70 ===
+Name: پسری
+Father: عبدالغني
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 71 ===
+Name: پسری
+Father: عبدالغني
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 72 ===
+Name: محمد قاسم
+Father: غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 73 ===
+Name: پسری
+Father: . غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 74 ===
+Name: علي داد
+Father: كلبي
+Children: فقير, محمديوسف, خانعلي. سفيد زن غلام حيدر, گل شا زن رحم علي
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 75 ===
+Name: ارباب فقير
+Father: علي داد
+Children: عبدالعلي, سيدبيگم, محمدعلي, عبدالغني مرحوم, دختر مرحومه, خالقداد, ماه جان مرحومه, عبدالكريم, گل احمد مرحوم, عبدالاحمد مرحوم, دختر مرحومه, پسر مرحوم, ماه بيگم مرحومه, گلبيگم مرحومه, غلام علي مرحوم, بسبيگم مرحومه
+Birth: 
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 76 ===
+Name: ح عبدالعلي
+Father: ارباب فقير
+Children: حسينعلي مرحوم, عوضداد
+Birth: ۱۳۱۲ ھ ش۔ 1933 م۔ در شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 77 ===
+Name: عوض داد
+Father: ح عبدالعلي
+Children: امين الله, م جواد, نجيب الله, محسن, نجمه, معصومه
+Birth: ۱/۱۲/۱۳۴۵ ھ ش۔ 20/2/1967 م گوھرگان پلخمری
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 78 ===
+Name: امين الله
+Father: عوض داد
+Children: امیر ارسلان۔ ۲- سارا
+Birth: 
+Residence: مالیزیا
+Death: false
+--- End Block ---
+
+=== Block 79 ===
+Name: امیر ارسلان
+Father: امين الله
+Children: None
+Birth: ۲۱/۱۰/۱۳۹۴. ه ش.  11/1/2016 روز دو شنبه در تھران
+Residence: مالیزیا
+Death: false
+--- End Block ---
+
+=== Block 80 ===
+Name: م جواد
+Father: عوض داد
+Children: ایلیا خانم ۲ محمدھاکان۔ ۲۷/۵/۱۴۰۱تھران۔ ۳-
+Birth: 
+Residence: تھران۔
+Death: false
+--- End Block ---
+
+=== Block 81 ===
+Name: محمدھاکان۔
+Father: م جواد
+Children: None
+Birth: تھران۔ ۲۷/۵/۱۴۰۱
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 82 ===
+Name: نجيب الله
+Father: عوض داد
+Children: None
+Birth: ۲۱/۱۲/۱۳۷۰ ھ ش۔ 11/3/1992 م چھارشنبہ در تھران
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 83 ===
+Name: م محسن
+Father: عوض داد
+Children: None
+Birth: ۱۵/۹/۱۳۷۲ ھ ش۔ 6/12/1993 م  در تھران
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 84 ===
+Name: سخيداد
+Father: ح عبدالعلي
+Children: رعنا. ھمسر۔, مهناز, ريحانه, صديقه, آتينا
+Birth: ۱۳۵۳ ه ش. 1975 م گوهرگان پلخمری
+Residence: گوهرگان
+Death: false
+--- End Block ---
+
+=== Block 85 ===
+Name: حاج محمدعلي
+Father: ارباب فقير
+Children: طاوس مرحومه, كبك مرحومه, پيوندعلي, ضرب علي, برگعلي مرحومه, بازعلي مرحومه, هواگل مرحومه, نيكبخت مرحومه, پسر مرحوم, پسرمرحوم, محمد رسول, غلام رسول, گلبخت مرحومه, نازبيگم, مزاري, مينا, فاطمه, ايراني ھمسر, مسافر مرحوم, محمدرضا, محمد حسين, سميه. ۲۳- غلام رضا مرحوم تولد: ۱۴/۹/۱۳۷۴ ھ ش۔ 5/12/1995 م۔
+Birth: ۱۴/۹/۱۳۷۴ ھ ش۔ 5/12/1995 م۔
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 86 ===
+Name: 
+Father: 
+Children: None
+Birth: ۱۳۱۶ ھ ش۔ 1937 م۔ در شیخعلی پروان
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 87 ===
+Name: پيوندعلي
+Father: حاج محمدعلي
+Children: زهرا, كبرا, ابوذر, قاسم, صغرا, فاطمه همسر علی جمعہ۔, معصومه
+Birth: ۱۳۴۱ ھ ش۔ 1962 م۔ در گوھرگان
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 88 ===
+Name: ابوذر
+Father: پيوندعلي
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 89 ===
+Name: قاسم
+Father: پيوندعلي
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 90 ===
+Name: ح ضرب علي
+Father: حاج محمدعلي
+Children: علي رضا, جميله, فاطمه, صفيه, زهرا, رقيه
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 91 ===
+Name: علي رضا۔
+Father: ح ضرب علي
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 92 ===
+Name: محمد رسول
+Father: 
+Children: محمدعلي, مرضيه, محدثه زن مجتبی, ابوالفضل
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 93 ===
+Name: محمدعلي
+Father: محمد رسول
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 94 ===
+Name: ابوالفضل
+Father: م رسول
+Children: None
+Birth: تھران ۴/۸/۱۳۹۱۔
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 95 ===
+Name: غلام رسول
+Father: 
+Children: خديچه, شكيله, مصطفي, مرتضي, فاطمہ۔ ۶-حسن۔
+Birth: ۵/۶/۱۳۵۶ ھ ش۔ 27/8/1977 م ۔ شنبہ گوھرگان پلخمری
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 96 ===
+Name: مصطفي
+Father: غلام رسول
+Children: None
+Birth: 
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 97 ===
+Name: مرتضي
+Father: غلام رسول
+Children: None
+Birth: ۲/۶/۱۳۸۴  ھ ش۔ 24/8/2005 م۔ چھارشنبہ تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 98 ===
+Name: ۔ حسن
+Father: غ رسول۔
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 99 ===
+Name: محمدرضاجعفری
+Father: ح م علی
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 100 ===
+Name: محمد حسین
+Father: ح محمد علی
+Children: None
+Birth: ۱۳/۸/۱۳۶۷  ه ش. 4/11/1988 م. روز جمعه در تهران
+Residence: تهران
+Death: false
+--- End Block ---
+
+=== Block 101 ===
+Name: 
+Father: حاج خالقداد
+Children: قربان علي, مرادعلي, نقل ماه مرحومه, محمد امير, خداداد مرحوم, عليداد مرحوم, روزه ماه, بختاور, مريم
+Birth: ۱۳۲۲ ھ ش۔ 1943 م۔ در شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 102 ===
+Name: قربان علي
+Father: 
+Children: فاطمه, معصومه, زهرا, محمدرضا, مرتضي
+Birth: ۱۳۴۲ ھ ش۔ 1963 م۔ در گوھرگان
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 103 ===
+Name: محمدرضا
+Father: قربان علي
+Children: موّانا خانم۔ ۲-
+Birth: ایران
+Residence: ترکیہ انتالیا
+Death: false
+--- End Block ---
+
+=== Block 104 ===
+Name: مرتضي
+Father: 
+Children: None
+Birth: ایران
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 105 ===
+Name: مرادعلي
+Father: 
+Children: زهرا, كبرا, رقيه ھمسر۔ حسین, مرضيه, نرگس, محمد حسن, مصطفي, فاطمه
+Birth: گوھرگان
+Residence: پلخمری
+Death: false
+--- End Block ---
+
+=== Block 106 ===
+Name: محمدحسن
+Father: مرادعلي
+Children: None
+Birth: گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 107 ===
+Name: مصطفي
+Father: مراد علي
+Children: None
+Birth: گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 108 ===
+Name: محمد امير
+Father: 
+Children: آمنه, فرشتہ همسر ۳-رضا ۴-صادق. ۵-سجاد. ۶-فاطمہ۔ ۶-
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 109 ===
+Name: حسن رضا
+Father: محمد امير
+Children: None
+Birth: ایران
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 110 ===
+Name: صادق
+Father: محمد امير
+Children: None
+Birth: ایران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 111 ===
+Name: سجاد
+Father: محمد امير
+Children: None
+Birth: ایران
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 112 ===
+Name: عبدالكريم
+Father: ارباب فقير
+Children: گلثوم, حميده مرحومه, معصومه, روح الله, عبدالله
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 113 ===
+Name: روح الله
+Father: عبدالكريم
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 114 ===
+Name: عبدالله
+Father: عبدالكريم
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 115 ===
+Name: محمديوسف
+Father: 
+Children: خاور, شايسته, پادشاہ, عبد الحكيم, عبدالاحمد مرحوم, عبدالحميد مرحوم, عبد المنان, شيرين, عبدالقادر, شابيگم ھمسر۔ عبدالكريم, زربيگم
+Birth: شیخعلی
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 116 ===
+Name: حاج عبدالحكيم
+Father: محمديوسف
+Children: عوض علي مرحوم, زينب, فوضيه محمدرضا۔, حفيظ الله, شريفه, ام البنين, ليلا, نرگس, وجيهه. ۱۰- مھدیہ۔
+Birth: ۱۳۳۶ . ه ش. 1957 م در شیخعلی
+Residence: تهران
+Death: false
+--- End Block ---
+
+=== Block 117 ===
+Name: حفيظ الله
+Father: حاج عبدالحكيم
+Children: حوریہ۔ ۲-محمد طٰه ۳-ایلمیا خانم۔
+Birth: ۱۲/۱/۱۳۶۷ ھ ش۔ 1/4/1988 م۔ در تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 118 ===
+Name: محمدطہ
+Father: حفيظ الله
+Children: None
+Birth: ۲۱/۱۲/۱۳۹۴ ھ ش۔ 11/3/2016 م۔ در تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 119 ===
+Name: حاج عبدالمنان
+Father: محمديوسف
+Children: آمنه ھمسرمحمد حسین, نجيبه ھمسر۔
+Birth: ۱۳۴۰. ه ش. 1961م در شیخعلی
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 120 ===
+Name: عبدالرازق
+Father: حاج عبدالمنان
+Children: افاخانم ۲- لیان جعفری۔
+Birth: ۱۹/۸/۱۳۶۹ ھ ش۔ 10/11/1990 م۔ روز شنبہ در تھران۔
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 121 ===
+Name: لیان جعفری۔
+Father: عبدالرازق
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 122 ===
+Name: 
+Father: 
+Children: None
+Birth: آلمان : ۸/۱۱/۱۴۰۰۔ 28/1/2022
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 123 ===
+Name: مجتبي
+Father: حاج عبدالمنان
+Children: None
+Birth: ۱۴/۴/۱۳۷۲ ھ ش۔ 5/6/1993 م۔ روز دوشنبہ در تھران
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 124 ===
+Name: حاج عبدالقادر
+Father: ۔ محمديوسف
+Children: عبدالحسين, عبد البصير, مختارحسبن, نوروزعلي شھید۔, محمدباقر, حدیث
+Birth: ۱۵/۷/۱۳۴۴ھ ش۔ 7/10/1965  م  در شیخ علی
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 125 ===
+Name: ح عبدالحسين
+Father: حاج عبدالقادر
+Children: مائده۱۱/۱۰.۱۳۹۱, مدینہ۱/۴/۱۳۹۴ ۔ ۳-محمد صالح۔ ۴- م حامد
+Birth: ۱/۷/۱۳۶۸ ھ ش۔ 23/9/1989م۔ در تھران روز شنبہ۔
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 126 ===
+Name: 
+Father: 
+Children: None
+Birth: ۲/۹/۱۳۹۸ ھ ش۔ 23/11/2019 م   روز شنبہ در تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 127 ===
+Name: م حامد
+Father: ح عبدالحسین
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 128 ===
+Name: ح عبد البصير
+Father: حاج عبدالقادر
+Children: محمد یوسف۔ ۲- م ھادی
+Birth: ۲۸/۹/۱۳۷۰ ھ ش۔ 19/2/1991 م۔ روز پنجشنبہ در تھران۔
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 129 ===
+Name: محمد یوسف
+Father: ۔ ک عبد البصير
+Children: None
+Birth: ۳۱-۳-۱۳۹۸ ھ ش۔ 21/6/2019 م۔ روز جمعہ در تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 130 ===
+Name: م ھادی
+Father: ح عبدال بصیر
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 131 ===
+Name: مختارحسین
+Father: حاج عبدالقادر
+Children: م سمیع۔ ۲ م مھدی۔
+Birth: 
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 132 ===
+Name: 
+Father: 
+Children: None
+Birth: تھران ۲۴/۷/۱۳۹۸
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 133 ===
+Name: 
+Father: 
+Children: None
+Birth: ۲۶/۱۱/۱۴۰۰
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 134 ===
+Name: محمدباقر
+Father: حاج عبدالقادر
+Children: None
+Birth: 
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 135 ===
+Name: حاج خانعلي شيخ
+Father: 
+Children: غلام سخي, ماه بيگم
+Birth: شیخ علی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 136 ===
+Name: ح غلام سخي
+Father: 
+Children: محمد داود, ابراهيم مرحوم, بختاور, فاطمه, حسينداد, عبدالحسين, محمدامين, سكينه, مرتضي, زینب ۱۱- يحيي
+Birth: شیخ علی
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 137 ===
+Name: ح محمد داود
+Father: غلام سخي
+Children: علي اكبر, فرزانہ, علی اصغر۔ ۴-
+Birth: گوھرگان
+Residence: مزار شریف
+Death: false
+--- End Block ---
+
+=== Block 138 ===
+Name: علي اكبر
+Father: ح داود
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 139 ===
+Name: علي اصغر
+Father: ح داود
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 140 ===
+Name: حسينداد۔
+Father: غلام سخي
+Children: None
+Birth: گوھرگان
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 141 ===
+Name: عبدالحسين
+Father: غلام سخي
+Children: None
+Birth: گوھرگان
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 142 ===
+Name: محمدامين
+Father: غلام سخي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 143 ===
+Name: مرتضي
+Father: غلام سخي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 144 ===
+Name: يحيي
+Father: غلام سخي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 145 ===
+Name: 
+Father: 
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 146 ===
+Name: اميرشاه
+Father: شادي
+Children: بابه شاه, گل مائي, گل صاحب, دادرشاه۔, ملك فيروز, غلام, شاهنواز, ميرباز مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 147 ===
+Name: بابه شاه
+Father: 
+Children: نیکی دار ہمسرمیرزاعلی, قربان مرحوم, سهراب, حسينعلي, محمدحسين, غلام حيدر, مرزاحسين
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 148 ===
+Name: سهراب۔
+Father: بابه شاه
+Children: أمر علي مرحوم۔ . ۲- گل صاحب
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 149 ===
+Name: حسين علي
+Father: بابه شاه
+Children: عيدمحمد, سيدمحمد, گل اندام
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 150 ===
+Name: عيدمحمد
+Father: ۔
+Children: غلام رسول, عبدالروف, غلام علي, ماه نگار ھمسرخادم, مهرنگار
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 151 ===
+Name: غلام رسول
+Father: عيدمحمد
+Children: نگار ہمسر عوض ناصر
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 152 ===
+Name: عبدالروف
+Father: عيدمحمد
+Children: علي جان, حسين جان, حسن, زهرا, پسر, پسر
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 153 ===
+Name: علي جان
+Father: عبدالروف
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 154 ===
+Name: حسين جان
+Father: عبدالروف
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 155 ===
+Name: حسن -
+Father: عبدالروف
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 156 ===
+Name: پسری۔
+Father: عبدالروف
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 157 ===
+Name: پسری
+Father: عبدالروف
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 158 ===
+Name: غلام علي
+Father: عيدمحمد
+Children: ليلا ہمسر جانعلی کوٹک ۲-امام علي, مرتضی ۴- زهرا. ۵-امام داد
+Birth: شیخ علی۔
+Residence: ۔ شیخ علی
+Death: false
+--- End Block ---
+
+=== Block 159 ===
+Name: امام علي
+Father: غلام علي
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 160 ===
+Name: مرتضی
+Father: غلام علي
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 161 ===
+Name: امامداد۔
+Father: غلام علي
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 162 ===
+Name: سيدمحمد
+Father: 
+Children: محمد ناصر, محمد ابراهيم, اسمعيل مرحوم, رمضان
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 163 ===
+Name: محمد ناصر۔
+Father: سيدمحمد
+Children: عوض علي. ۲- فیض علی ۳-امنہ ہمسر بچہ صفر, محمدعلي مرحوم, لطيفه ہمسر خانمحمد, حميده, محمدجواد, -محمدرضا۔ ۹- محمدمهدي
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 164 ===
+Name: 
+Father: 
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ ایران
+Death: false
+--- End Block ---
+
+=== Block 165 ===
+Name: عوض علي
+Father: محمد ناصر
+Children: سجاد ۲- دختر
+Birth: ۱۳۶۰ ھ ش۔ 1981 م۔ در شیخ علی
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 166 ===
+Name: سجاد۔
+Father: ۔ عوض علي
+Children: None
+Birth: ۲۹/۱۱/۱۳۸۴ ھ ش۔ 18/2/2006 م۔ شنبہ در تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 167 ===
+Name: ۔ فيض علي
+Father: محمدناصر
+Children: میلاد۔ ۲- ستایش۔ ۳- م یوسف۔
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 168 ===
+Name: میلاد
+Father: فيض علي
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 169 ===
+Name: محمد یوسف
+Father: فيض علي
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 170 ===
+Name: محمدجواد۔
+Father: محمد ناصر
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 171 ===
+Name: محمدرضا
+Father: محمد ناصر
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 172 ===
+Name: محمدمهدي
+Father: محمد ناصر
+Children: None
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 173 ===
+Name: محمد ابراهيم
+Father: سيدمحمد
+Children: عبدالله, حفيظ الله
+Birth: شیخ علی
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 174 ===
+Name: عبدالله
+Father: محمد ابراهيم
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 175 ===
+Name: حفيظ الله۔
+Father: محمد ابراهيم
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 176 ===
+Name: رمضان
+Father: سيدمحمد
+Children: محمدعيسي, زهرا, فاطمه
+Birth: شیخ علی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 177 ===
+Name: محمدعيسي
+Father: رمضان
+Children: None
+Birth: شیخعلی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 178 ===
+Name: محمد حسین
+Father: رمضان
+Children: None
+Birth: شیخعلی
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 179 ===
+Name: غلام حيدر
+Father: بابه شاه
+Children: سخيداد, زيبا, جواهر, ايراني, بس بی بی ہمسر رمضان
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 180 ===
+Name: سخيداد زوار
+Father: ۔ غلام حيدر
+Children: درانی
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 181 ===
+Name: پيوندعلي
+Father: سخيداد
+Children: خديچه, خان علی محمد, علي احمد. ۴-عبدالاحمد. ۵-لیلا, عبدالعلی, ھاجر ہمسر محمدعلی بید ۸- عبدالحسین ۹- مریم۔
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 182 ===
+Name: خان علیمحمد۔
+Father: پيوندعلي
+Children: سکینہ۔ ۲- حدیثہ۔ ۳- نثار احمد ۴- سھیلا۔
+Birth: شیخ علی۔
+Residence: ۔ کابل
+Death: false
+--- End Block ---
+
+=== Block 183 ===
+Name: نثار احمد
+Father: خان علیمحمد
+Children: None
+Birth: شیخ علی۔
+Residence: ۔ کابل
+Death: false
+--- End Block ---
+
+=== Block 184 ===
+Name: علي احمد
+Father: پيوند علي
+Children: منصور ۲- دختر۔ ۳- پسر۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 185 ===
+Name: منصور
+Father: علي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 186 ===
+Name: پسر
+Father: علي احمد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 187 ===
+Name: عبدالاحمد
+Father: پيوندعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 188 ===
+Name: عبدالعلي
+Father: پيوند علي
+Children: دختر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 189 ===
+Name: عبدالحسین
+Father: پیوندعلی
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 190 ===
+Name: خانعلي
+Father: سخيداد
+Children: محمدتقي, عبد العظيم, حوا, عبدالرشید, مرضیہ
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 191 ===
+Name: محمدتقي
+Father: خانعلي
+Children: دختر۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 192 ===
+Name: عبد العظيم
+Father: خانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 193 ===
+Name: عبد الرشيد
+Father: خانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 194 ===
+Name: علی نقی
+Father: خانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 195 ===
+Name: علي رضا
+Father: سخيداد
+Children: علی سینا۔ ۲-عباس علی۔ ۳- زکیہ ۔ ۴- احمد سیّر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 196 ===
+Name: علی سینا
+Father: علي رضا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 197 ===
+Name: عباس علی
+Father: علي رضا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 198 ===
+Name: احمدسیّر۔
+Father: علي رضا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 199 ===
+Name: محمدحسين
+Father: بابه شاه
+Children: محمدعمر, غلام حسين, ذوليخا
+Birth: شیخ علی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 200 ===
+Name: کربلائی محمدعمر
+Father: محمد حسين
+Children: عبدالعزیز۔, عبدالعلي, بانوح ہمسر قربان, عبدالاحمد, حميده, زرينه ھمسرعبد الحكيم, فاطمه ھمسرمحمدداود ۸-غلام عباس. ۹- مرضيه, غلام علي, عبدالله, امان الله
+Birth: شیخ علی
+Residence: شیخعلی
+Death: false
+--- End Block ---
+
+=== Block 201 ===
+Name: عبدالعزیز
+Father: محمدعمر
+Children: محمد رضا, رقيه, خديچه ھمسرسیف اللہ, مرضيه, علي خان, نوريهُ زن حسینعلی مراد, نجيب الله, سليمان
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 202 ===
+Name: محمدرضا
+Father: عبدالعزیز
+Children: محمد سخي, عبدالمجيد, حامد ۴-زینب
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 203 ===
+Name: محمد سخي
+Father: محمد رضا
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 204 ===
+Name: عبدالمجيد۔
+Father: محمد رضا
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 205 ===
+Name: حامد
+Father: محمد رضا
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 206 ===
+Name: علي خان
+Father: عبدالعزیز
+Children: م ادریس ۲-
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 207 ===
+Name: م ادریس
+Father: علی خان
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 208 ===
+Name: نجيب الله۔
+Father: عبدالعزیز
+Children: None
+Birth: کابل
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 209 ===
+Name: سليمان
+Father: عبدالعزیز
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 210 ===
+Name: عبدالعلي
+Father: محمدعمر
+Children: حبيب الله
+Birth: شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 211 ===
+Name: حبيب الله۔
+Father: عبدالعلي
+Children: حسیب اللہ۔ ۲- سمیع اللہ۔
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 212 ===
+Name: حسیب اللہ
+Father: حبیب اللہ
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 213 ===
+Name: سمیع اللہ
+Father: حبیب اللہ
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 214 ===
+Name: عبدالاحمد
+Father: محمدعمر
+Children: حفيظ الله, معصومه, زهرا۔ ۴- مرتضي. ۵ -كبرا ۶- نفیسہ
+Birth: شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 215 ===
+Name: حفيظ الله۔
+Father: عبدالاحمد
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 216 ===
+Name: مرتضي
+Father: عبدالاحمد
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 217 ===
+Name: غلام عباس
+Father: محمدعمر
+Children: حسينداد, عزيزگل, مهدي, محدثه, م ھادی۔
+Birth: شیخعلی
+Residence: شیخعلی
+Death: false
+--- End Block ---
+
+=== Block 218 ===
+Name: حسينداد
+Father: غلام عباس
+Children: None
+Birth: شیخعلی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 219 ===
+Name: مهدي
+Father: غلام عباس
+Children: None
+Birth: شیخعلی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 220 ===
+Name: محمدھادی۔
+Father: غ عباس
+Children: None
+Birth: شیخعلی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 221 ===
+Name: انجینیر عوضعلي
+Father: محمدعمر
+Children: زینب مھسا۔ ۲- م ادریس۔ ۳-
+Birth: شیخعلی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 222 ===
+Name: م ادریس
+Father: انجینر عوض علی
+Children: None
+Birth: کابل:  5/2/2023۔ ۱۶/۱۱/۱۴۰۱ یکشنبہ۔
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 223 ===
+Name: انجینرغلام علي
+Father: محمدعمر
+Children: علی مدثر ۲- آیداخانم۔ ۳-
+Birth: شیخعلی
+Residence: فرانسہ
+Death: false
+--- End Block ---
+
+=== Block 224 ===
+Name: علی مدثر۔
+Father: غلام علی
+Children: None
+Birth: کابل
+Residence: فرانسہ
+Death: false
+--- End Block ---
+
+=== Block 225 ===
+Name: عبدالله
+Father: محمدعمر
+Children: محمدادریان ۲-
+Birth: کابل
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 226 ===
+Name: محمد ادریان
+Father: عبداللہ
+Children: None
+Birth: آلمان
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 227 ===
+Name: انجینرامان الله۔
+Father: محمدعمر
+Children: None
+Birth: کابل
+Residence: کانادا
+Death: false
+--- End Block ---
+
+=== Block 228 ===
+Name: غلام حسين
+Father: محمد حسين
+Children: فاطمه, خانعلي, غلام علي, حكيمه ھمسرمحمد اكبر, محمد حسن, نجيب الله
+Birth: شیخ علی۔
+Residence: ۔ کابل
+Death: false
+--- End Block ---
+
+=== Block 229 ===
+Name: خانعلي
+Father: غلام حسين
+Children: فيض محمد مرحوم, گلثوم مرحومه, فتانه, ميثم, احمدفيصل, مریم ۷- محمد لطیف ۸- زھرا۔ ۹- نرگس۔ ۱۰-علی سینا۔
+Birth: کابل
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 230 ===
+Name: ميثم
+Father: خانعلي
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 231 ===
+Name: احمدفيصل
+Father: خانعلي
+Children: None
+Birth: ۸/۲/۱۳۸۳. ه ش. 27/4/2004 م. روز سه شنبه در کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 232 ===
+Name: محمدلطیف
+Father: خانعلی
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 233 ===
+Name: علی سینا
+Father: خانعلی
+Children: None
+Birth: کابل: ۶/۱/۱۳۸۱۔  26/3/2002
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 234 ===
+Name: غلام علي
+Father: غلام حسين
+Children: امين الله, احسان الله, یاسمین ۴- مھدیہ۔ ۵- محمدجواد۔
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 235 ===
+Name: امين الله
+Father: غلام علي
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 236 ===
+Name: احسان الله۔
+Father: غلام علي
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 237 ===
+Name: محمدجواد
+Father: غلام علي
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 238 ===
+Name: محمدحسن۔
+Father: غلام حسين
+Children: محدثہ۔ ۲- بنین۔ ۳- دختر۔ ۴- محمدمصطفی ۵- مدینہ۔ ۶- بصیرہ۔ ۷- محمدامیر
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 239 ===
+Name: محمدمصطفی
+Father: ۔ محمدحسن
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 240 ===
+Name: محمدامیر
+Father: ۔ محمدحسن
+Children: None
+Birth: ۹/۱۰/۱۳۹۹ ه ش. روزی سہ شنبہ 29/12/2020
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 241 ===
+Name: نجيب الله۔
+Father: غلام حسين
+Children: علی رضا۔ ۲- مروہ۔ ۳- صفا۔ ۴- اسما۔ ۵ - احمدمدثر۔ ۶-
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 242 ===
+Name: علی رضا
+Father: نجيب الله
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 243 ===
+Name: احمدمدثر
+Father: نجيب الله
+Children: None
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 244 ===
+Name: ش عبدالحسين
+Father: محمد حسين
+Children: ليلا, مرضيه ہمسر ھمایون, عبد الهادي
+Birth: شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 245 ===
+Name: عبد الحكيم
+Father: ش عبدالحسين
+Children: حفيظه, مصطفي, مجتبي
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 246 ===
+Name: مصطفي
+Father: عبد الحكيم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 247 ===
+Name: مجتبي
+Father: عبد الحكيم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 248 ===
+Name: مرتضي
+Father: عبد الحكيم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 249 ===
+Name: علی رضا۔
+Father: عبد الحكيم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 250 ===
+Name: عبدالكريم
+Father: ش عبدالحسين
+Children: عبدالله, محمد اللہ ۳- یاسمین۔ ۴-روح اللہ
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 251 ===
+Name: عبدالله
+Father: عبدالكريم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 252 ===
+Name: محمد اللہ
+Father: عبدالكريم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 253 ===
+Name: روح اللہ
+Father: عبدالكريم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 254 ===
+Name: عبد الهادي
+Father: ش عبدالحسين
+Children: حسین ۔ ۲- حسن۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 255 ===
+Name: حسین
+Father: عبد الهادي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 256 ===
+Name: حسن
+Father: عبد الهادي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 257 ===
+Name: ۔ مامورميرزاحسين
+Father: 
+Children: صبرگل
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 258 ===
+Name: محمد ايوب
+Father: مامورميرزاحسين
+Children: قربان علي مرحوم, احمد جعفر, فاطمہ, محمدموسي, صفیہ۔ ۷- علي جان۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 259 ===
+Name: احمد جعفر
+Father: محمدايوب
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 260 ===
+Name: محمدصادق
+Father: محمدايوب
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 261 ===
+Name: محمدموسي
+Father: محمدايوب
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 262 ===
+Name: علي جان
+Father: محمدايوب
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 263 ===
+Name: محمدعلي
+Father: مامورميرزاحسين
+Children: مختار مرحوم, نجيب الله, زهرا, گلثوم, لطف علی ۶-زینب۔ ۷-علی اکبر
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 264 ===
+Name: نجيب الله۔
+Father: محمدعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 265 ===
+Name: لطف علی
+Father: محمدعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 266 ===
+Name: علی اکبر
+Father: محمدعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 267 ===
+Name: غلام حسن
+Father: مامورميرزاحسين
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 268 ===
+Name: دادرشاه۔
+Father: اميرشاه
+Children: صفر, سرور, محمد شاه, ماه بيگم زن حسين علي
+Birth: شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 269 ===
+Name: صفرجمعدار۔
+Father: دادرشاه
+Children: غلام سخي, غلام حيدر, نوربيگم, بسبي بي
+Birth: شیخعلی
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 270 ===
+Name: غلام سخي
+Father: صفرجمعدار
+Children: غلام رسول مرحوم, فاطمه مرحومه, غلامعلی, غلام نبي, غلام رضا, سكينه, آمنه, م جواد۔, نجیبہ ۱۰-بسم الله. ۱۱- محمد رسول
+Birth: شیخعلی
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 271 ===
+Name: غلام علي
+Father: غلام سخي
+Children: مہیا ۲- زھرا ۳-
+Birth: پلخمری گوھرگان
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 272 ===
+Name: غلام نبي
+Father: غلام سخي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 273 ===
+Name: غلام رضا
+Father: غلام سخي
+Children: کمیل ۲- معصومہ ۳-
+Birth: پلخمری گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 274 ===
+Name: محمد کمیل
+Father: غلام رضا
+Children: None
+Birth: پلخمری گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 275 ===
+Name: محمد جواد
+Father: غلام سخي
+Children: مصطفی. ۔ ۲-
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 276 ===
+Name: مصطفی
+Father: جواد
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 277 ===
+Name: بسم الله۔ واد غلام سخي - صفرجمعدار
+Father: دادرشاه
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 278 ===
+Name: محمدرسول
+Father: غلام سخي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 279 ===
+Name: غلام حيدر۔
+Father: صفرجمعدار
+Children: نوروز علي, رقيه, محرم حسين, صديقه مرحومه, دختر, غلام عباس, محمد علي, دختر
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 280 ===
+Name: 
+Father: 
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان :
+Death: true
+--- End Block ---
+
+=== Block 281 ===
+Name: نوروزعلي
+Father: غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: قندوز
+Death: false
+--- End Block ---
+
+=== Block 282 ===
+Name: محرم حسين۔
+Father: غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: قندوز
+Death: false
+--- End Block ---
+
+=== Block 283 ===
+Name: غلام عباس
+Father: غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: قندوز
+Death: false
+--- End Block ---
+
+=== Block 284 ===
+Name: محمدعلي
+Father: غلام حيدر
+Children: None
+Birth: پلخمری گوھرگان
+Residence: قندوز
+Death: false
+--- End Block ---
+
+=== Block 285 ===
+Name: ملك فيروز
+Father: 
+Children: ملك سلطان, گلابي, گلچهره, مهرنگار
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 286 ===
+Name: ملك سلطان
+Father: 
+Children: ماه چهره, رحم علي, بوستان علي, بسم الله, دادي خدا. ۶-خوبان, خانعلي, جانعلي, راضيه
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 287 ===
+Name: رحم علي
+Father: ملك سلطان
+Children: عبدالله
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 288 ===
+Name: داد علي
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 289 ===
+Name: فيضعلي
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 290 ===
+Name: عبدالعلي
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 291 ===
+Name: ۔ عبدالكريم
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 292 ===
+Name: عبدالرحيم
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 293 ===
+Name: عبدالله
+Father: رحم علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 294 ===
+Name: ۔ ح بوستان علي
+Father: ملك سلطان
+Children: زهرا, مريم زن, زينب, محمد مهدي, فاطمه زن داود, امير حسين, نرگس۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 295 ===
+Name: محمدمهدي
+Father: ح بوستان علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 296 ===
+Name: امير حسين
+Father: ح بوستان علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 297 ===
+Name: ح بسم الله
+Father: ملك سلطان
+Children: عوضعلي مرحوم, رقيه, حفيظ الله, صالح محمد
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 298 ===
+Name: 
+Father: 
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 299 ===
+Name: عوضعلي
+Father: ح بسم الله
+Children: سمیہ ۲- مریم
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 300 ===
+Name: حفيظ الله۔
+Father: ح بسم الله
+Children: روح اللہ ۲-عبداللہ
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 301 ===
+Name: روح اللہ
+Father: حفيظ الله
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 302 ===
+Name: عبدالله
+Father: حفيظ الله
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 303 ===
+Name: صالح محمد۔
+Father: ح بسم الله ملك سلطان
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 304 ===
+Name: ح دادي خدا
+Father: ملك سلطان
+Children: حسن, سمیرا ۳- محسن
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 305 ===
+Name: حسن
+Father: ح دادي خدا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 306 ===
+Name: محسن
+Father: ح دادي خدا
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 307 ===
+Name: خانعلي
+Father: ملك سلطان
+Children: صابرہ زن امان اللہ ۲- کمیل۔ ۳-خيرالله. ۴- حبیب اللہ ۵- زینب -
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 308 ===
+Name: کمیل
+Father: خانعلي ملك سلطان
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 309 ===
+Name: خيرالله۔
+Father: خانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 310 ===
+Name: حبیب اللہ
+Father: خانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 311 ===
+Name: جانعلي
+Father: ملك سلطان
+Children: ام البنین۔ ۲-قيس.۳-گلثوم۔ ۴-زھرا۔ ۵- زوھیر ۶- مُرسل خانم۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 312 ===
+Name: قيس
+Father: جانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 313 ===
+Name: ُزھیر
+Father: جانعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 314 ===
+Name: غلام
+Father: اميرشاه
+Children: ميرزا علي, رستم, دختري
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 315 ===
+Name: ميرزا علي
+Father: غلام
+Children: حاج عظيم, سنگي ھمسرسيد محمد
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 316 ===
+Name: حاج عظيم
+Father: 
+Children: فضل الله مرحوم, قربان علي مرحوم, عبدالعلي, احمدعلي, هاشم مرحوم, غلام علي مرحوم, غلام سخي, شمسي ھمسرانور, عوض بي بي مرحومه, خماري مرحومه
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 317 ===
+Name: 
+Father: 
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 318 ===
+Name: ح عبدالعلي
+Father: حاج عظيم
+Children: محمدعلي, روزه ماه, ريزه گل, نورعلي, جاوید
+Birth: خان اباد
+Residence: ۔ ایران
+Death: false
+--- End Block ---
+
+=== Block 319 ===
+Name: محمدعلي
+Father: عبدالعلي
+Children: محمديوسف, محدثه
+Birth: خان اباد
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 320 ===
+Name: محمديوسف
+Father: محمدعلي
+Children: None
+Birth: ایران
+Residence: ترکیہ
+Death: false
+--- End Block ---
+
+=== Block 321 ===
+Name: نورعلي
+Father: عبدالعلي
+Children: ام البنین۔ ۲- حسین۔ ۳- امیر علی
+Birth: خان اباد
+Residence: ترکیہ
+Death: false
+--- End Block ---
+
+=== Block 322 ===
+Name: حسین
+Father: نورعلي
+Children: None
+Birth: ترکیہ
+Residence: ترکیہ
+Death: false
+--- End Block ---
+
+=== Block 323 ===
+Name: امیر علی
+Father: ۔ نورعلي
+Children: None
+Birth: ترکیہ
+Residence: ترکیہ
+Death: false
+--- End Block ---
+
+=== Block 324 ===
+Name: فيضعلي
+Father: عبدالعلي
+Children: None
+Birth: ایران
+Residence: یونان
+Death: false
+--- End Block ---
+
+=== Block 325 ===
+Name: غلام علي
+Father: عبدالعلي
+Children: None
+Birth: ایران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 326 ===
+Name: ۔ جواد۔
+Father: عبدالعلي
+Children: None
+Birth: ایران
+Residence: یونان
+Death: false
+--- End Block ---
+
+=== Block 327 ===
+Name: جاويد۔
+Father: عبدالعلي
+Children: None
+Birth: ایران
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 328 ===
+Name: محسن
+Father: عبدالعلي
+Children: None
+Birth: ایران
+Residence: ترکیہ
+Death: false
+--- End Block ---
+
+=== Block 329 ===
+Name: ح شيخ احمدعلي
+Father: حاج عظيم
+Children: شيرين گل مرحومه, بومان, فيروز, معصومه ھمسرعلي, ميثم, ابوذر, محمدحسين
+Birth: خان اباد
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 330 ===
+Name: فيروز
+Father: ح شيخ احمدعلي
+Children: دختر, دختر, دختر
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 331 ===
+Name: ميثم
+Father: ح شيخ احمدعلي
+Children: دختر, پسر
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 332 ===
+Name: پسری
+Father: میثم۔
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 333 ===
+Name: ابوذر
+Father: ح شيخ احمدعلي
+Children: None
+Birth: ایران
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 334 ===
+Name: محمدحسين
+Father: ح شيخ احمدعلي
+Children: None
+Birth: ایران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 335 ===
+Name: غلام سخي
+Father: حاج عظيم
+Children: هاشم, نرگس, مهدي, علي, حمزه
+Birth: خان اباد
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 336 ===
+Name: هاشم
+Father: غلام سخي
+Children: دختر۔ ۲- پسر
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 337 ===
+Name: پسر
+Father: ھاشم غلام سخي
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 338 ===
+Name: مهدي
+Father: غلام سخي
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 339 ===
+Name: علي
+Father: غلام سخي
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 340 ===
+Name: حمزه
+Father: غلام سخي
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 341 ===
+Name: رستم
+Father: غلام
+Children: سهراب مرحوم, برزو
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 342 ===
+Name: برزو
+Father: رستم
+Children: شيرين گل زن غلام حيدر
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 343 ===
+Name: شاهنواز
+Father: اميرشاه
+Children: گل بابه, مراد, خيربيگم ھمسرعوض, اميربيگم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 344 ===
+Name: گل بابه
+Father: شاهنواز
+Children: زينب ھمسر۔ عبدالاحمد, زرينه, آمنه, شيرين, زينت, نيكيدار ھمسرغلام سخي, عبدالكريم, فاطمه
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 345 ===
+Name: عبدالكريم
+Father: گل بابه
+Children: ذاکرہ, گلثوم, عابد حسین۔, نسیمہ ۵-سکینہ ۶-محمد محقق۔ ۷-مدینہ ۸-شکریہ۔ ۹-خضران دختر۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 346 ===
+Name: عابد حسین
+Father: عبدالكريم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 347 ===
+Name: محمدمحقق
+Father: عبدالكريم
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 348 ===
+Name: مراد
+Father: شاهنواز
+Children: دوست علي, محمدداود, ماه گل, شيرعلي, حسينعلي, هواگل, امام علي, زهرا, اسدالله
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 349 ===
+Name: دوست علي
+Father: مراد
+Children: سجاد, احمدشاه, علي سينا, مصطفی
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 350 ===
+Name: سجاد
+Father: دوست علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 351 ===
+Name: احمدشاه
+Father: دوست علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 352 ===
+Name: علي سينا
+Father: دوست علي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 353 ===
+Name: ۔ مصطفی
+Father: دوست علی
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 354 ===
+Name: محمدداود
+Father: مراد
+Children: علی اکبر ۲-گلثوم۔ ۳-محمد الیاس۔ ۴-
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 355 ===
+Name: علی اکبر
+Father: محمدداود
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 356 ===
+Name: محمدالیاس
+Father: محمدداود
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 357 ===
+Name: شيرعلي
+Father: مراد
+Children: مریم۔ ۲-مرضیہ۔ ۳-حسنیہ ۴-محمد شعیب۔
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 358 ===
+Name: محمد شعیب
+Father: شيرعلي
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 359 ===
+Name: حسينعلي
+Father: مراد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 360 ===
+Name: امام علي
+Father: مراد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 361 ===
+Name: اسدالله
+Father: مراد
+Children: None
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 362 ===
+Name: 
+Father: 
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 363 ===
+Name: خدير
+Father: شاه نظر
+Children: قدم, پيوندعلي, حسن۔ ۴-دختر. ۵ -دختر
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 364 ===
+Name: قدم
+Father: خدير
+Children: نيك محمد, گل احمد, خادم, جمعه, گل بيگم زن سهراب, زربيگم زن ارباب دولت
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 365 ===
+Name: نيك محمد
+Father: قدم
+Children: محمود, تاتار, جانبيگم, نظر محمد مرحوم, سخيداد, گلابي, فضل احمد مرحوم, غلام سخي مرحوم, فاطمه مرحومه, نوربيگم مرحومه
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 366 ===
+Name: محمود
+Father: نيك محمد
+Children: عبد الغفار, عوضعلي
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 367 ===
+Name: کعبدالغفار۔
+Father: 
+Children: محمدنسيم, رمضان, محمدعلي, عباس, ضياگل, رحيمه. زن علی اکبر از بھسود
+Birth: گوھرگان
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 368 ===
+Name: ک محمدنسيم
+Father: عبدالغفار
+Children: نرگس۔ ۲- کوثر۔ ۳-سطیلا خانم۔ ۴-
+Birth: قرہ سای پلخمری
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 369 ===
+Name: رمضان
+Father: عبدالغفار
+Children: معصومہ۔ ۲- محمد طٰہ۔ ۳- مھیا خانم۔ ۴-
+Birth: تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 370 ===
+Name: محمدعلي
+Father: عبدالغفار
+Children: کیانعلی محمودی۔ ۲-
+Birth: تھران
+Residence: آلمان ھامبورگ۔
+Death: false
+--- End Block ---
+
+=== Block 371 ===
+Name: کیانعلي محمودی
+Father: محمدعلی
+Children: None
+Birth: آلمان ھامبورگ۔ ۶/۱۱/۱۴۰۱۔ 26/1/2023
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 372 ===
+Name: عباس
+Father: عبدالغفار
+Children: None
+Birth: تھران۔
+Residence: سویدن
+Death: false
+--- End Block ---
+
+=== Block 373 ===
+Name: عوضعلي
+Father: 
+Children: None
+Birth: پلخمری گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 374 ===
+Name: تاتارباي (کریمی)
+Father: 
+Children: كبك, ناز, عبدالله, رحمت الله, عبدال ستار مرحوم, امامداد مرحوم, غلام سخي مرحوم, غنچه زن عبدالعلي, شجاع الدوله مرحوم, فاطمه مرحومه, نيكيدار مرحومه
+Birth: ۱/۱/۱۳۲۷ ه ش. 22/11/1379 ه ش. )
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 375 ===
+Name: عبدالله
+Father: تاتارباي
+Children: فاطمه, خديچه, محمدحسین ۴- دختری
+Birth: گوهرگان : ۱۳۵۲ ه ش.  1973
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 376 ===
+Name: محمدحسین
+Father: عبدالله
+Children: None
+Birth: تهران : ۱۹/۱۰/۱۳۸۷ ه ش. 8/1/2009 م
+Residence: تهران
+Death: false
+--- End Block ---
+
+=== Block 377 ===
+Name: ح رحمت الله
+Father: تاتارباي
+Children: تمنا ۲- رقیہ ۳- نیلوفر ۴- عبدالستار ۵-
+Birth: ۱/۱/۱۳۵۹ ھ ش۔ 21/3/1980 م۔ در گوھرگان پلخمری
+Residence: سعودی- ایران
+Death: false
+--- End Block ---
+
+=== Block 378 ===
+Name: عبدالستار
+Father: ۔ رحمت الله
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 379 ===
+Name: ح سخيداد
+Father: 
+Children: راضيه, مرتضي, مرضيه, مهدي, رقيه, مقداد
+Birth: ۱۳۳۰ ھ ش۔ 1951 م۔ گوھرگان پلخمری
+Residence: 
+Death: true
+--- End Block ---
+
+=== Block 380 ===
+Name: ک مرتضي
+Father: ح سخيداد
+Children: امیرکسرا ۲- محمد سبحان ۳-
+Birth: ۷/۶/۱۳۶۵ ھ ش۔ 29/8/1986 م۔ جمعہ ۔ تھران
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 381 ===
+Name: امیرکسرا۔
+Father: مرتضی
+Children: None
+Birth: ۲۸/۵/۱۳۹۱ ھ ش۔ 18/8/2012 م۔ شنبہ۔ تھران۔
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 382 ===
+Name: محمد سبحان
+Father: مرتضی
+Children: None
+Birth: ۲۹/۱۰/۱۳۹۳ ھ ش۔ 19/1/2015 م۔ دوشنبہ۔ تھران۔
+Residence: سویدن۔
+Death: false
+--- End Block ---
+
+=== Block 383 ===
+Name: مهدي
+Father: ح سخيداد
+Children: None
+Birth: 
+Residence: فرانسہ
+Death: false
+--- End Block ---
+
+=== Block 384 ===
+Name: مهرداد (مقداد)
+Father: ح سخيداد
+Children: None
+Birth: 
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 385 ===
+Name: گل احمد
+Father: قدم
+Children: اسلم مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 386 ===
+Name: خادم
+Father: قدم
+Children: هاشم مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 387 ===
+Name: پيوندعلي
+Father: خدير
+Children: اميربيگ, غلام حيدر, غلام حسن
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 388 ===
+Name: اميربيگ
+Father: پيوند علي
+Children: پنجشنبه مرحوم, غلام هاشم, مهتاب, غلام رسول مرحوم, وزير, ماه بيگم ھمسر, هزاری
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 389 ===
+Name: غلام هاشم
+Father: اميربيگ
+Children: ريزه گل, خاور, نصرالله۔, اسدالله۔, مريم
+Birth: شیخ علی
+Residence: گوھرگان - تہران
+Death: true
+--- End Block ---
+
+=== Block 390 ===
+Name: ح نصرالله
+Father: غلام هاشم
+Children: حيدر, محمد محسن ۳-
+Birth: پلخمری گوھرگان
+Residence: ایران
+Death: true
+--- End Block ---
+
+=== Block 391 ===
+Name: حیدر
+Father: ح نصرالله
+Children: None
+Birth: تھران
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 392 ===
+Name: محمد محسن . ح نصرالله
+Father: غلام هاشم
+Children: None
+Birth: 
+Residence: تھران
+Death: false
+--- End Block ---
+
+=== Block 393 ===
+Name: اسدالله
+Father: غلام هاشم
+Children: علی نوید۔ ۲-
+Birth: پلخمری گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 394 ===
+Name: علی نوید۔
+Father: اسدالله
+Children: None
+Birth: اروپا
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 395 ===
+Name: غلام حيدر۔
+Father: پيوندعلي
+Children: غلام قادر مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 396 ===
+Name: حسن
+Father: خدیر
+Children: ميرعلي, غلام, دختر ھمسرمحمد علي
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 397 ===
+Name: ميرعلي
+Father: حسن
+Children: رحم علي, قربان مرحوم, پتره, علي مدد مرحوم, ح خانعلي, ليلا
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 398 ===
+Name: 
+Father: 
+Children: None
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 399 ===
+Name: رحم علي
+Father: ميرعلي
+Children: ذوليخا زن سيداحمد
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 400 ===
+Name: ۔ پتره
+Father: ميرعلي
+Children: ح ظاهر, گل اندام مرحوم, غلام حسين مرحوم, غلام سخي مرحوم, محمد رسول مرحوم, محمدداد مرحوم, محمدعلي مرحوم, محمدعوض مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 401 ===
+Name: حاج ظاهر
+Father: پتره
+Children: ابراهيم مرحوم, عبد الصمد, فاطمه, آمنه ھمسربسم الله, عبدالفتاح, رقيه ھمسرح سخيداد, معصومه
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 402 ===
+Name: عبد الصمد
+Father: حاج ظاهر
+Children: علي رضا, فاطمه, مرضيه, راضيه, مريم, محمدباقر
+Birth: در  گوھرگان پلخمری ۱۳۵۳ھ ش۔. 1974
+Residence: گوھرگان۔ تہران۔ جاگارتا
+Death: false
+--- End Block ---
+
+=== Block 403 ===
+Name: علي رضا
+Father: عبد الصمد
+Children: None
+Birth: پلخمری گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 404 ===
+Name: محمدباقر
+Father: عبد الصمد
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 405 ===
+Name: عبدالفتاح
+Father: عبد الصمد
+Children: حامد ۲-
+Birth: پلخمری گوھرگان
+Residence: استرالیا
+Death: false
+--- End Block ---
+
+=== Block 406 ===
+Name: حامد
+Father: عبد الفتاح
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 407 ===
+Name: حاج خانعلي
+Father: 
+Children: گل اندام, بس بيگم ھمسرغلام سخي, سخيداد۔ . ۴-خدايداد مرحوم, غلام حيدر مرحوم, محمدعلي, ماه جان ھمسرعبدالشكور, بس بي بي مرحومه
+Birth: شیخعلی: ۱۳۰۱ ھ ش۔ 1922
+Residence: تھران
+Death: true
+--- End Block ---
+
+=== Block 408 ===
+Name: ح سخيداد
+Father: حاج خانعلي
+Children: محمد خليل, علي حسين, محمدجواد, محمدرضا
+Birth: پلخمری گوھرگان
+Residence: آلمان
+Death: false
+--- End Block ---
+
+=== Block 409 ===
+Name: محمد خليل
+Father: سخيداد
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 410 ===
+Name: علي حسين۔
+Father: سخيداد
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 411 ===
+Name: محمدجواد۔
+Father: سخيداد
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 412 ===
+Name: محمدرضا
+Father: سخيداد
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 413 ===
+Name: محمدعلي
+Father: حاج خانعلي
+Children: None
+Birth: اروپا
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 414 ===
+Name: غلام
+Father: حسن
+Children: شاه پسند
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 415 ===
+Name: شاه پسند
+Father: غلام
+Children: خدايداد, خالقداد مرحوم, گلچهره, گل شاه زن اميرمحمد, بسبيگم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 416 ===
+Name: خدايداد۔
+Father: شاپسند
+Children: ياسين مرحوم, نسيم, دادي خدا, آمنه زن ذولفعلي, سكينه زن حسن
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 417 ===
+Name: ح نسيم
+Father: خدايداد
+Children: مصطفي, صفيه, مقدسه, مدينه, مريم. ۶- ستائش ۷-
+Birth: شیخ علی
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 418 ===
+Name: مصطفي
+Father: ح نسيم
+Children: دختری ۲-
+Birth: کابل
+Residence: کابل
+Death: false
+--- End Block ---
+
+=== Block 419 ===
+Name: داد محمد
+Father: خدايداد
+Children: مجتبي, آسینات ۳- مرتضی ۴-
+Birth: ۱۱/۱۰/۱۳۶۲. ه ش. 1/1/1984 م روز یکشنبه در کابل
+Residence: امریکا
+Death: false
+--- End Block ---
+
+=== Block 420 ===
+Name: مجتبی
+Father: دادمحمد
+Children: None
+Birth: ۱۲/۹/۱۳۸۵. ه ش. 3/12/2006. م. روز یکشنبه در کابل
+Residence: امریکا
+Death: false
+--- End Block ---
+
+=== Block 421 ===
+Name: مرتضی
+Father: دادمحمد
+Children: None
+Birth: ۲۰/۸/۱۳۹۸. ه ش. 11/11/2019 م. روز دوشنبه. در امریکا
+Residence: امریکا
+Death: false
+--- End Block ---
+
+=== Block 422 ===
+Name: خال محمد
+Father: شاه نظر
+Children: بختياري
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 423 ===
+Name: بخت
+Father: خال محمد
+Children: فيض محمد
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 424 ===
+Name: فيض محمد۔
+Father: بختياري
+Children: خيرمحمد, نوربيگم, صاحبداد
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 425 ===
+Name: خيرمحمد۔
+Father: فيض محمد
+Children: صفر محمد, ميرافغان, جان بيگم زن
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 426 ===
+Name: صفرمحمد
+Father: خيرمحمد
+Children: هاشم مرحوم, پيوندعلي, محمدحسين, نور محمد مرحوم, مهتاب همسر صفر, علي محمد, غلام رضا مرحوم, عبدالله مرحوم
+Birth: شیخ علی۔
+Residence: ۔
+Death: true
+--- End Block ---
+
+=== Block 427 ===
+Name: پيوندعلي۔
+Father: صفرمحمد
+Children: اسدالله, حميد الله, عزيزالله, علي حسن, ناديه, فرشته
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 428 ===
+Name: اسدالله
+Father: پيوند علي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 429 ===
+Name: حميد الله
+Father: پيوند علي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 430 ===
+Name: عزيزالله۔
+Father: پيوند علي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 431 ===
+Name: علي حسن
+Father: پيوند علي
+Children: None
+Birth: پلخمری گوھرگان
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 432 ===
+Name: محمدحسين
+Father: صفرمحمد
+Children: غلام عباس, غلام حسن, علی رضا ۴- علی احمد
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
+
+=== Block 433 ===
+Name: 
+Father: 
+Children: None
+Birth: پلخمری گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 434 ===
+Name: غلام عباس
+Father: محمدحسين
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 435 ===
+Name: غلام حسن
+Father: محمد حسين
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 436 ===
+Name: علی رضا
+Father: محمد حسين
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 437 ===
+Name: علی احمد
+Father: محمد حسين
+Children: None
+Birth: ایران
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 438 ===
+Name: علي محمد
+Father: صفر
+Children: None
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 439 ===
+Name: عبدالله
+Father: صفرمحمد
+Children: None
+Birth: گوھرگان
+Residence: ایران
+Death: false
+--- End Block ---
+
+=== Block 440 ===
+Name: ميرافغان
+Father: ۔ خيرمحمد
+Children: عبدالغني, رحيمه مرحومه, عبدالفتاح, عطا محمد, نوريه, ديدار, عبدالستار, محمدعارف, مجتبي
+Birth: شیخ علی : ۱۰/۱/۱۳۲۰۔ 30/3/1941
+Residence: تھران :
+Death: true
+--- End Block ---
+
+=== Block 441 ===
+Name: عبدالغني
+Father: ميرافغان
+Children: محمد۔, طیبہ۔ ۳- نازنین زھرا۔
+Birth: پلخمری گوھرگان
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 442 ===
+Name: محمد
+Father: عبدالغني
+Children: None
+Birth: ایران
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 443 ===
+Name: عبدالفتاح
+Father: ميرافغان
+Children: None
+Birth: مزار شریف
+Residence: پلخمری
+Death: false
+--- End Block ---
+
+=== Block 444 ===
+Name: عطامحمد۔
+Father: ميرافغان
+Children: None
+Birth: 
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 445 ===
+Name: ديدار
+Father: ميرافغان
+Children: None
+Birth: مزارشریف
+Residence: پلخمری
+Death: false
+--- End Block ---
+
+=== Block 446 ===
+Name: عبدالستار
+Father: ميرافغان
+Children: None
+Birth: مزار شریف
+Residence: اروپا
+Death: false
+--- End Block ---
+
+=== Block 447 ===
+Name: محمدعارف۔
+Father: ميرافغان
+Children: None
+Birth: مزارشریف
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 448 ===
+Name: ۔ مجتبي
+Father: ميرافغان
+Children: None
+Birth: مزارشریف
+Residence: گوھرگان
+Death: false
+--- End Block ---
+
+=== Block 449 ===
+Name: 
+Father: 
+Children: None
+Birth: 
+Residence: 
+Death: false
+--- End Block ---
