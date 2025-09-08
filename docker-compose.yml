@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    ports:
+      - "5025:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build: ./family-tree-api
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "5001:5000"
+
+  ui:
+    build: ./family-tree-ui
+    env_file:
+      - .env
+    depends_on:
+      - api
+    ports:
+      - "3001:3001"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+volumes:
+  pgdata:

@@ -42,6 +42,8 @@ const RegisterPage: React.FC = () => {
       
       const response = await axios.get(`http://localhost:5000/family-members/invite/${inviteData.inviteCode}`);
       
+
+      console.log(response.data);
       if (response.data) {
         // ذخیره اطلاعات دعوت‌کننده
         setInviterData(response.data);

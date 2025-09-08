@@ -1,0 +1,67 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+
+const DashboardSidebar: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(true);
+
+  const items = [
+    { label: 'مرور کلی', href: '/dashboard', icon: '🏠' },
+    { label: 'شجره‌نامه', href: '/family', icon: '🌳' },
+    { label: 'نمودار درختی', href: '/dashboard/tree', icon: '🧬' },
+    { label: 'کد دعوت من', href: '/dashboard#invite', icon: '🎫' },
+    { label: 'تنظیمات', href: '/dashboard#settings', icon: '⚙️' },
+  ];
+
+  const isActive = (href: string) => pathname === href || (href !== '/dashboard' && pathname.startsWith(href));
+
+  return (
+    <aside
+      className={`hidden lg:flex flex-col transition-all duration-300 ${open ? 'w-64' : 'w-20'}
+        fixed right-0 top-16 h-[calc(100vh-4rem)] bg-white/70 backdrop-blur border-l border-gray-200/60 overflow-hidden z-40`}
+    >
+      <div className="p-4 border-b border-gray-200/60">
+        <button
+          onClick={() => setOpen(!open)}
+          className="w-full text-right text-gray-600 hover:text-gray-900"
+          title={open ? 'جمع کردن' : 'باز کردن'}
+        >
+          {open ? 'پنل کاربر' : '📋'}
+        </button>
+      </div>
+
+      <nav className="p-3 space-y-1">
+        {items.map((it) => (
+          <button
+            key={it.href}
+            onClick={() => router.push(it.href)}
+            className={`w-full flex items-center gap-3 p-3 rounded-xl text-sm transition-colors
+              ${isActive(it.href) ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <span className="text-lg">{it.icon}</span>
+            {open && <span className="flex-1 text-right">{it.label}</span>}
+          </button>
+        ))}
+      </nav>
+
+      <div className="mt-auto p-3 border-t border-gray-200/60">
+        <button
+          onClick={() => {
+            localStorage.removeItem('token');
+            router.push('/index');
+          }}
+          className="w-full p-3 rounded-xl text-sm bg-red-50 text-red-700 hover:bg-red-100"
+        >
+          خروج
+        </button>
+      </div>
+    </aside>
+  );
+};
+
+export default DashboardSidebar;
+
+
