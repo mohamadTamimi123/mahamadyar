@@ -30,7 +30,7 @@ export default function AdminUsersPage() {
       setError(null)
       const res = await api.get('/family-members/users')
       setUsers(res.data || [])
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.response?.data?.message || 'خطا در دریافت کاربران')
     } finally {
       setLoading(false)
@@ -45,7 +45,7 @@ export default function AdminUsersPage() {
     try {
       await api.patch(`/family-members/users/${user.id}/verify`, { is_verified: !user.is_verified })
       await load()
-    } catch (e) {
+    } catch {
       // noop
     }
   }
@@ -55,7 +55,7 @@ export default function AdminUsersPage() {
     try {
       await api.delete(`/family-members/users/${user.id}`)
       await load()
-    } catch (e) {
+    } catch {
       // noop
     }
   }

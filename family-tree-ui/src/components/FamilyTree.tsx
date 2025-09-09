@@ -29,7 +29,7 @@ const FamilyTree: React.FC = () => {
     if (familyData.length > 0) {
       createTreeVisualization();
     }
-  }, [familyData, searchTerm]);
+  }, [familyData, searchTerm, createTreeVisualization]);
 
   const fetchFamilyData = async () => {
     try {
@@ -75,8 +75,8 @@ const FamilyTree: React.FC = () => {
 
     // Build hierarchy from family data
     const buildHierarchy = (data: FamilyMember[]) => {
-      const map = new Map<number, any>();
-      const roots: any[] = [];
+      const map = new Map<number, FamilyMember>();
+      const roots: FamilyMember[] = [];
 
       // Create nodes
       data.forEach(member => {
@@ -126,7 +126,7 @@ const FamilyTree: React.FC = () => {
     } : rootNodes[0];
 
     // Create tree layout
-    const tree = d3.tree<any>()
+    const tree = d3.tree<FamilyMember>()
       .size([height - 100, width - 200])
       .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth);
 
@@ -148,12 +148,12 @@ const FamilyTree: React.FC = () => {
       .attr("transform", "translate(100, 50)");
 
     // Add links
-    const links = container.selectAll(".link")
+    container.selectAll(".link")
       .data(treeData.links())
       .enter()
       .append("path")
       .attr("class", "link")
-      .attr("d", d3.linkHorizontal<any, any>()
+      .attr("d", d3.linkHorizontal<FamilyMember, FamilyMember>()
         .x(d => d.y)
         .y(d => d.x))
       .style("fill", "none")

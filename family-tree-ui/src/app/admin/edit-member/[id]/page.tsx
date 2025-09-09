@@ -5,6 +5,16 @@ import { useRouter, useParams } from 'next/navigation';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
+interface FamilyMember {
+  id: number;
+  name: string;
+  family_name: string;
+  father_name?: string;
+  father_id?: number;
+  invite_code?: string;
+  created_at: string;
+}
+
 const EditMemberPage: React.FC = () => {
   const router = useRouter();
   const params = useParams();
@@ -22,10 +32,10 @@ const EditMemberPage: React.FC = () => {
     fatherId: '',
   });
 
-  const [availableMembers, setAvailableMembers] = useState<any[]>([]);
+  const [availableMembers, setAvailableMembers] = useState<FamilyMember[]>([]);
   const [showMembersList, setShowMembersList] = useState(false);
-  const [selectedFather, setSelectedFather] = useState<any>(null);
-  const [currentMember, setCurrentMember] = useState<any>(null);
+  const [selectedFather, setSelectedFather] = useState<FamilyMember | null>(null);
+  const [currentMember, setCurrentMember] = useState<FamilyMember | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -35,7 +45,7 @@ const EditMemberPage: React.FC = () => {
     try {
       const response = await api.get('/family-members');
       // فیلتر کردن عضو فعلی از لیست
-      const filteredMembers = response.data.filter((member: any) => member.id !== parseInt(memberId));
+      const filteredMembers = response.data.filter((member: FamilyMember) => member.id !== parseInt(memberId));
       setAvailableMembers(filteredMembers);
     } catch (err) {
       console.error('خطا در بارگذاری اعضا:', err);
@@ -68,7 +78,7 @@ const EditMemberPage: React.FC = () => {
     }
   };
 
-  const selectFather = (member: any) => {
+  const selectFather = (member: FamilyMember) => {
     setSelectedFather(member);
     setFormData(prev => ({
       ...prev,
@@ -88,7 +98,7 @@ const EditMemberPage: React.FC = () => {
   useEffect(() => {
     loadMember();
     loadAllMembers();
-  }, [memberId]);
+  }, [memberId, loadMember, loadAllMembers]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,7 +134,7 @@ const EditMemberPage: React.FC = () => {
           router.push('/admin');
         }, 2000);
       }
-    } catch (err: any) {
+    } catch (err) {
       setError(err.response?.data?.message || 'خطا در به‌روزرسانی عضو');
     } finally {
       setLoading(false);

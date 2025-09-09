@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+// import axios from 'axios';
 
 interface UserData {
   id: number;
@@ -21,7 +21,7 @@ const DashboardPage: React.FC = () => {
   const router = useRouter();
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -47,10 +47,10 @@ const DashboardPage: React.FC = () => {
     setLoading(false);
   }, [router]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    router.push('/index');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   router.push('/index');
+  // };
 
   const copyInviteCode = (inviteCode: string) => {
     navigator.clipboard.writeText(inviteCode).then(() => {

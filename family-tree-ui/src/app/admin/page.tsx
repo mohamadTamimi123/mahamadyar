@@ -38,7 +38,7 @@ const AdminDashboard: React.FC = () => {
 
   useEffect(() => {
     fetchFamilyData();
-  }, []);
+  }, [fetchFamilyData]);
 
   const fetchFamilyData = async () => {
     try {
@@ -141,7 +141,7 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleGenerateInviteCode = async (memberId: number) => {
+  // const handleGenerateInviteCode = async (memberId: number) => {
     try {
       const response = await axios.post(
         `http://localhost:5000/family-members/${memberId}/generate-invite-code`,
@@ -171,19 +171,17 @@ const AdminDashboard: React.FC = () => {
 
         alert(`کد دعوت جدید تولید شد: ${response.data.invite_code}`);
       }
-    } catch (error) {
-      console.error('Error generating invite code:', error);
-      alert('خطا در تولید کد دعوت');
-    }
-  };
+  //   } catch (error) {
+  //     console.error('Error generating invite code:', error);
+  //     alert('خطا در تولید کد دعوت');
+  //   }
+  // };
 
-  const copyInviteCode = (inviteCode: string) => {
+  // const copyInviteCode = (inviteCode: string) => {
     navigator.clipboard.writeText(inviteCode).then(() => {
       alert('کد دعوت کپی شد!');
-    }).catch(() => {
-      alert('خطا در کپی کردن کد دعوت');
-    });
-  };
+  //   });
+  // };
 
   if (loading) {
     return (
@@ -345,7 +343,7 @@ const AdminDashboard: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentData.map((member, index) => (
+                  {currentData.map((member) => (
                     <tr 
                       key={member.id} 
                       className={`hover:bg-gray-50 cursor-pointer ${

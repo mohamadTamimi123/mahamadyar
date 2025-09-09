@@ -15,7 +15,7 @@ const RegisterPage: React.FC = () => {
     inviteCode: '',
   });
 
-  const [inviterData, setInviterData] = useState<any>(null);
+  const [inviterData, setInviterData] = useState<{name: string; family_name: string; father_name?: string} | null>(null);
 
   const [credentialsData, setCredentialsData] = useState({
     name: '',
@@ -59,7 +59,7 @@ const RegisterPage: React.FC = () => {
         setStep('credentials');
         setSuccess(`کد دعوت معتبر است. اطلاعات دعوت‌کننده: ${response.data.name} ${response.data.family_name}. لطفاً اطلاعات خود را تکمیل کنید.`);
       }
-    } catch (err) {
+    } catch {
       setError('کد دعوت نامعتبر است');
     } finally {
       setLoading(false);
@@ -105,7 +105,7 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(response.data.message);
       }
-    } catch (err: any) {
+    } catch (err) {
       setError(err.response?.data?.message || 'خطا در ثبت‌نام');
     } finally {
       setLoading(false);
@@ -143,7 +143,7 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(resp.data.message || 'کد تأیید نامعتبر است');
       }
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.response?.data?.message || 'خطا در تأیید کد');
     } finally {
       setLoading(false);
@@ -169,7 +169,7 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(resp.data.message || 'خطا در ارسال مجدد کد');
       }
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.response?.data?.message || 'خطا در ارسال مجدد کد');
     } finally {
       setResending(false);

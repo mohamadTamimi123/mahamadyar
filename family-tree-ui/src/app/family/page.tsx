@@ -7,7 +7,7 @@ import FamilyTree from '@/components/FamilyTree';
 import axios from 'axios';
 
 export default function FamilyView() {
-  const router = useRouter();
+  // const router = useRouter();
   const [totalMembers, setTotalMembers] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<'table' | 'tree'>('table');

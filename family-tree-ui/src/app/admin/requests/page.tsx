@@ -22,7 +22,7 @@ const InviteRequestsPage: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [requests, setRequests] = useState<InviteRequest[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'approved' | 'rejected'>('all');
   const [selectedRequest, setSelectedRequest] = useState<InviteRequest | null>(null);
@@ -283,7 +283,7 @@ const InviteRequestsPage: React.FC = () => {
                 </label>
                 <select
                   value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value as any)}
+                  onChange={(e) => setStatusFilter(e.target.value as 'all' | 'pending' | 'approved' | 'rejected')}
                   className="w-full p-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 >
                   <option value="all">همه درخواست‌ها</option>

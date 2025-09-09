@@ -47,7 +47,7 @@ export default function PersonalTree({ data, width = 960, height = 560 }: Props)
         g.attr('transform', `translate(${event.transform.x + margin.left},${event.transform.y + margin.top}) scale(${event.transform.k})`)
       })
 
-    d3.select(ref.current).call(zoom as any)
+    d3.select(ref.current).call(zoom as d3.ZoomBehavior<SVGSVGElement, unknown>)
 
     // links
     g.append('g')
@@ -58,9 +58,9 @@ export default function PersonalTree({ data, width = 960, height = 560 }: Props)
       .attr('fill', 'none')
       .attr('stroke', '#CBD5E1')
       .attr('stroke-width', 2)
-      .attr('d', d3.linkHorizontal<any, any>()
-        .x((d: any) => d.y)
-        .y((d: any) => d.x)
+      .attr('d', d3.linkHorizontal<d3.HierarchyNode<unknown>, unknown>()
+        .x((d: d3.HierarchyNode<unknown>) => d.y)
+        .y((d: d3.HierarchyNode<unknown>) => d.x)
       )
 
     // nodes

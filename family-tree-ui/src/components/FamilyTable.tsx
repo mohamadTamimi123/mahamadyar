@@ -108,7 +108,7 @@ const FamilyTable: React.FC = () => {
       
       if (selectedFatherId) {
         // ایجاد رابطه پدر-فرزندی
-        const response = await axios.post(
+        await axios.post(
           `http://localhost:5000/family-members/${editingMember.id}/set-parent/${selectedFatherId}`,
           {},
           {
@@ -635,7 +635,7 @@ const FamilyTable: React.FC = () => {
           <div>🔍 برای جستجو در نام‌ها از کادر بالا استفاده کنید</div>
           <div>📊 برای مرتب‌سازی روی هدر ستون‌ها کلیک کنید</div>
           <div>🖱️ برای مشاهده جزئیات روی هر ردیف کلیک کنید</div>
-          <div>✏️ برای ویرایش کامل اطلاعات روی دکمه "ویرایش" کلیک کنید</div>
+          <div>✏️ برای ویرایش کامل اطلاعات روی دکمه &quot;ویرایش&quot; کلیک کنید</div>
           <div>👨‍👦 برای ویرایش سریع نام پدر روی دکمه مربوطه کلیک کنید</div>
           <div>📋 برای کپی کردن کد دعوت روی دکمه کپی کلیک کنید</div>
           <div>🔄 برای تولید کد دعوت جدید روی دکمه تولید کلیک کنید</div>

@@ -5,6 +5,16 @@ import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
+interface FamilyMember {
+  id: number;
+  name: string;
+  family_name: string;
+  father_name?: string;
+  father_id?: number;
+  invite_code?: string;
+  created_at: string;
+}
+
 const AddMemberPage: React.FC = () => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,9 +28,9 @@ const AddMemberPage: React.FC = () => {
     fatherId: '',
   });
 
-  const [availableMembers, setAvailableMembers] = useState<any[]>([]);
+  const [availableMembers, setAvailableMembers] = useState<FamilyMember[]>([]);
   const [showMembersList, setShowMembersList] = useState(false);
-  const [selectedFather, setSelectedFather] = useState<any>(null);
+  const [selectedFather, setSelectedFather] = useState<FamilyMember | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -35,7 +45,7 @@ const AddMemberPage: React.FC = () => {
     }
   };
 
-  const selectFather = (member: any) => {
+  const selectFather = (member: FamilyMember) => {
     setSelectedFather(member);
     setFormData(prev => ({
       ...prev,
@@ -97,7 +107,7 @@ const AddMemberPage: React.FC = () => {
           router.push('/admin');
         }, 2000);
       }
-    } catch (err: any) {
+    } catch (err) {
       setError(err.response?.data?.message || 'خطا در اضافه کردن عضو');
     } finally {
       setLoading(false);
