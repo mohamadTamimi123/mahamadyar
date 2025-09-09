@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
 interface FamilyMember {
@@ -43,10 +43,7 @@ const AdminDashboard: React.FC = () => {
   const fetchFamilyData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/family-members', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await api.get('/family-members', {
         timeout: 10000,
       });
       

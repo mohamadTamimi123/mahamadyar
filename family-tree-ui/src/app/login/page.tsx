@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const LoginPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await axios.post('http://localhost:5000/family-members/login', {
+      const response = await api.post('/family-members/login', {
         email: formData.email,
         password: formData.password,
       });

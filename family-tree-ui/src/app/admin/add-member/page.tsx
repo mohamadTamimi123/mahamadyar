@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
 const AddMemberPage: React.FC = () => {
@@ -28,7 +28,7 @@ const AddMemberPage: React.FC = () => {
 
   const loadAllMembers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/family-members');
+      const response = await api.get('/family-members');
       setAvailableMembers(response.data);
     } catch (err) {
       console.error('خطا در بارگذاری اعضا:', err);
@@ -80,7 +80,7 @@ const AddMemberPage: React.FC = () => {
         father_id: formData.fatherId ? parseInt(formData.fatherId) : null,
       };
 
-      const response = await axios.post('http://localhost:5000/family-members', memberData);
+      const response = await api.post('/family-members', memberData);
 
       if (response.data) {
         setSuccess('عضو جدید با موفقیت اضافه شد!');

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 
 const RequestInvitePage: React.FC = () => {
   const router = useRouter();
@@ -30,15 +30,7 @@ const RequestInvitePage: React.FC = () => {
       setError(null);
 
       // ارسال درخواست به بکاند
-      const response = await axios.post(
-        'http://localhost:5000/family-members/request-invite',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await api.post('/family-members/request-invite', formData);
 
       if (response.data) {
         setSuccess(true);

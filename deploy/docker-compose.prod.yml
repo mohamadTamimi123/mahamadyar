@@ -2,39 +2,83 @@ version: '3.9'
 
 services:
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB:-family_tree}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5025:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   mailhog:
     image: mailhog/mailhog:latest
     ports:
       - "8025:8025"
+      - "1025:1025"
+    restart: unless-stopped
 
   api:
-    image: ghcr.io/${GITHUB_REPOSITORY}-api:latest
-    env_file: ../../.env
+    image: ghcr.io/${GITHUB_REPOSITORY:-your-username}/shajare-back-api:latest
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=${POSTGRES_USER:-postgres}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_DATABASE=${POSTGRES_DB:-family_tree}
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+      - SMTP_USER=
+      - SMTP_PASS=
+      - EMAIL_FROM=${EMAIL_FROM:-noreply@familytree.com}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-24h}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
-      - "3001:3000"
+      - "5001:5000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/family-members"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   ui:
-    image: ghcr.io/${GITHUB_REPOSITORY}-ui:latest
+    image: ghcr.io/${GITHUB_REPOSITORY:-your-username}/shajare-back-ui:latest
     environment:
-      - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-http://localhost:5001}
     depends_on:
-      - api
+      api:
+        condition: service_healthy
     ports:
-      - "3000:3000"
+      - "3001:3001"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 volumes:
   db_data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
 
 

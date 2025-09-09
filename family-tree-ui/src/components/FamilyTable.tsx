@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '@/lib/api';
 import { useRouter } from 'next/navigation';
 
 interface FamilyMember {
@@ -38,10 +38,7 @@ const FamilyTable: React.FC = () => {
   const fetchFamilyData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/family-members', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await api.get('/family-members', {
         timeout: 10000,
       });
       console.log('API Response:', response.data.slice(0, 3)); // Debug log

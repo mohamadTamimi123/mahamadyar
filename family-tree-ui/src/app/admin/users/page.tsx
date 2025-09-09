@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '@/lib/api'
 import AdminSidebar from '@/components/AdminSidebar'
 
 type Member = {
@@ -28,7 +28,7 @@ export default function AdminUsersPage() {
     try {
       setLoading(true)
       setError(null)
-      const res = await axios.get('http://localhost:5000/family-members/users')
+      const res = await api.get('/family-members/users')
       setUsers(res.data || [])
     } catch (e: any) {
       setError(e?.response?.data?.message || 'خطا در دریافت کاربران')
@@ -43,7 +43,7 @@ export default function AdminUsersPage() {
 
   const toggleVerify = async (user: User) => {
     try {
-      await axios.patch(`http://localhost:5000/family-members/users/${user.id}/verify`, { is_verified: !user.is_verified })
+      await api.patch(`/family-members/users/${user.id}/verify`, { is_verified: !user.is_verified })
       await load()
     } catch (e) {
       // noop
@@ -53,7 +53,7 @@ export default function AdminUsersPage() {
   const removeUser = async (user: User) => {
     if (!confirm('کاربر حذف شود؟')) return
     try {
-      await axios.delete(`http://localhost:5000/family-members/users/${user.id}`)
+      await api.delete(`/family-members/users/${user.id}`)
       await load()
     } catch (e) {
       // noop

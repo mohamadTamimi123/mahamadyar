@@ -12,9 +12,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=builder /app/package*.json ./
 RUN npm ci --omit=dev
-RUN npm install --no-save typescript
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.ts ./next.config.ts
+COPY --from=builder /app/next.config.js ./next.config.js
 EXPOSE 3001
 CMD ["npx", "next", "start", "-p", "3001"]

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 
 const RegisterPage: React.FC = () => {
   const router = useRouter();
@@ -40,7 +40,7 @@ const RegisterPage: React.FC = () => {
       setLoading(true);
       setError(null);
       
-      const response = await axios.get(`http://localhost:5000/family-members/invite/${inviteData.inviteCode}`);
+      const response = await api.get(`/family-members/invite/${inviteData.inviteCode}`);
       
 
       console.log(response.data);
@@ -89,7 +89,7 @@ const RegisterPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await axios.post('http://localhost:5000/family-members/register-with-credentials', {
+      const response = await api.post('/family-members/register-with-credentials', {
         inviteCode: inviteData.inviteCode,
         name: credentialsData.name,
         family_name: credentialsData.family_name,
@@ -128,7 +128,7 @@ const RegisterPage: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      const resp = await axios.post('http://localhost:5000/family-members/verify-otp', {
+      const resp = await api.post('/family-members/verify-otp', {
         email: credentialsData.email,
         otp: otpCode.trim(),
       });
@@ -161,7 +161,7 @@ const RegisterPage: React.FC = () => {
     try {
       setResending(true);
       setError(null);
-      const resp = await axios.post('http://localhost:5000/family-members/resend-otp', {
+      const resp = await api.post('/family-members/resend-otp', {
         email: credentialsData.email,
       });
       if (resp.data.success) {

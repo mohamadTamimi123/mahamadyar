@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
 const EditMemberPage: React.FC = () => {
@@ -33,7 +33,7 @@ const EditMemberPage: React.FC = () => {
 
   const loadAllMembers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/family-members');
+      const response = await api.get('/family-members');
       // فیلتر کردن عضو فعلی از لیست
       const filteredMembers = response.data.filter((member: any) => member.id !== parseInt(memberId));
       setAvailableMembers(filteredMembers);

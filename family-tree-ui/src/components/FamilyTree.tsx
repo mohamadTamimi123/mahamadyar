@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import api from '@/lib/api';
 import * as d3 from 'd3';
 
 interface FamilyMember {
@@ -34,7 +34,7 @@ const FamilyTree: React.FC = () => {
   const fetchFamilyData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/family-members/tree/all');
+      const response = await api.get('/family-members/tree/all');
       setFamilyData(response.data);
     } catch (err) {
       setError('خطا در بارگذاری داده‌ها');

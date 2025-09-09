@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import api from '@/lib/api';
 
 const IndexPage: React.FC = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const IndexPage: React.FC = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/family-members');
+      const response = await api.get('/family-members');
       setStats({
         totalMembers: response.data.length,
         loading: false,
