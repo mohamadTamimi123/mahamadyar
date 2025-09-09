@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 
@@ -34,7 +34,7 @@ const EditMemberPage: React.FC = () => {
     fetchData();
   }, [memberId, fetchData]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -57,7 +57,7 @@ const EditMemberPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [memberId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

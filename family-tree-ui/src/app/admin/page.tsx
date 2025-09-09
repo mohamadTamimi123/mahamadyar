@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
@@ -36,11 +36,21 @@ const AdminDashboard: React.FC = () => {
     totalInviteCodes: 0,
   });
 
-  useEffect(() => {
-    fetchFamilyData();
-  }, [fetchFamilyData]);
+  const calculateStats = (data: FamilyMember[]) => {
+    const totalMembers = data.length;
+    const membersWithFather = data.filter(m => m.father_id).length;
+    const membersWithoutFather = totalMembers - membersWithFather;
+    const totalInviteCodes = data.filter(m => m.invite_code).length;
+    
+    setStats({
+      totalMembers,
+      membersWithFather,
+      membersWithoutFather,
+      totalInviteCodes,
+    });
+  };
 
-  const fetchFamilyData = async () => {
+  const fetchFamilyData = useCallback(async () => {
     try {
       setLoading(true);
       const response = await api.get('/family-members', {
@@ -55,21 +65,11 @@ const AdminDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const calculateStats = (data: FamilyMember[]) => {
-    const totalMembers = data.length;
-    const membersWithFather = data.filter(m => m.father_id).length;
-    const membersWithoutFather = totalMembers - membersWithFather;
-    const totalInviteCodes = data.filter(m => m.invite_code).length;
-
-    setStats({
-      totalMembers,
-      membersWithFather,
-      membersWithoutFather,
-      totalInviteCodes,
-    });
-  };
+  useEffect(() => {
+    fetchFamilyData();
+  }, [fetchFamilyData]);
 
   const handleSort = (field: keyof FamilyMember) => {
     if (sortField === field) {
@@ -142,35 +142,35 @@ const AdminDashboard: React.FC = () => {
   };
 
   // const handleGenerateInviteCode = async (memberId: number) => {
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/family-members/${memberId}/generate-invite-code`,
-        {},
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:5000/family-members/${memberId}/generate-invite-code`,
+  //       {},
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
 
-      if (response.data) {
-        setFamilyData(prevData =>
-          prevData.map(member =>
-            member.id === memberId
-              ? { ...member, invite_code: response.data.invite_code }
-              : member
-          )
-        );
+  //     if (response.data) {
+  //       setFamilyData(prevData =>
+  //         prevData.map(member =>
+  //           member.id === memberId
+  //             ? { ...member, invite_code: response.data.invite_code }
+  //             : member
+  //         )
+  //       );
 
-        if (selectedMember?.id === memberId) {
-          setSelectedMember({ 
-            ...selectedMember, 
-            invite_code: response.data.invite_code 
-          });
-        }
+  //       if (selectedMember?.id === memberId) {
+  //         setSelectedMember({ 
+  //           ...selectedMember, 
+  //           invite_code: response.data.invite_code 
+  //         });
+  //       }
 
-        alert(`کد دعوت جدید تولید شد: ${response.data.invite_code}`);
-      }
+  //       alert(`کد دعوت جدید تولید شد: ${response.data.invite_code}`);
+  //     }
   //   } catch (error) {
   //     console.error('Error generating invite code:', error);
   //     alert('خطا در تولید کد دعوت');
@@ -178,8 +178,8 @@ const AdminDashboard: React.FC = () => {
   // };
 
   // const copyInviteCode = (inviteCode: string) => {
-    navigator.clipboard.writeText(inviteCode).then(() => {
-      alert('کد دعوت کپی شد!');
+  //   navigator.clipboard.writeText(inviteCode).then(() => {
+  //     alert('کد دعوت کپی شد!');
   //   });
   // };
 

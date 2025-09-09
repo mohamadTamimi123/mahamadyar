@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import api from '@/lib/api';
 import * as d3 from 'd3';
 
@@ -44,7 +44,7 @@ const FamilyTree: React.FC = () => {
     }
   };
 
-  const createTreeVisualization = () => {
+  const createTreeVisualization = useCallback(() => {
     if (!svgRef.current || familyData.length === 0) return;
 
     // Clear previous visualization
@@ -256,7 +256,7 @@ const FamilyTree: React.FC = () => {
         d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
       );
     }
-  };
+  }, [familyData, searchTerm]);
 
   const filteredData = familyData.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

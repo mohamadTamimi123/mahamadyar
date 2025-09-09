@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
@@ -41,7 +41,7 @@ const EditMemberPage: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const loadAllMembers = async () => {
+  const loadAllMembers = useCallback(async () => {
     try {
       const response = await api.get('/family-members');
       // فیلتر کردن عضو فعلی از لیست
@@ -50,9 +50,9 @@ const EditMemberPage: React.FC = () => {
     } catch (err) {
       console.error('خطا در بارگذاری اعضا:', err);
     }
-  };
+  }, [memberId]);
 
-  const loadMember = async () => {
+  const loadMember = useCallback(async () => {
     try {
       setLoadingMember(true);
       const response = await axios.get(`http://localhost:5000/family-members/${memberId}`);
@@ -76,7 +76,7 @@ const EditMemberPage: React.FC = () => {
     } finally {
       setLoadingMember(false);
     }
-  };
+  }, [memberId]);
 
   const selectFather = (member: FamilyMember) => {
     setSelectedFather(member);
