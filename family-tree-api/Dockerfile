@@ -1,9 +1,9 @@
 # ---- Build stage ----
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY package*.json ./
+COPY family-tree-api/package*.json ./
 RUN npm ci
-COPY . .
+COPY family-tree-api/ .
 RUN npm run build
 
 # ---- Runtime stage ----
