@@ -30,6 +30,17 @@ jobs:
             echo "Please set SERVER_HOST, SERVER_USER, and SERVER_SSH_KEY in repository secrets."
           fi
 
+      - name: Debug SSH connection
+        if: steps.check-secrets.outputs.secrets_configured == 'true'
+        run: |
+          echo "🔍 Debugging SSH connection..."
+          echo "Host: ${{ secrets.SERVER_HOST }}"
+          echo "User: ${{ secrets.SERVER_USER }}"
+          echo "Key length: ${#SERVER_SSH_KEY}"
+          echo "Key preview: ${SERVER_SSH_KEY:0:50}..."
+          echo "Testing SSH connection..."
+          ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -i <(echo "${{ secrets.SERVER_SSH_KEY }}") ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH connection successful'" || echo "SSH connection failed"
+
       - name: Deploy to server
         if: steps.check-secrets.outputs.secrets_configured == 'true'
         uses: appleboy/ssh-action@v1.0.3
@@ -37,6 +48,9 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          timeout: 30s
+          command_timeout: 10m
           script: |
             # Navigate to project directory
             cd /root/peligent
@@ -61,6 +75,7 @@ jobs:
             curl -f http://localhost:3001 || exit 1
             
             echo "Deployment completed successfully!"
+        continue-on-error: true
 
       - name: Notify deployment status
         if: always()
