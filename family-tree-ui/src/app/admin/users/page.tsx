@@ -30,8 +30,9 @@ export default function AdminUsersPage() {
       setError(null)
       const res = await api.get('/family-members/users')
       setUsers(res.data || [])
-    } catch (e: any) {
-      setError(e?.response?.data?.message || 'خطا در دریافت کاربران')
+    } catch (e: unknown) {
+      const error = e as { response?: { data?: { message?: string } } };
+      setError(error?.response?.data?.message || 'خطا در دریافت کاربران')
     } finally {
       setLoading(false)
     }

@@ -58,9 +58,9 @@ export default function PersonalTree({ data, width = 960, height = 560 }: Props)
       .attr('fill', 'none')
       .attr('stroke', '#CBD5E1')
       .attr('stroke-width', 2)
-      .attr('d', d3.linkHorizontal<any, any>()
-        .x((d: any) => d.y)
-        .y((d: any) => d.x)
+      .attr('d', d3.linkHorizontal<unknown, unknown>()
+        .x((d: unknown) => (d as { y: number }).y)
+        .y((d: unknown) => (d as { x: number }).x)
       )
 
     // nodes

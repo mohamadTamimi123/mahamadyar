@@ -105,8 +105,9 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(response.data.message);
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'خطا در ثبت‌نام');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || 'خطا در ثبت‌نام');
     } finally {
       setLoading(false);
     }
@@ -143,8 +144,9 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(resp.data.message || 'کد تأیید نامعتبر است');
       }
-    } catch (e: any) {
-      setError(e?.response?.data?.message || 'خطا در تأیید کد');
+    } catch (e: unknown) {
+      const error = e as { response?: { data?: { message?: string } } };
+      setError(error?.response?.data?.message || 'خطا در تأیید کد');
     } finally {
       setLoading(false);
     }
@@ -169,8 +171,9 @@ const RegisterPage: React.FC = () => {
       } else {
         setError(resp.data.message || 'خطا در ارسال مجدد کد');
       }
-    } catch (e: any) {
-      setError(e?.response?.data?.message || 'خطا در ارسال مجدد کد');
+    } catch (e: unknown) {
+      const error = e as { response?: { data?: { message?: string } } };
+      setError(error?.response?.data?.message || 'خطا در ارسال مجدد کد');
     } finally {
       setResending(false);
     }

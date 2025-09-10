@@ -135,8 +135,9 @@ const EditMemberPage: React.FC = () => {
           router.push('/admin');
         }, 2000);
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'خطا در به‌روزرسانی عضو');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || 'خطا در به‌روزرسانی عضو');
     } finally {
       setLoading(false);
     }

@@ -136,8 +136,9 @@ const AdminDashboard: React.FC = () => {
       }
       
       alert('عضو با موفقیت حذف شد!');
-    } catch (err: any) {
-      console.error('Error deleting member:', err);
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      console.error('Error deleting member:', error);
       alert('خطا در حذف عضو');
     }
   };

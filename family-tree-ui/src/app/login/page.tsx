@@ -44,8 +44,9 @@ const LoginPage: React.FC = () => {
       } else {
         setError(response.data.message);
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'خطا در ورود');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || 'خطا در ورود');
     } finally {
       setLoading(false);
     }

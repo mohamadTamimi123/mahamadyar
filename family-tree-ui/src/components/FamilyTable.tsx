@@ -169,8 +169,9 @@ const FamilyTable: React.FC = () => {
 
       setEditingMember(null);
       setSelectedFatherId(null);
-    } catch (err: any) {
-      console.error('Error updating father relationship:', err);
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      console.error('Error updating father relationship:', error);
       setError('خطا در ذخیره تغییرات');
     } finally {
       setSaving(false);
@@ -258,8 +259,9 @@ const FamilyTable: React.FC = () => {
       if (selectedMember?.id === member.id) {
         setSelectedMember({ ...selectedMember, father_name: null, father_id: null });
       }
-    } catch (err: any) {
-      console.error('Error removing parent:', err);
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      console.error('Error removing parent:', error);
       setError('خطا در حذف رابطه پدر-فرزندی');
     } finally {
       setSaving(false);

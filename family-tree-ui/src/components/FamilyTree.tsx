@@ -30,7 +30,7 @@ const FamilyTree: React.FC = () => {
     if (familyData.length > 0) {
       createTreeVisualization();
     }
-  }, [familyData, searchTerm]);
+  }, [familyData, searchTerm, createTreeVisualization]);
 
   const fetchFamilyData = async () => {
     try {
@@ -158,9 +158,9 @@ const FamilyTree: React.FC = () => {
       .enter()
       .append("path")
       .attr("class", "link")
-      .attr("d", d3.linkHorizontal<any, any>()
-        .x((d: any) => d.y)
-        .y((d: any) => d.x))
+      .attr("d", d3.linkHorizontal<unknown, unknown>()
+        .x((d: unknown) => (d as { y: number }).y)
+        .y((d: unknown) => (d as { x: number }).x))
       .style("fill", "none")
       .style("stroke", "#999")
       .style("stroke-width", 2)

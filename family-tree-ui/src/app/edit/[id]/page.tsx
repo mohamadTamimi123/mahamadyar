@@ -32,7 +32,7 @@ const EditMemberPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, [memberId]);
+  }, [memberId, fetchData]);
 
   const fetchData = useCallback(async () => {
     try {
