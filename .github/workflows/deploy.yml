@@ -5,15 +5,18 @@ on:
     workflows: ["CD"]
     types:
       - completed
-    branches: [ main ]
   # Manual trigger for testing
   workflow_dispatch:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
     runs-on: ubuntu-latest
     environment: production
+    env:
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,83 +24,79 @@ jobs:
       - name: Check SSH secrets
         id: check-secrets
         run: |
-          if [ -n "${{ secrets.SERVER_HOST }}" ] && [ -n "${{ secrets.SERVER_USER }}" ] && [ -n "${{ secrets.SERVER_SSH_KEY }}" ]; then
+          if [ -n "$SERVER_HOST" ] && [ -n "$SERVER_USER" ] && [ -n "$SERVER_SSH_KEY" ]; then
             echo "secrets_configured=true" >> $GITHUB_OUTPUT
             echo "✅ SSH secrets configured. Proceeding with deployment..."
           else
             echo "secrets_configured=false" >> $GITHUB_OUTPUT
             echo "⚠️ SSH secrets not configured. Skipping deployment."
-            echo "Please set SERVER_HOST, SERVER_USER, and SERVER_SSH_KEY in repository secrets."
           fi
 
       - name: Debug SSH connection
         if: steps.check-secrets.outputs.secrets_configured == 'true'
         run: |
           echo "🔍 Debugging SSH connection..."
-          echo "Host: ${{ secrets.SERVER_HOST }}"
-          echo "User: ${{ secrets.SERVER_USER }}"
+          echo "Host: $SERVER_HOST"
+          echo "User: $SERVER_USER"
           echo "Key length: ${#SERVER_SSH_KEY}"
           echo "Key preview: ${SERVER_SSH_KEY:0:50}..."
-          echo "Testing SSH connection..."
-          ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -i <(echo "${{ secrets.SERVER_SSH_KEY }}") ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH connection successful'" || echo "SSH connection failed"
+          echo "$SERVER_SSH_KEY" > key.pem
+          chmod 600 key.pem
+          ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -i key.pem $SERVER_USER@$SERVER_HOST "echo 'SSH connection successful'"
 
       - name: Deploy to server
         if: steps.check-secrets.outputs.secrets_configured == 'true'
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ env.SERVER_HOST }}
+          username: ${{ env.SERVER_USER }}
+          key: ${{ env.SERVER_SSH_KEY }}
           port: 22
           timeout: 30s
           command_timeout: 10m
           script: |
-            # Navigate to project directory
-            cd /root/peligent
-            
-            # Check if directory exists and is a git repo
+            set -e
+            cd /root/peligent || exit 1
+
+            # Initialise repo if needed
             if [ ! -d ".git" ]; then
               echo "❌ Not a git repository. Initializing..."
               git init
               git remote add origin https://github.com/mohamadTamimi123/mahamadyar.git
             fi
-            
-            # Check remote configuration
+
             echo "🔗 Remote configuration:"
             git remote -v
-            
-            # Check git status before pull
-            echo "📊 Git status before pull:"
-            git status
-            git log --oneline -5
-            
-            # Pull latest changes
-            echo "📥 Pulling latest changes..."
-            git fetch origin
-            git reset --hard origin/main
-            
-            # Check git status after pull
-            echo "📊 Git status after pull:"
-            git log --oneline -5
-            
+
+            # Always checkout/update main branch correctly
+            if git show-ref --verify --quiet refs/heads/main; then
+              git fetch origin main
+              git checkout main
+              git reset --hard origin/main
+            else
+              git fetch origin main
+              git checkout -B main origin/main
+            fi
+
+            echo "📊 Git log after pull:"
+            git log --oneline -5 || true
+
             # Stop existing containers
-            docker-compose -f deploy/docker-compose.prod.yml down
-            
-            # Pull latest images
-            docker-compose -f deploy/docker-compose.prod.yml pull
-            
-            # Start services
-            docker-compose -f deploy/docker-compose.prod.yml up -d
-            
-            # Wait for services to be ready
-            sleep 30
-            
-            # Health check
-            curl -f http://localhost:5001/family-members || exit 1
-            curl -f http://localhost:3001 || exit 1
-            
-            echo "Deployment completed successfully!"
-        continue-on-error: true
+            docker compose -f deploy/docker-compose.prod.yml down || true
+            docker compose -f deploy/docker-compose.prod.yml pull
+            docker compose -f deploy/docker-compose.prod.yml up -d
+
+            # Simple retry health check
+            for i in {1..5}; do
+              sleep 10
+              curl -f http://localhost:5001/family-members && curl -f http://localhost:3001 && break || echo "Retrying health check ($i)..."
+              if [ "$i" -eq 5 ]; then
+                echo "Health check failed after retries"
+                exit 1
+              fi
+            done
+
+            echo "✅ Deployment completed successfully!"
 
       - name: Notify deployment status
         if: always()
