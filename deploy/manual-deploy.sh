@@ -85,6 +85,18 @@ echo "🔧 Environment variables set"
 echo "🛑 Stopping existing containers..."
 $DOCKER_COMPOSE down || true
 
+# Also stop any containers using the same ports
+echo "🔍 Checking for port conflicts..."
+docker ps --format "table {{.Names}}\t{{.Ports}}" | grep -E "(5025|1025|8025|5001|3001)" || true
+
+# Force stop any conflicting containers
+echo "🛑 Force stopping conflicting containers..."
+docker stop $(docker ps -q --filter "publish=5025") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=1025") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=8025") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=5001") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=3001") 2>/dev/null || true
+
 # Pull latest images
 echo "📦 Pulling latest Docker images..."
 $DOCKER_COMPOSE pull
