@@ -40,9 +40,21 @@ jobs:
           echo "User: $SERVER_USER"
           echo "Key length: ${#SERVER_SSH_KEY}"
           echo "Key preview: ${SERVER_SSH_KEY:0:50}..."
-          echo "$SERVER_SSH_KEY" > key.pem
-          chmod 600 key.pem
-          ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -i key.pem $SERVER_USER@$SERVER_HOST "echo 'SSH connection successful'"
+          
+          # Create SSH key file with proper format
+          echo "$SERVER_SSH_KEY" > /tmp/ssh_key
+          chmod 600 /tmp/ssh_key
+          
+          # Check key format
+          echo "🔑 SSH Key format check:"
+          head -1 /tmp/ssh_key
+          tail -1 /tmp/ssh_key
+          
+          # Test SSH connection with verbose output
+          ssh -v -o ConnectTimeout=10 -o StrictHostKeyChecking=no -i /tmp/ssh_key $SERVER_USER@$SERVER_HOST "echo 'SSH connection successful'" || echo "SSH connection failed"
+          
+          # Clean up
+          rm -f /tmp/ssh_key
 
       - name: Deploy to server
         if: steps.check-secrets.outputs.secrets_configured == 'true'
