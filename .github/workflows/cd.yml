@@ -29,7 +29,7 @@ jobs:
         id: meta_api
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}-api
+          images: ghcr.io/mohamadtamimi123/mahamadyar-api
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -54,7 +54,7 @@ jobs:
         id: meta_ui
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}-ui
+          images: ghcr.io/mohamadtamimi123/mahamadyar-ui
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -80,8 +80,8 @@ jobs:
           echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📦 Built Images:" >> $GITHUB_STEP_SUMMARY
-          echo "- **API**: \`ghcr.io/${{ github.repository }}-api\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **UI**: \`ghcr.io/${{ github.repository }}-ui\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **API**: \`ghcr.io/mohamadtamimi123/mahamadyar-api\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **UI**: \`ghcr.io/mohamadtamimi123/mahamadyar-ui\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏷️ Tags:" >> $GITHUB_STEP_SUMMARY
           echo "- API: ${{ steps.meta_api.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
@@ -103,7 +103,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ghcr.io/${{ github.repository }}-api:latest'
+          image-ref: 'ghcr.io/mohamadtamimi123/mahamadyar-api:latest'
           format: 'sarif'
           output: 'trivy-results-api.sarif'
         continue-on-error: true
@@ -117,7 +117,7 @@ jobs:
       - name: Run Trivy vulnerability scanner for UI
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ghcr.io/${{ github.repository }}-ui:latest'
+          image-ref: 'ghcr.io/mohamadtamimi123/mahamadyar-ui:latest'
           format: 'sarif'
           output: 'trivy-results-ui.sarif'
         continue-on-error: true
