@@ -70,11 +70,11 @@ if [ ! -f "docker-compose.yml" ]; then
     exit 1
 fi
 
-# Set environment variables
+# Set environment variables (passwords are in Dockerfile)
 export POSTGRES_DB=family_tree
 export POSTGRES_USER=postgres
-export POSTGRES_PASSWORD=your_secure_password_here
-export JWT_SECRET=your_jwt_secret_here
+export POSTGRES_PASSWORD=secure_password_123
+export JWT_SECRET=super_secret_jwt_key_2024
 export JWT_EXPIRES_IN=24h
 export EMAIL_FROM=noreply@familytree.com
 export NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
@@ -83,7 +83,7 @@ export NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
 export DB_HOST=db
 export DB_PORT=5432
 export DB_USERNAME=postgres
-export DB_PASSWORD=your_secure_password_here
+export DB_PASSWORD=secure_password_123
 export DB_DATABASE=family_tree
 
 # API configuration
