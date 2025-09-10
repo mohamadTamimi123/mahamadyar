@@ -78,7 +78,13 @@ jobs:
           fi
       
       - name: Run type checking
-        run: npx tsc --noEmit --if-present
+        run: |
+          if npx --yes tsc -v > /dev/null 2>&1; then
+            echo "TypeScript detected. Running type check..."
+            npx tsc --noEmit
+          else
+            echo "TypeScript not found. Skipping type check."
+          fi
       
       - name: Build application
         run: npm run build
