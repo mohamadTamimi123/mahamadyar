@@ -10,6 +10,18 @@ REPO_URL="https://github.com/mohamadTamimi123/mahamadyar.git"
 
 echo "🚀 Starting manual deployment..."
 
+# Detect Docker Compose command
+if command -v docker-compose >/dev/null 2>&1; then
+    DOCKER_COMPOSE="docker-compose"
+    echo "📦 Using docker-compose (legacy)"
+elif docker compose version >/dev/null 2>&1; then
+    DOCKER_COMPOSE="docker compose"
+    echo "📦 Using docker compose (new)"
+else
+    echo "❌ Neither docker-compose nor docker compose found!"
+    exit 1
+fi
+
 # Navigate to project directory
 cd "$PROJECT_DIR" || {
     echo "❌ Project directory not found: $PROJECT_DIR"
@@ -71,28 +83,28 @@ echo "🔧 Environment variables set"
 
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
-docker-compose -f deploy/docker-compose.prod.yml down || true
+$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml down || true
 
 # Pull latest images
 echo "📦 Pulling latest Docker images..."
-docker-compose -f deploy/docker-compose.prod.yml pull
+$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml pull
 
 # Start services
 echo "🚀 Starting services..."
-docker-compose -f deploy/docker-compose.prod.yml up -d
+$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml up -d
 
 # Check if services started successfully
 echo "🔍 Checking service status..."
-docker-compose -f deploy/docker-compose.prod.yml ps
+$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
 
 # If UI failed, try to start it separately
-if ! docker-compose -f deploy/docker-compose.prod.yml ps | grep -q "deploy_ui_1.*Up"; then
+if ! $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps | grep -q "deploy_ui_1.*Up"; then
     echo "⚠️ UI service failed to start, checking logs..."
-    docker-compose -f deploy/docker-compose.prod.yml logs ui
+    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml logs ui
     echo "🔄 Trying to restart UI service..."
-    docker-compose -f deploy/docker-compose.prod.yml restart ui
+    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml restart ui
     sleep 10
-    docker-compose -f deploy/docker-compose.prod.yml ps
+    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
 fi
 
 # Wait for services to be ready
@@ -114,16 +126,16 @@ for i in {1..5}; do
     if [ "$i" -eq 5 ]; then
         echo "❌ Health checks failed after 5 attempts"
         echo "📋 Container status:"
-        docker-compose -f deploy/docker-compose.prod.yml ps
+        $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
         echo "📋 Container logs:"
-        docker-compose -f deploy/docker-compose.prod.yml logs --tail=20
+        $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml logs --tail=20
         exit 1
     fi
 done
 
 # Show running containers
 echo "📊 Running containers:"
-docker-compose -f deploy/docker-compose.prod.yml ps
+$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
 
 echo "🎉 Manual deployment completed successfully!"
 echo "🌐 Application is available at:"
