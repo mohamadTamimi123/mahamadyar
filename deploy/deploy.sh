@@ -59,6 +59,20 @@ docker-compose -f "$COMPOSE_FILE" pull
 echo "🚀 Starting services..."
 docker-compose -f "$COMPOSE_FILE" up -d
 
+# Check if services started successfully
+echo "🔍 Checking service status..."
+docker-compose -f "$COMPOSE_FILE" ps
+
+# If UI failed, try to start it separately
+if ! docker-compose -f "$COMPOSE_FILE" ps | grep -q "deploy_ui_1.*Up"; then
+    echo "⚠️ UI service failed to start, checking logs..."
+    docker-compose -f "$COMPOSE_FILE" logs ui
+    echo "🔄 Trying to restart UI service..."
+    docker-compose -f "$COMPOSE_FILE" restart ui
+    sleep 10
+    docker-compose -f "$COMPOSE_FILE" ps
+fi
+
 # Wait for services to be ready
 echo "⏳ Waiting for services to be ready..."
 sleep 30
