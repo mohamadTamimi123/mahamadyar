@@ -58,6 +58,17 @@ if [ ! -f "deploy/docker-compose.prod.yml" ]; then
     exit 1
 fi
 
+# Set environment variables
+export POSTGRES_DB=family_tree
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=your_secure_password_here
+export JWT_SECRET=your_jwt_secret_here
+export JWT_EXPIRES_IN=24h
+export EMAIL_FROM=noreply@familytree.com
+export NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
+
+echo "🔧 Environment variables set"
+
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
 docker compose -f deploy/docker-compose.prod.yml down || true
