@@ -219,7 +219,7 @@ const FamilyTree: React.FC = () => {
     // Add click handlers
     nodes.on("click", (event, d) => {
       if (d.data) {
-        setSelectedMember(d.data);
+        setSelectedMember(d.data as FamilyMember);
         
         // Highlight selected node
         nodes.select("circle").style("fill", node => 
