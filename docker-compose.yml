@@ -1,8 +1,10 @@
 services:
   db:
     image: postgres:16-alpine
-    env_file:
-      - .env
+    environment:
+      POSTGRES_DB: family_tree
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secure_password_123
     ports:
       - "5025:5432"
     volumes:
@@ -10,8 +12,20 @@ services:
 
   api:
     build: ./family-tree-api
-    env_file:
-      - .env
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: secure_password_123
+      DB_DATABASE: family_tree
+      JWT_SECRET: super_secret_jwt_key_2024
+      JWT_EXPIRES_IN: 24h
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_USER: ""
+      SMTP_PASS: ""
+      EMAIL_FROM: noreply@familytree.com
     depends_on:
       - db
     ports:
@@ -19,10 +33,9 @@ services:
 
   ui:
     build: ./family-tree-ui
-    env_file:
-      - .env
     environment:
-      - NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:5001
     depends_on:
       - api
     ports:

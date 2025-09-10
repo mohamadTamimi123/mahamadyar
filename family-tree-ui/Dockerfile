@@ -18,5 +18,7 @@ RUN npm install typescript
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.js ./next.config.js
+# Copy TypeScript config if exists
+COPY --from=builder /app/tsconfig.json ./tsconfig.json 2>/dev/null || true
 EXPOSE 3001
 CMD ["npx", "next", "start", "-p", "3001"]
