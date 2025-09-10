@@ -71,15 +71,15 @@ echo "🔧 Environment variables set"
 
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
-docker compose -f deploy/docker-compose.prod.yml down || true
+docker-compose -f deploy/docker-compose.prod.yml down || true
 
 # Pull latest images
 echo "📦 Pulling latest Docker images..."
-docker compose -f deploy/docker-compose.prod.yml pull
+docker-compose -f deploy/docker-compose.prod.yml pull
 
 # Start services
 echo "🚀 Starting services..."
-docker compose -f deploy/docker-compose.prod.yml up -d
+docker-compose -f deploy/docker-compose.prod.yml up -d
 
 # Wait for services to be ready
 echo "⏳ Waiting for services to be ready..."
@@ -100,16 +100,16 @@ for i in {1..5}; do
     if [ "$i" -eq 5 ]; then
         echo "❌ Health checks failed after 5 attempts"
         echo "📋 Container status:"
-        docker compose -f deploy/docker-compose.prod.yml ps
+        docker-compose -f deploy/docker-compose.prod.yml ps
         echo "📋 Container logs:"
-        docker compose -f deploy/docker-compose.prod.yml logs --tail=20
+        docker-compose -f deploy/docker-compose.prod.yml logs --tail=20
         exit 1
     fi
 done
 
 # Show running containers
 echo "📊 Running containers:"
-docker compose -f deploy/docker-compose.prod.yml ps
+docker-compose -f deploy/docker-compose.prod.yml ps
 
 echo "🎉 Manual deployment completed successfully!"
 echo "🌐 Application is available at:"

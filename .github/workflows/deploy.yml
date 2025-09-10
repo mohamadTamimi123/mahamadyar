@@ -95,9 +95,9 @@ jobs:
             git log --oneline -5 || true
 
             # Stop existing containers
-            docker compose -f deploy/docker-compose.prod.yml down || true
-            docker compose -f deploy/docker-compose.prod.yml pull
-            docker compose -f deploy/docker-compose.prod.yml up -d
+            docker-compose -f deploy/docker-compose.prod.yml down || true
+            docker-compose -f deploy/docker-compose.prod.yml pull
+            docker-compose -f deploy/docker-compose.prod.yml up -d
 
             # Simple retry health check
             for i in {1..5}; do
@@ -120,9 +120,9 @@ jobs:
           echo "To deploy manually on the server, run:"
           echo "cd /root/peligent"
           echo "git pull origin main"
-          echo "docker compose -f deploy/docker-compose.prod.yml down"
-          echo "docker compose -f deploy/docker-compose.prod.yml pull"
-          echo "docker compose -f deploy/docker-compose.prod.yml up -d"
+          echo "docker-compose -f deploy/docker-compose.prod.yml down"
+          echo "docker-compose -f deploy/docker-compose.prod.yml pull"
+          echo "docker-compose -f deploy/docker-compose.prod.yml up -d"
           echo ""
           echo "Or configure SSH secrets in GitHub repository settings."
 
@@ -134,9 +134,9 @@ jobs:
           echo "Please run these commands manually on the server:"
           echo "cd /root/peligent"
           echo "git pull origin main"
-          echo "docker compose -f deploy/docker-compose.prod.yml down"
-          echo "docker compose -f deploy/docker-compose.prod.yml pull"
-          echo "docker compose -f deploy/docker-compose.prod.yml up -d"
+          echo "docker-compose -f deploy/docker-compose.prod.yml down"
+          echo "docker-compose -f deploy/docker-compose.prod.yml pull"
+          echo "docker-compose -f deploy/docker-compose.prod.yml up -d"
           echo ""
           echo "To fix SSH authentication:"
           echo "1. Generate new SSH key: ssh-keygen -t ed25519"
