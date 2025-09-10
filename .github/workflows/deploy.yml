@@ -66,6 +66,7 @@ jobs:
           port: 22
           timeout: 30s
           command_timeout: 10m
+          debug: true
           script: |
             set -e
             cd /root/peligent || exit 1
@@ -110,6 +111,20 @@ jobs:
 
             echo "✅ Deployment completed successfully!"
 
+      - name: Manual deployment instructions
+        if: steps.check-secrets.outputs.secrets_configured == 'false'
+        run: |
+          echo "🔧 Manual deployment required!"
+          echo ""
+          echo "To deploy manually on the server, run:"
+          echo "cd /root/peligent"
+          echo "git pull origin main"
+          echo "docker compose -f deploy/docker-compose.prod.yml down"
+          echo "docker compose -f deploy/docker-compose.prod.yml pull"
+          echo "docker compose -f deploy/docker-compose.prod.yml up -d"
+          echo ""
+          echo "Or configure SSH secrets in GitHub repository settings."
+
       - name: Notify deployment status
         if: always()
         run: |
@@ -117,4 +132,5 @@ jobs:
             echo "✅ Production deployment successful!"
           else
             echo "❌ Production deployment failed!"
+            echo "Check SSH key configuration or run manual deployment."
           fi
