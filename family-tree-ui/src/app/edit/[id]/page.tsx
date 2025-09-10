@@ -30,10 +30,6 @@ const EditMemberPage: React.FC = () => {
     father_id: null as number | null,
   });
 
-  useEffect(() => {
-    fetchData();
-  }, [memberId, fetchData]);
-
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
@@ -58,6 +54,10 @@ const EditMemberPage: React.FC = () => {
       setLoading(false);
     }
   }, [memberId]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

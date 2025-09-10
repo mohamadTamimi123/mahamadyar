@@ -14,6 +14,15 @@ interface FamilyMember {
   data?: FamilyMember;
 }
 
+interface TreeNode {
+  id: number;
+  name: string;
+  father_name: string | null;
+  father_id: number | null;
+  children: TreeNode[];
+  data?: FamilyMember;
+}
+
 const FamilyTree: React.FC = () => {
   const [familyData, setFamilyData] = useState<FamilyMember[]>([]);
   const [loading, setLoading] = useState(true);
@@ -21,16 +30,6 @@ const FamilyTree: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    fetchFamilyData();
-  }, []);
-
-  useEffect(() => {
-    if (familyData.length > 0) {
-      createTreeVisualization();
-    }
-  }, [familyData, searchTerm, createTreeVisualization]);
 
   const fetchFamilyData = async () => {
     try {
@@ -76,8 +75,8 @@ const FamilyTree: React.FC = () => {
 
     // Build hierarchy from family data
     const buildHierarchy = (data: FamilyMember[]) => {
-      const map = new Map<number, FamilyMember>();
-      const roots: FamilyMember[] = [];
+      const map = new Map<number, TreeNode>();
+      const roots: TreeNode[] = [];
 
       // Create nodes
       data.forEach(member => {
@@ -123,15 +122,17 @@ const FamilyTree: React.FC = () => {
     }
 
     // Create a virtual root if multiple trees
-    const virtualRoot = rootNodes.length > 1 ? {
+    const virtualRoot: TreeNode = rootNodes.length > 1 ? {
       id: -1,
       name: "ریشه‌های خانوادگی",
+      father_name: null,
+      father_id: null,
       children: rootNodes,
-      data: null
+      data: undefined
     } : rootNodes[0];
 
     // Create tree layout
-    const tree = d3.tree<FamilyMember>()
+    const tree = d3.tree<TreeNode>()
       .size([height - 100, width - 200])
       .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth);
 
@@ -262,6 +263,16 @@ const FamilyTree: React.FC = () => {
       );
     }
   }, [familyData, searchTerm]);
+
+  useEffect(() => {
+    fetchFamilyData();
+  }, []);
+
+  useEffect(() => {
+    if (familyData.length > 0) {
+      createTreeVisualization();
+    }
+  }, [familyData, searchTerm, createTreeVisualization]);
 
   const filteredData = familyData.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
