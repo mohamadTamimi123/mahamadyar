@@ -81,6 +81,20 @@ docker-compose -f deploy/docker-compose.prod.yml pull
 echo "🚀 Starting services..."
 docker-compose -f deploy/docker-compose.prod.yml up -d
 
+# Check if services started successfully
+echo "🔍 Checking service status..."
+docker-compose -f deploy/docker-compose.prod.yml ps
+
+# If UI failed, try to start it separately
+if ! docker-compose -f deploy/docker-compose.prod.yml ps | grep -q "deploy_ui_1.*Up"; then
+    echo "⚠️ UI service failed to start, checking logs..."
+    docker-compose -f deploy/docker-compose.prod.yml logs ui
+    echo "🔄 Trying to restart UI service..."
+    docker-compose -f deploy/docker-compose.prod.yml restart ui
+    sleep 10
+    docker-compose -f deploy/docker-compose.prod.yml ps
+fi
+
 # Wait for services to be ready
 echo "⏳ Waiting for services to be ready..."
 sleep 30
