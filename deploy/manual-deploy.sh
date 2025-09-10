@@ -79,6 +79,23 @@ export JWT_EXPIRES_IN=24h
 export EMAIL_FROM=noreply@familytree.com
 export NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
 
+# Database connection for API
+export DB_HOST=db
+export DB_PORT=5432
+export DB_USERNAME=postgres
+export DB_PASSWORD=your_secure_password_here
+export DB_DATABASE=family_tree
+
+# API configuration
+export PORT=5000
+export NODE_ENV=production
+
+# Email configuration
+export SMTP_HOST=mailhog
+export SMTP_PORT=1025
+export SMTP_USER=
+export SMTP_PASS=
+
 echo "🔧 Environment variables set"
 
 # Stop existing containers
