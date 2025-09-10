@@ -6,10 +6,12 @@ on:
     types:
       - completed
     branches: [ main ]
+  # Manual trigger for testing
+  workflow_dispatch:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: false  # Temporarily disabled until SSH secrets are configured
     runs-on: ubuntu-latest
     environment: production
     steps:
