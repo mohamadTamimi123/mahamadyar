@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secure_password_123
     ports:
-      - "5025:5432"
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -29,23 +29,23 @@ services:
     depends_on:
       - db
     ports:
-      - "5001:5000"
+      - "5002:5000"
 
   ui:
     build: ./family-tree-ui
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_API_BASE_URL: http://localhost:5001
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:5002
     depends_on:
       - api
     ports:
-      - "3001:3001"
+      - "3002:3001"
 
   mailhog:
     image: mailhog/mailhog
     ports:
-      - "8025:8025"
-      - "1025:1025"
+      - "8026:8025"
+      - "1026:1025"
 
 volumes:
   pgdata:

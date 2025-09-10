@@ -108,11 +108,11 @@ docker ps --format "table {{.Names}}\t{{.Ports}}" | grep -E "(5025|1025|8025|500
 
 # Force stop any conflicting containers
 echo "🛑 Force stopping conflicting containers..."
-docker stop $(docker ps -q --filter "publish=5025") 2>/dev/null || true
-docker stop $(docker ps -q --filter "publish=1025") 2>/dev/null || true
-docker stop $(docker ps -q --filter "publish=8025") 2>/dev/null || true
-docker stop $(docker ps -q --filter "publish=5001") 2>/dev/null || true
-docker stop $(docker ps -q --filter "publish=3001") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=5433") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=1026") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=8026") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=5002") 2>/dev/null || true
+docker stop $(docker ps -q --filter "publish=3002") 2>/dev/null || true
 
 # Pull latest images
 echo "📦 Pulling latest Docker images..."
@@ -144,7 +144,7 @@ sleep 30
 echo "🔍 Running health checks..."
 for i in {1..5}; do
     echo "Health check attempt $i/5..."
-    if curl -f -s http://localhost:5001/family-members > /dev/null && curl -f -s http://localhost:3001 > /dev/null; then
+    if curl -f -s http://localhost:5002/family-members > /dev/null && curl -f -s http://localhost:3002 > /dev/null; then
         echo "✅ Health checks passed!"
         break
     else
@@ -168,6 +168,7 @@ $DOCKER_COMPOSE ps
 
 echo "🎉 Manual deployment completed successfully!"
 echo "🌐 Application is available at:"
-echo "   - UI: http://localhost:3001"
-echo "   - API: http://localhost:5001"
-echo "   - MailHog: http://localhost:8025"
+echo "   - UI: http://localhost:3002"
+echo "   - API: http://localhost:5002"
+echo "   - MailHog: http://localhost:8026"
+echo "   - Database: localhost:5433"
