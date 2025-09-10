@@ -18,18 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check SSH secrets
-        run: |
-          if [ -z "${{ secrets.SERVER_HOST }}" ] || [ -z "${{ secrets.SERVER_USER }}" ] || [ -z "${{ secrets.SERVER_SSH_KEY }}" ]; then
-            echo "❌ SSH secrets not configured. Please set SERVER_HOST, SERVER_USER, and SERVER_SSH_KEY in repository secrets."
-            echo "Skipping deployment..."
-            exit 0
-          else
-            echo "✅ SSH secrets configured. Proceeding with deployment..."
-          fi
-
       - name: Deploy to server
-        if: secrets.SERVER_HOST != '' && secrets.SERVER_USER != '' && secrets.SERVER_SSH_KEY != ''
+        if: ${{ secrets.SERVER_HOST != '' && secrets.SERVER_USER != '' && secrets.SERVER_SSH_KEY != '' }}
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -59,6 +49,12 @@ jobs:
             curl -f http://localhost:3001 || exit 1
             
             echo "Deployment completed successfully!"
+
+      - name: Skip deployment notification
+        if: ${{ secrets.SERVER_HOST == '' || secrets.SERVER_USER == '' || secrets.SERVER_SSH_KEY == '' }}
+        run: |
+          echo "⚠️ SSH secrets not configured. Skipping deployment."
+          echo "Please set SERVER_HOST, SERVER_USER, and SERVER_SSH_KEY in repository secrets."
 
       - name: Notify deployment status
         if: always()
