@@ -43,7 +43,7 @@ const RequestInvitePage: React.FC = () => {
           message: '',
         });
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Error submitting request:', err);
       setError('خطا در ارسال درخواست. لطفاً دوباره تلاش کنید');
     } finally {

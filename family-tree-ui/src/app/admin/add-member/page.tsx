@@ -40,7 +40,7 @@ const AddMemberPage: React.FC = () => {
     try {
       const response = await api.get('/family-members');
       setAvailableMembers(response.data);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('خطا در بارگذاری اعضا:', err);
     }
   };
@@ -107,7 +107,7 @@ const AddMemberPage: React.FC = () => {
           router.push('/admin');
         }, 2000);
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err.response?.data?.message || 'خطا در اضافه کردن عضو');
     } finally {
       setLoading(false);

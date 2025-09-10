@@ -14,7 +14,7 @@ export default function DashboardTreePage() {
       try {
         setLoading(true)
         const res = await axios.get('http://localhost:5000/family-members')
-        const members = res.data as Array<{id: number; name: string; father_name?: string; father_id?: number}>
+        const members = res.data as Array<{id: number; name: string; family_name?: string; father_name?: string; father_id?: number}>
         if (!members || members.length === 0) {
           setError('داده‌ای یافت نشد')
           setLoading(false)

@@ -32,7 +32,7 @@ const EditMemberPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, [memberId, fetchData]);
+  }, [memberId]);
 
   const fetchData = useCallback(async () => {
     try {
@@ -51,7 +51,7 @@ const EditMemberPage: React.FC = () => {
         name: memberResponse.data.name,
         father_id: memberResponse.data.father_id,
       });
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Error fetching data:', err);
       setError('خطا در بارگذاری اطلاعات');
     } finally {
@@ -81,7 +81,7 @@ const EditMemberPage: React.FC = () => {
         alert('اطلاعات با موفقیت ذخیره شد!');
         router.push('/');
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Error updating member:', err);
       setError('خطا در ذخیره تغییرات');
     } finally {

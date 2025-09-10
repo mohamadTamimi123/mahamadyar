@@ -7,10 +7,11 @@ import * as d3 from 'd3';
 interface FamilyMember {
   id: number;
   name: string;
-  father_name: string;
+  father_name: string | null;
   father_id: number | null;
   children: FamilyMember[];
   created_at: string;
+  data?: FamilyMember;
 }
 
 const FamilyTree: React.FC = () => {
@@ -29,14 +30,14 @@ const FamilyTree: React.FC = () => {
     if (familyData.length > 0) {
       createTreeVisualization();
     }
-  }, [familyData, searchTerm, createTreeVisualization]);
+  }, [familyData, searchTerm]);
 
   const fetchFamilyData = async () => {
     try {
       setLoading(true);
       const response = await api.get('/family-members/tree/all');
       setFamilyData(response.data);
-    } catch (err) {
+    } catch (err: unknown) {
       setError('خطا در بارگذاری داده‌ها');
       console.error('Error fetching family data:', err);
     } finally {
@@ -95,9 +96,13 @@ const FamilyTree: React.FC = () => {
         const node = map.get(member.id);
         if (member.father_id && map.has(member.father_id)) {
           const parent = map.get(member.father_id);
-          parent.children.push(node);
+          if (parent && node) {
+            parent.children.push(node);
+          }
         } else {
-          roots.push(node);
+          if (node) {
+            roots.push(node);
+          }
         }
       });
 
@@ -153,9 +158,9 @@ const FamilyTree: React.FC = () => {
       .enter()
       .append("path")
       .attr("class", "link")
-      .attr("d", d3.linkHorizontal<FamilyMember, FamilyMember>()
-        .x(d => d.y)
-        .y(d => d.x))
+      .attr("d", d3.linkHorizontal<any, any>()
+        .x((d: any) => d.y)
+        .y((d: any) => d.x))
       .style("fill", "none")
       .style("stroke", "#999")
       .style("stroke-width", 2)

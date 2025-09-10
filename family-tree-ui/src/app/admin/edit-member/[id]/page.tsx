@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import axios from 'axios';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
@@ -47,7 +48,7 @@ const EditMemberPage: React.FC = () => {
       // فیلتر کردن عضو فعلی از لیست
       const filteredMembers = response.data.filter((member: FamilyMember) => member.id !== parseInt(memberId));
       setAvailableMembers(filteredMembers);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('خطا در بارگذاری اعضا:', err);
     }
   }, [memberId]);
@@ -70,7 +71,7 @@ const EditMemberPage: React.FC = () => {
         const fatherResponse = await axios.get(`http://localhost:5000/family-members/${member.father_id}`);
         setSelectedFather(fatherResponse.data);
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('خطا در بارگذاری عضو:', err);
       setError('خطا در بارگذاری اطلاعات عضو');
     } finally {
@@ -134,7 +135,7 @@ const EditMemberPage: React.FC = () => {
           router.push('/admin');
         }, 2000);
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err.response?.data?.message || 'خطا در به‌روزرسانی عضو');
     } finally {
       setLoading(false);

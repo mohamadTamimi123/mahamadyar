@@ -29,7 +29,7 @@ const VerifyEmailPage: React.FC<VerifyEmailPageProps> = ({ params }) => {
         } else {
           setError(response.data.message);
         }
-      } catch (err) {
+      } catch (err: any) {
         setError(err.response?.data?.message || 'خطا در تأیید ایمیل');
       } finally {
         setLoading(false);

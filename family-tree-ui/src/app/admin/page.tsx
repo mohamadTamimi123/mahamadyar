@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import api from '@/lib/api';
 import AdminSidebar from '@/components/AdminSidebar';
 
@@ -59,7 +60,7 @@ const AdminDashboard: React.FC = () => {
       
       setFamilyData(response.data);
       calculateStats(response.data);
-    } catch (err) {
+    } catch (err: unknown) {
       setError('خطا در بارگذاری داده‌ها');
       console.error('Error fetching family data:', err);
     } finally {
@@ -135,7 +136,7 @@ const AdminDashboard: React.FC = () => {
       }
       
       alert('عضو با موفقیت حذف شد!');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error deleting member:', err);
       alert('خطا در حذف عضو');
     }

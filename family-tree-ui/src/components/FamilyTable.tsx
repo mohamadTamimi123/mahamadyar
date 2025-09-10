@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import api from '@/lib/api';
 import { useRouter } from 'next/navigation';
 
@@ -43,7 +44,7 @@ const FamilyTable: React.FC = () => {
       });
       console.log('API Response:', response.data.slice(0, 3)); // Debug log
       setFamilyData(response.data);
-    } catch (err) {
+    } catch (err: unknown) {
       setError('خطا در بارگذاری داده‌ها');
       console.error('Error fetching family data:', err);
     } finally {
@@ -168,7 +169,7 @@ const FamilyTable: React.FC = () => {
 
       setEditingMember(null);
       setSelectedFatherId(null);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error updating father relationship:', err);
       setError('خطا در ذخیره تغییرات');
     } finally {
@@ -257,7 +258,7 @@ const FamilyTable: React.FC = () => {
       if (selectedMember?.id === member.id) {
         setSelectedMember({ ...selectedMember, father_name: null, father_id: null });
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error removing parent:', err);
       setError('خطا در حذف رابطه پدر-فرزندی');
     } finally {
