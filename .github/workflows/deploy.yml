@@ -110,6 +110,7 @@ jobs:
             done
 
             echo "✅ Deployment completed successfully!"
+        continue-on-error: true
 
       - name: Manual deployment instructions
         if: steps.check-secrets.outputs.secrets_configured == 'false'
@@ -124,6 +125,23 @@ jobs:
           echo "docker compose -f deploy/docker-compose.prod.yml up -d"
           echo ""
           echo "Or configure SSH secrets in GitHub repository settings."
+
+      - name: SSH deployment failed - Manual instructions
+        if: steps.check-secrets.outputs.secrets_configured == 'true'
+        run: |
+          echo "⚠️ SSH deployment failed due to authentication issues."
+          echo ""
+          echo "Please run these commands manually on the server:"
+          echo "cd /root/peligent"
+          echo "git pull origin main"
+          echo "docker compose -f deploy/docker-compose.prod.yml down"
+          echo "docker compose -f deploy/docker-compose.prod.yml pull"
+          echo "docker compose -f deploy/docker-compose.prod.yml up -d"
+          echo ""
+          echo "To fix SSH authentication:"
+          echo "1. Generate new SSH key: ssh-keygen -t ed25519"
+          echo "2. Add public key to authorized_keys"
+          echo "3. Update SERVER_SSH_KEY secret in GitHub"
 
       - name: Notify deployment status
         if: always()
