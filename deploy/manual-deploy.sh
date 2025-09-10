@@ -65,7 +65,7 @@ echo "📊 Latest commits:"
 git log --oneline -5
 
 # Check if docker-compose file exists
-if [ ! -f "deploy/docker-compose.prod.yml" ]; then
+if [ ! -f "docker-compose.yml" ]; then
     echo "❌ Docker compose file not found!"
     exit 1
 fi
@@ -83,28 +83,28 @@ echo "🔧 Environment variables set"
 
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
-$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml down || true
+$DOCKER_COMPOSE down || true
 
 # Pull latest images
 echo "📦 Pulling latest Docker images..."
-$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml pull
+$DOCKER_COMPOSE pull
 
 # Start services
 echo "🚀 Starting services..."
-$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml up -d
+$DOCKER_COMPOSE up -d
 
 # Check if services started successfully
 echo "🔍 Checking service status..."
-$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
+$DOCKER_COMPOSE ps
 
 # If UI failed, try to start it separately
-if ! $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps | grep -q "deploy_ui_1.*Up"; then
+if ! $DOCKER_COMPOSE ps | grep -q "shajare-back-ui.*Up"; then
     echo "⚠️ UI service failed to start, checking logs..."
-    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml logs ui
+    $DOCKER_COMPOSE logs ui
     echo "🔄 Trying to restart UI service..."
-    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml restart ui
+    $DOCKER_COMPOSE restart ui
     sleep 10
-    $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
+    $DOCKER_COMPOSE ps
 fi
 
 # Wait for services to be ready
@@ -126,16 +126,16 @@ for i in {1..5}; do
     if [ "$i" -eq 5 ]; then
         echo "❌ Health checks failed after 5 attempts"
         echo "📋 Container status:"
-        $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
+        $DOCKER_COMPOSE ps
         echo "📋 Container logs:"
-        $DOCKER_COMPOSE -f deploy/docker-compose.prod.yml logs --tail=20
+        $DOCKER_COMPOSE logs --tail=20
         exit 1
     fi
 done
 
 # Show running containers
 echo "📊 Running containers:"
-$DOCKER_COMPOSE -f deploy/docker-compose.prod.yml ps
+$DOCKER_COMPOSE ps
 
 echo "🎉 Manual deployment completed successfully!"
 echo "🌐 Application is available at:"
