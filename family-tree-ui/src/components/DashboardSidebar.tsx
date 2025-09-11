@@ -21,6 +21,7 @@ const DashboardSidebar: React.FC = () => {
 
   const items = [
     { label: 'داشبورد', href: '/dashboard', icon: '🏠' },
+    { label: 'تکمیل حساب کاربری', href: '/dashboard/profile', icon: '👤' },
   ];
 
   const isActive = (href: string) => {
