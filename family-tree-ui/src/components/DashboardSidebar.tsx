@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { getDashboardNavItems } from '@/routes/dashboard';
 
 const DashboardSidebar: React.FC = () => {
   const router = useRouter();
@@ -19,10 +20,7 @@ const DashboardSidebar: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const items = [
-    { label: 'داشبورد', href: '/dashboard', icon: '🏠' },
-    { label: 'تکمیل حساب کاربری', href: '/dashboard/profile', icon: '👤' },
-  ];
+  const items = getDashboardNavItems();
 
   const isActive = (href: string) => {
     if (typeof window === 'undefined') {

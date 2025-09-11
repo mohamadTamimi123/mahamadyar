@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Vazirmatn } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import RouteDebugger from "@/components/RouteDebugger";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <Navigation />
         <Providers>{children}</Providers>
+        <RouteDebugger />
       </body>
     </html>
   );

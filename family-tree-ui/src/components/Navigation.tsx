@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { getNavigationItems } from '@/routes';
 import {
   Navbar,
   NavbarBrand,
@@ -36,17 +37,7 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  const items = [
-    { label: 'صفحه اصلی', href: '/index' },
-    { label: 'داشبورد', href: '/dashboard' },
-    { label: 'درخواست کد دعوت', href: '/request-invite' },
-    { label: 'ثبت‌نام', href: '/register' },
-  ];
-
-  // Add admin panel only for admins
-  if (isAdmin) {
-    items.push({ label: 'داشبورد ادمین', href: '/admin' });
-  }
+  const items = getNavigationItems(isLoggedIn, isAdmin);
 
   const isActive = (href: string) => (href === '/index' && pathname === '/') || pathname === href;
 

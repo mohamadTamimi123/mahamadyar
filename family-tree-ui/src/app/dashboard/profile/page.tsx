@@ -39,7 +39,7 @@ const ProfilePage: React.FC = () => {
   const fetchUserData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://127.0.0.1:5002/users/me', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/me`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const ProfilePage: React.FC = () => {
       setUserData(data);
     } catch (error) {
       console.error('Error fetching user data:', error);
-      router.push('/login');
+      // router.push('/login');
     } finally {
       setLoading(false);
     }
