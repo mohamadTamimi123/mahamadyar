@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import CompleteProfile from '@/components/CompleteProfile';
 import AccountSettings from '@/components/AccountSettings';
 import FamilyMembersTable from '@/components/FamilyMembersTable';
+import TokenTester from '@/components/TokenTester';
 
 interface UserData {
   id: number;
@@ -39,7 +40,8 @@ const ProfilePage: React.FC = () => {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log('API Base URL:', process.env.NEXT_PUBLIC_API_BASE_URL);
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:5002';
+      console.log('API Base URL:', apiBaseUrl);
       console.log('Token from localStorage:', token ? token.substring(0, 20) + '...' : 'No token found');
       
       if (!token) {
@@ -47,15 +49,36 @@ const ProfilePage: React.FC = () => {
       }
 
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`, {
+      
+      // Test token first with debug endpoint
+      console.log('Testing token with debug endpoint...');
+      const debugResponse = await fetch(`${apiBaseUrl}/auth/debug-token`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (debugResponse.ok) {
+        const debugData = await debugResponse.json();
+        console.log('Debug token response:', debugData);
+      } else {
+        console.error('Debug token failed:', debugResponse.status, debugResponse.statusText);
+      }
+      
+      const response = await fetch(`${apiBaseUrl}/auth/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
 
+      console.log('Auth/me response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('خطا در دریافت اطلاعات کاربر');
+        const errorText = await response.text();
+        console.error('Auth/me error response:', errorText);
+        throw new Error(`خطا در دریافت اطلاعات کاربر: ${response.status}`);
       }
 
       const data = await response.json();
@@ -171,6 +194,11 @@ const ProfilePage: React.FC = () => {
               </div>
             </div>
           )}
+        </div>
+
+        {/* Token Tester for Debug */}
+        <div className="mt-8">
+          <TokenTester />
         </div>
 
         {/* Quick Info */}
