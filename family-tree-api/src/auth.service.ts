@@ -53,8 +53,7 @@ export class AuthService {
       email,
       password: hashedPassword,
       is_verified: false,
-      member_id: familyMember.id,
-      phone: phone || null,
+      member: familyMember,
     });
 
     const savedUser = await this.userRepository.save(user);
@@ -68,10 +67,14 @@ export class AuthService {
 
     // Generate OTP for email verification
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    await this.userRepository.update(savedUser.id, { otp });
+    await this.userRepository.update(savedUser.id, { otp_code: otp });
 
     // Send verification email
-    await this.emailService.sendVerificationEmail(email, otp);
+    await this.emailService.sendOtpEmail({ 
+      to: email, 
+      name: familyMember.name, 
+      otp: otp 
+    });
 
     return {
       success: true,
@@ -110,7 +113,30 @@ export class AuthService {
     message?: string; 
   }) {
     // Send email to admin about the request
-    await this.emailService.sendInviteRequestEmail(requestData);
+    const emailContent = `
+درخواست کد دعوت جدید دریافت شد:
+
+اطلاعات درخواست‌کننده:
+- نام: ${requestData.name}
+- نام پدر: ${requestData.fatherName}
+- ایمیل: ${requestData.email}
+- شماره تماس: ${requestData.phone || 'ارسال نشده'}
+- پیام اضافی: ${requestData.message || 'ندارد'}
+
+تاریخ درخواست: ${new Date().toLocaleString('fa-IR')}
+
+لطفاً این درخواست را بررسی کرده و در صورت تأیید، کد دعوت را برای ${requestData.email} ارسال کنید.
+
+---
+سیستم مدیریت اعضای خانواده
+    `;
+
+    await this.emailService.sendMail({
+      to: 'admin@example.com', // Replace with actual admin email
+      subject: 'درخواست کد دعوت جدید',
+      text: emailContent,
+      html: emailContent.replace(/\n/g, '<br>')
+    });
     
     return {
       success: true,
@@ -163,7 +189,7 @@ export class AuthService {
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user.id, email: user.email, memberId: user.member_id },
+      { userId: user.id, email: user.email, memberId: user.member?.id },
       process.env.JWT_SECRET || 'default-secret',
       { expiresIn: '7d' }
     );
@@ -232,7 +258,7 @@ export class AuthService {
       throw new BadRequestException('کاربر یافت نشد');
     }
 
-    await this.userRepository.update(id, { is_verified: true, otp: null });
+    await this.userRepository.update(id, { is_verified: true, otp_code: null });
 
     return {
       success: true,
@@ -249,11 +275,11 @@ export class AuthService {
       throw new BadRequestException('کاربر یافت نشد');
     }
 
-    if (user.otp !== otp) {
+    if (user.otp_code !== otp) {
       throw new BadRequestException('کد تأیید اشتباه است');
     }
 
-    await this.userRepository.update(user.id, { is_verified: true, otp: null });
+    await this.userRepository.update(user.id, { is_verified: true, otp_code: null });
 
     return {
       success: true,
@@ -272,10 +298,14 @@ export class AuthService {
 
     // Generate new OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    await this.userRepository.update(user.id, { otp });
+    await this.userRepository.update(user.id, { otp_code: otp });
 
     // Send verification email
-    await this.emailService.sendVerificationEmail(email, otp);
+    await this.emailService.sendOtpEmail({ 
+      to: email, 
+      name: user.member?.name || 'کاربر', 
+      otp: otp 
+    });
 
     return {
       success: true,
@@ -382,7 +412,29 @@ export class AuthService {
     );
 
     // Send reset email
-    await this.emailService.sendPasswordResetEmail(email, resetToken);
+    const resetLink = `http://localhost:3002/reset-password?token=${resetToken}`;
+    const emailContent = `
+سلام،
+
+درخواست بازنشانی رمز عبور برای حساب شما دریافت شده است.
+
+برای بازنشانی رمز عبور، روی لینک زیر کلیک کنید:
+${resetLink}
+
+این لینک تا 1 ساعت اعتبار دارد.
+
+اگر شما درخواست نداده‌اید این پیام را نادیده بگیرید.
+
+---
+سیستم مدیریت اعضای خانواده
+    `;
+
+    await this.emailService.sendMail({
+      to: email,
+      subject: 'بازنشانی رمز عبور',
+      text: emailContent,
+      html: emailContent.replace(/\n/g, '<br>')
+    });
 
     return {
       success: true,
@@ -450,7 +502,7 @@ export class AuthService {
 
       // Generate new token
       const newToken = jwt.sign(
-        { userId: user.id, email: user.email, memberId: user.member_id },
+        { userId: user.id, email: user.email, memberId: user.member?.id },
         process.env.JWT_SECRET || 'default-secret',
         { expiresIn: '7d' }
       );
