@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import CompleteProfile from '@/components/CompleteProfile';
 import FamilyTreeDiagram from '@/components/FamilyTreeDiagram';
-import FamilyMembersTable from '@/components/FamilyMembersTable';
-import AccountSettings from '@/components/AccountSettings';
 // import axios from 'axios';
 
 interface UserData {
@@ -83,54 +80,12 @@ const DashboardPage: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             سلام {userData?.member?.name}!
           </h1>
-          <p className="text-gray-600">به داشبورد شجره‌نامه خانوادگی خوش آمدید</p>
+          <p className="text-gray-600">نمودار درختی شخصی شما</p>
         </div>
 
-        {/* Family Tree Section */}
+        {/* Personal Family Tree */}
         <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">نمودار درختی خانواده</h3>
           <FamilyTreeDiagram />
-        </div>
-
-        {/* Family Members Table */}
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">جدول اعضای خانواده</h3>
-          <FamilyMembersTable />
-        </div>
-
-        {/* Account Settings */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Profile Completion */}
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">تکمیل پروفایل</h3>
-            <CompleteProfile />
-          </div>
-
-          {/* Account Settings */}
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">تنظیمات حساب</h3>
-            <AccountSettings userData={userData} />
-          </div>
-        </div>
-
-        {/* Quick Info */}
-        <div className="bg-gray-50 rounded-xl p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">کد دعوت شما:</p>
-              <p className="text-xl font-bold text-gray-900 font-mono">
-                {userData?.member?.invite_code || 'ندارد'}
-              </p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-600">وضعیت:</p>
-              <p className={`text-lg font-semibold ${
-                userData?.is_verified ? 'text-green-600' : 'text-yellow-600'
-              }`}>
-                {userData?.is_verified ? 'تأیید شده' : 'در انتظار تأیید'}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </>
