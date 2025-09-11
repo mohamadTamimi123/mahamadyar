@@ -64,7 +64,7 @@ echo "🔍 Checking service status..."
 docker-compose -f "$COMPOSE_FILE" ps
 
 # If UI failed, try to start it separately
-if ! docker-compose -f "$COMPOSE_FILE" ps | grep -q "deploy_ui_1.*Up"; then
+if ! docker-compose -f "$COMPOSE_FILE" ps | grep -q "ui.*Up"; then
     echo "⚠️ UI service failed to start, checking logs..."
     docker-compose -f "$COMPOSE_FILE" logs ui
     echo "🔄 Trying to restart UI service..."
