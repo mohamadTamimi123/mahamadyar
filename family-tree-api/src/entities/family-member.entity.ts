@@ -29,6 +29,13 @@ export class FamilyMember {
   @Column({ nullable: true, type: 'varchar' })
   phone: string | null;
 
+  // Profile fields
+  @Column({ nullable: true, type: 'varchar' })
+  profile_image: string | null;
+
+  @Column({ nullable: true, type: 'varchar' })
+  national_id: string | null;
+
   @Column({ type: 'boolean', default: false })
   is_verified: boolean;
 

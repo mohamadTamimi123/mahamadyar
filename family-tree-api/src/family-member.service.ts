@@ -558,4 +558,109 @@ ${verificationLink}
       return [];
     }
   }
+
+  // Profile management methods
+  async updateProfileImage(id: number, profileImage: string): Promise<{ success: boolean; message: string }> {
+    try {
+      const member = await this.familyMemberRepository.findOne({ where: { id } });
+      if (!member) {
+        return { success: false, message: 'عضو خانواده یافت نشد' };
+      }
+
+      member.profile_image = profileImage;
+      await this.familyMemberRepository.save(member);
+
+      // Also update user profile if exists
+      const user = await this.userRepository.findOne({ where: { member: { id } } });
+      if (user) {
+        user.profile_image = profileImage;
+        await this.userRepository.save(user);
+      }
+
+      return { success: true, message: 'عکس پروفایل با موفقیت به‌روزرسانی شد' };
+    } catch (error) {
+      console.error('خطا در به‌روزرسانی عکس پروفایل:', error);
+      return { success: false, message: 'خطا در به‌روزرسانی عکس پروفایل' };
+    }
+  }
+
+  async updateNationalId(id: number, nationalId: string): Promise<{ success: boolean; message: string }> {
+    try {
+      const member = await this.familyMemberRepository.findOne({ where: { id } });
+      if (!member) {
+        return { success: false, message: 'عضو خانواده یافت نشد' };
+      }
+
+      // Check if national ID already exists
+      const existingMember = await this.familyMemberRepository.findOne({ 
+        where: { national_id: nationalId } 
+      });
+      if (existingMember && existingMember.id !== id) {
+        return { success: false, message: 'کد ملی قبلاً استفاده شده است' };
+      }
+
+      member.national_id = nationalId;
+      await this.familyMemberRepository.save(member);
+
+      // Also update user national ID if exists
+      const user = await this.userRepository.findOne({ where: { member: { id } } });
+      if (user) {
+        user.national_id = nationalId;
+        await this.userRepository.save(user);
+      }
+
+      return { success: true, message: 'کد ملی با موفقیت به‌روزرسانی شد' };
+    } catch (error) {
+      console.error('خطا در به‌روزرسانی کد ملی:', error);
+      return { success: false, message: 'خطا در به‌روزرسانی کد ملی' };
+    }
+  }
+
+  async updateProfile(id: number, profileData: { 
+    profile_image?: string; 
+    national_id?: string; 
+  }): Promise<{ success: boolean; message: string }> {
+    try {
+      const member = await this.familyMemberRepository.findOne({ where: { id } });
+      if (!member) {
+        return { success: false, message: 'عضو خانواده یافت نشد' };
+      }
+
+      // Check national ID uniqueness if provided
+      if (profileData.national_id) {
+        const existingMember = await this.familyMemberRepository.findOne({ 
+          where: { national_id: profileData.national_id } 
+        });
+        if (existingMember && existingMember.id !== id) {
+          return { success: false, message: 'کد ملی قبلاً استفاده شده است' };
+        }
+      }
+
+      // Update member profile
+      if (profileData.profile_image !== undefined) {
+        member.profile_image = profileData.profile_image;
+      }
+      if (profileData.national_id !== undefined) {
+        member.national_id = profileData.national_id;
+      }
+      await this.familyMemberRepository.save(member);
+
+      // Also update user profile if exists
+      const user = await this.userRepository.findOne({ where: { member: { id } } });
+      if (user) {
+        if (profileData.profile_image !== undefined) {
+          user.profile_image = profileData.profile_image;
+        }
+        if (profileData.national_id !== undefined) {
+          user.national_id = profileData.national_id;
+        }
+        await this.userRepository.save(user);
+      }
+
+      return { success: true, message: 'پروفایل با موفقیت به‌روزرسانی شد' };
+    } catch (error) {
+      console.error('خطا در به‌روزرسانی پروفایل:', error);
+      return { success: false, message: 'خطا در به‌روزرسانی پروفایل' };
+    }
+  }
 }

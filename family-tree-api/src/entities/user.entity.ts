@@ -31,6 +31,13 @@ export class User {
   @Column({ nullable: true, type: 'timestamp' })
   otp_last_sent_at: Date | null;
 
+  // Profile fields
+  @Column({ nullable: true, type: 'varchar' })
+  profile_image: string | null;
+
+  @Column({ nullable: true, type: 'varchar' })
+  national_id: string | null;
+
   // Each user corresponds to exactly one family member
   @OneToOne(() => FamilyMember)
   @JoinColumn({ name: 'member_id' })

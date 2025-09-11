@@ -170,4 +170,23 @@ export class FamilyMemberController {
   searchMembers(@Query('q') query: string) {
     return this.familyMemberService.searchMembers(query);
   }
+
+  // Profile management endpoints
+  @Patch(':id/profile-image')
+  updateProfileImage(@Param('id') id: string, @Body() body: { profile_image: string }) {
+    return this.familyMemberService.updateProfileImage(+id, body.profile_image);
+  }
+
+  @Patch(':id/national-id')
+  updateNationalId(@Param('id') id: string, @Body() body: { national_id: string }) {
+    return this.familyMemberService.updateNationalId(+id, body.national_id);
+  }
+
+  @Patch(':id/profile')
+  updateProfile(@Param('id') id: string, @Body() body: { 
+    profile_image?: string; 
+    national_id?: string; 
+  }) {
+    return this.familyMemberService.updateProfile(+id, body);
+  }
 }

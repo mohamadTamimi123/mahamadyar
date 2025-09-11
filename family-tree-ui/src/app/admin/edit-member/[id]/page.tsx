@@ -56,7 +56,7 @@ const EditMemberPage: React.FC = () => {
   const loadMember = useCallback(async () => {
     try {
       setLoadingMember(true);
-      const response = await axios.get(`http://localhost:5000/family-members/${memberId}`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/family-members/${memberId}`);
       const member = response.data;
       setCurrentMember(member);
       
@@ -68,7 +68,7 @@ const EditMemberPage: React.FC = () => {
 
       // اگر عضو پدر دارد، آن را در selectedFather قرار بده
       if (member.father_id) {
-        const fatherResponse = await axios.get(`http://localhost:5000/family-members/${member.father_id}`);
+        const fatherResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/family-members/${member.father_id}`);
         setSelectedFather(fatherResponse.data);
       }
     } catch (err: unknown) {
