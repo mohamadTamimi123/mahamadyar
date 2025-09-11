@@ -127,7 +127,7 @@ const AdminDashboard: React.FC = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/family-members/${member.id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/family-members/${member.id}`);
       setFamilyData(prevData => prevData.filter(m => m.id !== member.id));
       calculateStats(familyData.filter(m => m.id !== member.id));
       

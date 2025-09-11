@@ -16,7 +16,15 @@ async function bootstrap() {
       .filter(Boolean)
       .concat((!value || value.trim() === '') ? fallback : []);
 
-  const corsOrigins = envList(process.env.CORS_ORIGINS);
+  const corsOrigins = envList(process.env.CORS_ORIGINS, [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3001',
+    'http://localhost:3002',
+    'http://127.0.0.1:3002',
+    'http://72.60.81.203:3002'
+  ]);
   const corsMethods = envList(process.env.CORS_METHODS, ['GET','POST','PUT','DELETE','PATCH','OPTIONS']);
   const corsHeaders = envList(process.env.CORS_HEADERS, ['Content-Type','Authorization']);
   const corsCredentials = (process.env.CORS_CREDENTIALS ?? 'true').toLowerCase() === 'true';
