@@ -21,8 +21,6 @@ const DashboardSidebar: React.FC = () => {
 
   const items = [
     { label: 'داشبورد', href: '/dashboard', icon: '🏠' },
-    { label: 'پروفایل', href: '/dashboard#profile', icon: '👤' },
-    { label: 'شجره‌نامه', href: '/dashboard#family', icon: '🌳' },
   ];
 
   const isActive = (href: string) => {
