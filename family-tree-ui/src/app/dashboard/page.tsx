@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CompleteProfile from '@/components/CompleteProfile';
+import FamilyTreeDiagram from '@/components/FamilyTreeDiagram';
+import FamilyMembersTable from '@/components/FamilyMembersTable';
+import AccountSettings from '@/components/AccountSettings';
 // import axios from 'axios';
 
 interface UserData {
@@ -74,7 +77,7 @@ const DashboardPage: React.FC = () => {
   return (
     <>
       {/* Content inside dashboard layout */}
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8">
         {/* Welcome Section */}
         <div className="text-center py-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -83,7 +86,19 @@ const DashboardPage: React.FC = () => {
           <p className="text-gray-600">به داشبورد شجره‌نامه خانوادگی خوش آمدید</p>
         </div>
 
-        {/* Simple Actions */}
+        {/* Family Tree Section */}
+        <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 className="text-xl font-semibold text-gray-900 mb-6">نمودار درختی خانواده</h3>
+          <FamilyTreeDiagram />
+        </div>
+
+        {/* Family Members Table */}
+        <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 className="text-xl font-semibold text-gray-900 mb-6">جدول اعضای خانواده</h3>
+          <FamilyMembersTable />
+        </div>
+
+        {/* Account Settings */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Profile Completion */}
           <div className="bg-white rounded-xl p-6 border border-gray-200">
@@ -91,16 +106,10 @@ const DashboardPage: React.FC = () => {
             <CompleteProfile />
           </div>
 
-          {/* Family Tree */}
+          {/* Account Settings */}
           <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">شجره‌نامه خانوادگی</h3>
-            <div className="text-center py-8">
-              <div className="text-6xl mb-4">🌳</div>
-              <p className="text-gray-600 mb-4">نمودار درختی خانواده شما</p>
-              <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                مشاهده شجره‌نامه
-              </button>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">تنظیمات حساب</h3>
+            <AccountSettings userData={userData} />
           </div>
         </div>
 
