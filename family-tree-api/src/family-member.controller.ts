@@ -20,10 +20,6 @@ export class FamilyMemberController {
     return this.familyMemberService.getTotalCount();
   }
 
-  // NOTE: search endpoint defined below (unified)
-
-  // moved id-param routes below the users routes to avoid conflicts
-
   @Post('import')
   importData(@Body() jsonData: any[]) {
     return this.familyMemberService.importNamesFromJson(jsonData);
@@ -37,6 +33,11 @@ export class FamilyMemberController {
   @Get('tree/roots')
   getRootMembers() {
     return this.familyMemberService.getRootMembers();
+  }
+
+  @Get('search')
+  searchMembers(@Query('q') query: string) {
+    return this.familyMemberService.searchMembers(query);
   }
 
   @Get(':id/children')
@@ -59,57 +60,9 @@ export class FamilyMemberController {
     return this.familyMemberService.removeParent(+id);
   }
 
-  // کد دعوت endpoints
   @Post(':id/generate-invite-code')
   generateNewInviteCode(@Param('id') id: string) {
     return this.familyMemberService.generateNewInviteCode(+id);
-  }
-
-  @Get('invite/:inviteCode')
-  findByInviteCode(@Param('inviteCode') inviteCode: string) {
-    return this.familyMemberService.findByInviteCode(inviteCode);
-  }
-
-  @Post('register/:inviteCode')
-  registerWithInviteCode(
-    @Param('inviteCode') inviteCode: string,
-    @Body() newMemberData: { name: string; family_name: string }
-  ) {
-    return this.familyMemberService.registerWithInviteCode(inviteCode, newMemberData);
-  }
-
-  @Post('request-invite')
-  requestInviteCode(@Body() requestData: { 
-    name: string; 
-    fatherName: string; 
-    email: string; 
-    phone?: string; 
-    message?: string; 
-  }) {
-    return this.familyMemberService.requestInviteCode(requestData);
-  }
-
-  @Post('register-with-credentials') // New endpoint for registration with email and password
-  registerWithCredentials(@Body() registrationData: {
-    inviteCode: string;
-    name: string;
-    family_name: string;
-    fatherName: string;
-    email: string;
-    password: string;
-    phone?: string;
-  }) {
-    return this.familyMemberService.registerWithInviteCodeAndCredentials(registrationData);
-  }
-
-  @Post('verify-otp')
-  verifyOtp(@Body() body: { email: string; otp: string }) {
-    return this.familyMemberService.verifyOtp(body);
-  }
-
-  @Post('resend-otp')
-  resendOtp(@Body() body: { email: string }) {
-    return this.familyMemberService.resendOtp(body);
   }
 
   // ============= Users management (Admin) =============
@@ -151,24 +104,6 @@ export class FamilyMemberController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.familyMemberService.remove(Number(id));
-  }
-
-  @Post('login') // New endpoint for login with email and password
-  login(@Body() loginData: {
-    email: string;
-    password: string;
-  }) {
-    return this.familyMemberService.loginWithCredentials(loginData);
-  }
-
-  @Post('verify-email/:id') // New endpoint for email verification
-  verifyEmail(@Param('id') id: string) {
-    return this.familyMemberService.verifyEmail(+id);
-  }
-
-  @Get('search') // New endpoint for searching members
-  searchMembers(@Query('q') query: string) {
-    return this.familyMemberService.searchMembers(query);
   }
 
   // Profile management endpoints

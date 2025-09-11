@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FamilyMemberModule } from './family-member.module';
+import { AuthModule } from './auth.module';
 import configuration from './config/configuration';
 import { EmailService } from './services/email.service';
 
@@ -25,7 +26,8 @@ import { EmailService } from './services/email.service';
       }),
       inject: [ConfigService],
     }),
-    FamilyMemberModule
+    FamilyMemberModule,
+    AuthModule
   ],
   providers: [EmailService]
 })
