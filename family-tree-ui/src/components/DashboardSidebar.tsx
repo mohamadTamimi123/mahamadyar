@@ -20,13 +20,9 @@ const DashboardSidebar: React.FC = () => {
   }, []);
 
   const items = [
-    { label: 'مرور کلی', href: '/dashboard', icon: '🏠' },
-    { label: 'تکمیل پروفایل', href: '/dashboard#profile', icon: '📝' },
+    { label: 'داشبورد', href: '/dashboard', icon: '🏠' },
+    { label: 'پروفایل', href: '/dashboard#profile', icon: '👤' },
     { label: 'شجره‌نامه', href: '/dashboard#family', icon: '🌳' },
-    { label: 'نمودار درختی', href: '/dashboard/tree', icon: '🧬' },
-    { label: 'جدول روابط', href: '/dashboard#table', icon: '📊' },
-    { label: 'کد دعوت من', href: '/dashboard#invite', icon: '🎫' },
-    { label: 'تنظیمات', href: '/dashboard#settings', icon: '⚙️' },
   ];
 
   const isActive = (href: string) => {

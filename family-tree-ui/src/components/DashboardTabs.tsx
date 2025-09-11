@@ -16,14 +16,14 @@ const Tab: React.FC<TabProps> = ({ children, isActive, onClick, icon, label }) =
   return (
     <button
       onClick={onClick}
-      className={`flex items-center px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
+      className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
         isActive
-          ? 'bg-blue-500 text-white shadow-md'
-          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          ? 'bg-white text-gray-900 shadow-lg shadow-gray-200/50'
+          : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
       }`}
     >
-      <span className="text-lg mr-2">{icon}</span>
-      {label}
+      <span className="text-xl mr-3">{icon}</span>
+      <span className="text-sm font-semibold">{label}</span>
     </button>
   );
 };
@@ -57,25 +57,27 @@ const DashboardTabs: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Tab Navigation */}
-      <div className="flex space-x-3">
-        <Tab
-          isActive={activeTab === 'profile'}
-          onClick={() => handleTabChange('profile')}
-          icon="📝"
-          label="تکمیل حساب کاربری"
-        />
-        <Tab
-          isActive={activeTab === 'family'}
-          onClick={() => handleTabChange('family')}
-          icon="🌳"
-          label="شجره‌نامه خانوادگی"
-        />
+      <div className="flex justify-center">
+        <div className="bg-gray-100 rounded-2xl p-2 inline-flex">
+          <Tab
+            isActive={activeTab === 'profile'}
+            onClick={() => handleTabChange('profile')}
+            icon="👤"
+            label="پروفایل"
+          />
+          <Tab
+            isActive={activeTab === 'family'}
+            onClick={() => handleTabChange('family')}
+            icon="🌳"
+            label="شجره‌نامه"
+          />
+        </div>
       </div>
 
       {/* Tab Content */}
-      <div className="min-h-[400px]">
+      <div className="min-h-[500px]">
         {activeTab === 'profile' && (
           <div className="animate-fadeIn">
             <CompleteProfile />
@@ -126,29 +128,31 @@ const FamilyTreeView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* View Mode Toggle */}
       <div className="flex justify-center">
-        <div className="bg-gray-100 rounded-lg p-1">
+        <div className="bg-gray-100 rounded-2xl p-2 inline-flex">
           <button
             onClick={() => handleViewModeChange('tree')}
-            className={`px-4 py-2 rounded-md font-medium transition-all ${
+            className={`px-6 py-3 rounded-xl font-medium transition-all ${
               viewMode === 'tree'
-                ? 'bg-white text-blue-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-800'
+                ? 'bg-white text-gray-900 shadow-lg shadow-gray-200/50'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
             }`}
           >
-            🌳 نمودار درختی
+            <span className="text-xl mr-3">🌳</span>
+            <span className="text-sm font-semibold">نمودار درختی</span>
           </button>
           <button
             onClick={() => handleViewModeChange('table')}
-            className={`px-4 py-2 rounded-md font-medium transition-all ${
+            className={`px-6 py-3 rounded-xl font-medium transition-all ${
               viewMode === 'table'
-                ? 'bg-white text-blue-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-800'
+                ? 'bg-white text-gray-900 shadow-lg shadow-gray-200/50'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
             }`}
           >
-            📊 جدول روابط
+            <span className="text-xl mr-3">📊</span>
+            <span className="text-sm font-semibold">جدول روابط</span>
           </button>
         </div>
       </div>
@@ -162,20 +166,20 @@ const FamilyTreeView: React.FC = () => {
 // Tree Diagram Component
 const TreeDiagram: React.FC = () => {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6">
+    <div className="bg-white rounded-3xl border border-gray-200/50 p-8 shadow-sm">
       <div className="text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <span className="text-green-600 text-2xl">🌳</span>
+        <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-200 rounded-3xl flex items-center justify-center mx-auto mb-6">
+          <span className="text-green-600 text-4xl">🌳</span>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">نمودار درختی شجره‌نامه</h3>
-        <p className="text-gray-600 mb-6">در اینجا نمودار درختی خانواده شما نمایش داده می‌شود</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-3">نمودار درختی شجره‌نامه</h3>
+        <p className="text-gray-600 mb-8 max-w-md mx-auto">در اینجا نمودار درختی خانواده شما نمایش داده می‌شود</p>
         
         {/* Placeholder for actual tree diagram */}
-        <div className="bg-gray-50 rounded-xl p-8 min-h-[300px] flex items-center justify-center">
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-12 min-h-[300px] flex items-center justify-center">
           <div className="text-center">
-            <div className="text-6xl mb-4">🌲</div>
-            <p className="text-gray-500">نمودار درختی در حال توسعه...</p>
-            <p className="text-sm text-gray-400 mt-2">به زودی نمودار تعاملی خانواده شما اینجا نمایش داده خواهد شد</p>
+            <div className="text-8xl mb-6">🌲</div>
+            <p className="text-gray-500 text-lg font-medium">نمودار درختی در حال توسعه...</p>
+            <p className="text-sm text-gray-400 mt-3">به زودی نمودار تعاملی خانواده شما اینجا نمایش داده خواهد شد</p>
           </div>
         </div>
       </div>
@@ -194,42 +198,41 @@ const FamilyTable: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white rounded-3xl border border-gray-200/50 p-8 shadow-sm">
+      <div className="flex items-center justify-between mb-8">
         <div className="flex items-center">
-          <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mr-3">
-            <span className="text-blue-600 text-xl">📊</span>
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-2xl flex items-center justify-center mr-4">
+            <span className="text-blue-600 text-2xl">📊</span>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">جدول روابط خانوادگی</h3>
-            <p className="text-sm text-gray-500">لیست کامل اعضای خانواده</p>
+            <h3 className="text-2xl font-bold text-gray-900">جدول روابط خانوادگی</h3>
+            <p className="text-gray-600">لیست کامل اعضای خانواده</p>
           </div>
         </div>
-        <div className="text-sm text-gray-600">
-          مجموع: {familyMembers.length} نفر
+        <div className="bg-gray-100 rounded-xl px-4 py-2">
+          <span className="text-sm font-semibold text-gray-700">مجموع: {familyMembers.length} نفر</span>
         </div>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-right py-3 px-4 font-medium text-gray-700">نام</th>
-              <th className="text-right py-3 px-4 font-medium text-gray-700">نام خانوادگی</th>
-              <th className="text-right py-3 px-4 font-medium text-gray-700">نام پدر</th>
-              <th className="text-right py-3 px-4 font-medium text-gray-700">نسل</th>
-              <th className="text-right py-3 px-4 font-medium text-gray-700">تعداد فرزندان</th>
-              <th className="text-right py-3 px-4 font-medium text-gray-700">عملیات</th>
+            <tr className="border-b-2 border-gray-100">
+              <th className="text-right py-4 px-6 font-semibold text-gray-700">نام</th>
+              <th className="text-right py-4 px-6 font-semibold text-gray-700">نام خانوادگی</th>
+              <th className="text-right py-4 px-6 font-semibold text-gray-700">نام پدر</th>
+              <th className="text-right py-4 px-6 font-semibold text-gray-700">نسل</th>
+              <th className="text-right py-4 px-6 font-semibold text-gray-700">فرزندان</th>
             </tr>
           </thead>
           <tbody>
             {familyMembers.map((member) => (
-              <tr key={member.id} className="border-b border-gray-100 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium text-gray-900">{member.name}</td>
-                <td className="py-3 px-4 text-gray-700">{member.family_name}</td>
-                <td className="py-3 px-4 text-gray-700">{member.father_name || 'ندارد'}</td>
-                <td className="py-3 px-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+              <tr key={member.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
+                <td className="py-4 px-6 font-semibold text-gray-900">{member.name}</td>
+                <td className="py-4 px-6 text-gray-700">{member.family_name}</td>
+                <td className="py-4 px-6 text-gray-700">{member.father_name || 'ندارد'}</td>
+                <td className="py-4 px-6">
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     member.generation === 1 ? 'bg-purple-100 text-purple-700' :
                     member.generation === 2 ? 'bg-blue-100 text-blue-700' :
                     'bg-green-100 text-green-700'
@@ -237,12 +240,7 @@ const FamilyTable: React.FC = () => {
                     نسل {member.generation}
                   </span>
                 </td>
-                <td className="py-3 px-4 text-gray-700">{member.children_count}</td>
-                <td className="py-3 px-4">
-                  <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                    مشاهده جزئیات
-                  </button>
-                </td>
+                <td className="py-4 px-6 text-gray-700">{member.children_count}</td>
               </tr>
             ))}
           </tbody>
@@ -250,24 +248,24 @@ const FamilyTable: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-200">
-        <div className="bg-purple-50 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-purple-600">
+      <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-100">
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 text-center">
+          <div className="text-3xl font-bold text-purple-600 mb-2">
             {familyMembers.filter(m => m.generation === 1).length}
           </div>
-          <div className="text-sm text-purple-700">نسل اول</div>
+          <div className="text-sm font-semibold text-purple-700">نسل اول</div>
         </div>
-        <div className="bg-blue-50 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-blue-600">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center">
+          <div className="text-3xl font-bold text-blue-600 mb-2">
             {familyMembers.filter(m => m.generation === 2).length}
           </div>
-          <div className="text-sm text-blue-700">نسل دوم</div>
+          <div className="text-sm font-semibold text-blue-700">نسل دوم</div>
         </div>
-        <div className="bg-green-50 rounded-xl p-4 text-center">
-          <div className="text-2xl font-bold text-green-600">
+        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center">
+          <div className="text-3xl font-bold text-green-600 mb-2">
             {familyMembers.filter(m => m.generation === 3).length}
           </div>
-          <div className="text-sm text-green-700">نسل سوم</div>
+          <div className="text-sm font-semibold text-green-700">نسل سوم</div>
         </div>
       </div>
     </div>
