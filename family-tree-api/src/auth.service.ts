@@ -317,7 +317,10 @@ export class AuthService {
 
   async getCurrentUser(token: string) {
     try {
+      console.log('Verifying token with secret:', process.env.JWT_SECRET ? 'Set' : 'Not set');
+      
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'default-secret') as any;
+      console.log('Decoded token:', decoded);
       
       const user = await this.userRepository.findOne({
         where: { id: decoded.userId },
@@ -325,8 +328,11 @@ export class AuthService {
       });
 
       if (!user) {
+        console.log('User not found with ID:', decoded.userId);
         throw new UnauthorizedException('کاربر یافت نشد');
       }
+
+      console.log('User found:', user.email);
 
       return {
         success: true,
@@ -338,6 +344,7 @@ export class AuthService {
         },
       };
     } catch (error) {
+      console.error('Token verification error:', error.message);
       throw new UnauthorizedException('توکن نامعتبر است');
     }
   }

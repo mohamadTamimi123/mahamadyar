@@ -1,5 +1,6 @@
 import { Controller, Post, Body, Param, Get, Patch, Headers, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import * as jwt from 'jsonwebtoken';
 
 @Controller('auth')
 export class AuthController {
@@ -83,7 +84,18 @@ export class AuthController {
   
   @Get('me')
   getCurrentUser(@Headers('authorization') authorization: string) {
-    const token = authorization?.replace('Bearer ', '');
+    if (!authorization) {
+      throw new Error('Authorization header is missing');
+    }
+    
+    const token = authorization.replace('Bearer ', '');
+    if (!token) {
+      throw new Error('Token is missing');
+    }
+    
+    console.log('Token received:', token.substring(0, 20) + '...');
+    console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not set');
+    
     return this.authService.getCurrentUser(token);
   }
 
@@ -135,5 +147,29 @@ export class AuthController {
   @Post('validate-token')
   validateToken(@Body() body: { token: string }) {
     return this.authService.validateToken(body.token);
+  }
+
+  @Get('debug-token')
+  debugToken(@Headers('authorization') authorization: string) {
+    if (!authorization) {
+      return { error: 'No authorization header' };
+    }
+    
+    const token = authorization.replace('Bearer ', '');
+    if (!token) {
+      return { error: 'No token found' };
+    }
+    
+    try {
+      const decoded = jwt.decode(token) as any;
+      return {
+        token: token.substring(0, 20) + '...',
+        decoded,
+        jwtSecret: process.env.JWT_SECRET ? 'Set' : 'Not set',
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      return { error: error.message };
+    }
   }
 }
