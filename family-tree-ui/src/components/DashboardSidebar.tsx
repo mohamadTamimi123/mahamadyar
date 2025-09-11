@@ -1,22 +1,43 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 const DashboardSidebar: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  // Listen for hash changes to update active state
+  useEffect(() => {
+    const handleHashChange = () => {
+      setForceUpdate(prev => prev + 1);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const items = [
     { label: 'مرور کلی', href: '/dashboard', icon: '🏠' },
-    { label: 'شجره‌نامه', href: '/family', icon: '🌳' },
+    { label: 'تکمیل پروفایل', href: '/dashboard#profile', icon: '📝' },
+    { label: 'شجره‌نامه', href: '/dashboard#family', icon: '🌳' },
     { label: 'نمودار درختی', href: '/dashboard/tree', icon: '🧬' },
+    { label: 'جدول روابط', href: '/dashboard#table', icon: '📊' },
     { label: 'کد دعوت من', href: '/dashboard#invite', icon: '🎫' },
     { label: 'تنظیمات', href: '/dashboard#settings', icon: '⚙️' },
   ];
 
-  const isActive = (href: string) => pathname === href || (href !== '/dashboard' && pathname.startsWith(href));
+  const isActive = (href: string) => {
+    if (href === '/dashboard') {
+      return pathname === '/dashboard' && !window.location.hash;
+    }
+    if (href.startsWith('/dashboard#')) {
+      return pathname === '/dashboard' && window.location.hash === href.split('#')[1];
+    }
+    return pathname === href || (href !== '/dashboard' && pathname.startsWith(href));
+  };
 
   return (
     <aside
@@ -37,7 +58,13 @@ const DashboardSidebar: React.FC = () => {
         {items.map((it) => (
           <button
             key={it.href}
-            onClick={() => router.push(it.href)}
+            onClick={() => {
+              if (it.href.startsWith('/dashboard#')) {
+                window.location.hash = it.href.split('#')[1];
+              } else {
+                router.push(it.href);
+              }
+            }}
             className={`w-full flex items-center gap-3 p-3 rounded-xl text-sm transition-colors
               ${isActive(it.href) ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
           >

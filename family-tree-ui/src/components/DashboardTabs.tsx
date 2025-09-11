@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import CompleteProfile from '@/components/CompleteProfile';
 
 interface TabProps {
@@ -28,7 +29,32 @@ const Tab: React.FC<TabProps> = ({ children, isActive, onClick, icon, label }) =
 };
 
 const DashboardTabs: React.FC = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'profile' | 'family'>('profile');
+
+  // Listen for hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#profile') {
+        setActiveTab('profile');
+      } else if (hash === '#family') {
+        setActiveTab('family');
+      }
+    };
+
+    // Set initial tab based on hash
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleTabChange = (tab: 'profile' | 'family') => {
+    setActiveTab(tab);
+    router.push(`/dashboard#${tab}`);
+  };
 
   return (
     <div className="space-y-6">
@@ -36,13 +62,13 @@ const DashboardTabs: React.FC = () => {
       <div className="flex space-x-3">
         <Tab
           isActive={activeTab === 'profile'}
-          onClick={() => setActiveTab('profile')}
+          onClick={() => handleTabChange('profile')}
           icon="📝"
           label="تکمیل حساب کاربری"
         />
         <Tab
           isActive={activeTab === 'family'}
-          onClick={() => setActiveTab('family')}
+          onClick={() => handleTabChange('family')}
           icon="🌳"
           label="شجره‌نامه خانوادگی"
         />
@@ -68,7 +94,36 @@ const DashboardTabs: React.FC = () => {
 
 // Family Tree View Component
 const FamilyTreeView: React.FC = () => {
+  const router = useRouter();
   const [viewMode, setViewMode] = useState<'tree' | 'table'>('tree');
+
+  // Listen for hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#table') {
+        setViewMode('table');
+      } else if (hash === '#family' || hash === '#tree') {
+        setViewMode('tree');
+      }
+    };
+
+    // Set initial mode based on hash
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleViewModeChange = (mode: 'tree' | 'table') => {
+    setViewMode(mode);
+    if (mode === 'table') {
+      router.push('/dashboard#table');
+    } else {
+      router.push('/dashboard#family');
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -76,7 +131,7 @@ const FamilyTreeView: React.FC = () => {
       <div className="flex justify-center">
         <div className="bg-gray-100 rounded-lg p-1">
           <button
-            onClick={() => setViewMode('tree')}
+            onClick={() => handleViewModeChange('tree')}
             className={`px-4 py-2 rounded-md font-medium transition-all ${
               viewMode === 'tree'
                 ? 'bg-white text-blue-600 shadow-sm'
@@ -86,7 +141,7 @@ const FamilyTreeView: React.FC = () => {
             🌳 نمودار درختی
           </button>
           <button
-            onClick={() => setViewMode('table')}
+            onClick={() => handleViewModeChange('table')}
             className={`px-4 py-2 rounded-md font-medium transition-all ${
               viewMode === 'table'
                 ? 'bg-white text-blue-600 shadow-sm'
