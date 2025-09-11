@@ -1,16 +1,16 @@
 # ---- Build stage ----
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY family-tree-ui/package*.json ./
+COPY package*.json ./
 RUN npm ci
-COPY family-tree-ui/ .
+COPY . .
 RUN npm run build
 
 # ---- Runtime stage ----
 FROM node:20-alpine
 WORKDIR /app
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_API_BASE_URL=http://localhost:5001
+ENV NEXT_PUBLIC_API_BASE_URL=http://localhost:5002
 COPY --from=builder /app/package*.json ./
 RUN npm ci --omit=dev
 # Install TypeScript for runtime
