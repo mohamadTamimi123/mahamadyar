@@ -29,14 +29,15 @@ const LoginPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await api.post('/family-members/login', {
+      const response = await api.post('/auth/login', {
         email: formData.email,
         password: formData.password,
       });
 
       if (response.data.success) {
-        // ذخیره اطلاعات کاربر در localStorage
-        localStorage.setItem('user', JSON.stringify(response.data.member));
+        // ذخیره token و اطلاعات کاربر در localStorage
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('isLoggedIn', 'true');
         
         // هدایت به داشبورد کاربر

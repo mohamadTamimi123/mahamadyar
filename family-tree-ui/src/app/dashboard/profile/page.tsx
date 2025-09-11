@@ -38,10 +38,18 @@ const ProfilePage: React.FC = () => {
 
   const fetchUserData = async () => {
     try {
+      const token = localStorage.getItem('token');
+      console.log('API Base URL:', process.env.NEXT_PUBLIC_API_BASE_URL);
+      console.log('Token from localStorage:', token ? token.substring(0, 20) + '...' : 'No token found');
+      
+      if (!token) {
+        throw new Error('No token found in localStorage');
+      }
+
       setLoading(true);
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });

@@ -89,7 +89,7 @@ const RegisterPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await api.post('/family-members/register-with-credentials', {
+      const response = await api.post('/auth/register-with-credentials', {
         inviteCode: inviteData.inviteCode,
         name: credentialsData.name,
         family_name: credentialsData.family_name,
@@ -129,7 +129,7 @@ const RegisterPage: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      const resp = await api.post('/family-members/verify-otp', {
+      const resp = await api.post('/auth/verify-otp', {
         email: credentialsData.email,
         otp: otpCode.trim(),
       });
@@ -163,7 +163,7 @@ const RegisterPage: React.FC = () => {
     try {
       setResending(true);
       setError(null);
-      const resp = await api.post('/family-members/resend-otp', {
+      const resp = await api.post('/auth/resend-otp', {
         email: credentialsData.email,
       });
       if (resp.data.success) {
