@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import CompleteProfile from '@/components/CompleteProfile';
 // import axios from 'axios';
 
 interface UserData {
@@ -73,7 +74,11 @@ const DashboardPage: React.FC = () => {
   return (
     <>
       {/* Content inside dashboard layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="space-y-6">
+        {/* Complete Profile Card */}
+        <CompleteProfile />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* User Info Card */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             <div className="flex items-center mb-4">
@@ -193,6 +198,7 @@ const DashboardPage: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
       </div>
     </>
   );
