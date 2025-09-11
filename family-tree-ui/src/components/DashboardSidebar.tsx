@@ -24,6 +24,10 @@ const DashboardSidebar: React.FC = () => {
   ];
 
   const isActive = (href: string) => {
+    if (typeof window === 'undefined') {
+      return pathname === href;
+    }
+    
     if (href === '/dashboard') {
       return pathname === '/dashboard' && !window.location.hash;
     }
@@ -53,7 +57,7 @@ const DashboardSidebar: React.FC = () => {
           <button
             key={it.href}
             onClick={() => {
-              if (it.href.startsWith('/dashboard#')) {
+              if (typeof window !== 'undefined' && it.href.startsWith('/dashboard#')) {
                 window.location.hash = it.href.split('#')[1];
               } else {
                 router.push(it.href);
