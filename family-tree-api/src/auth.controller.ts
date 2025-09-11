@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param, Get, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Param, Get, Patch, Headers, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -82,17 +82,18 @@ export class AuthController {
   // ============= User Profile Management =============
   
   @Get('me')
-  getCurrentUser(@Body() token: { token: string }) {
-    return this.authService.getCurrentUser(token.token);
+  getCurrentUser(@Headers('authorization') authorization: string) {
+    const token = authorization?.replace('Bearer ', '');
+    return this.authService.getCurrentUser(token);
   }
 
   @Patch('profile')
-  updateProfile(@Body() body: { 
-    token: string;
+  updateProfile(@Headers('authorization') authorization: string, @Body() body: { 
     profile_image?: string; 
     national_id?: string; 
   }) {
-    return this.authService.updateUserProfile(body.token, body);
+    const token = authorization?.replace('Bearer ', '');
+    return this.authService.updateUserProfile(token, body);
   }
 
   // ============= Password Management =============
