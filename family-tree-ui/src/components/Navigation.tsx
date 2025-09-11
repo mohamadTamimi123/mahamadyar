@@ -19,12 +19,18 @@ const Navigation: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsLoggedIn(!!localStorage.getItem('token'));
+    const check = () => {
+      const token = localStorage.getItem('token');
+      const adminToken = localStorage.getItem('admin_token');
+      setIsLoggedIn(!!token);
+      setIsAdmin(!!adminToken);
+    };
     check();
     const onStorage = (e: StorageEvent) => {
-      if (e.key === 'token') check();
+      if (e.key === 'token' || e.key === 'admin_token') check();
     };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
@@ -32,12 +38,15 @@ const Navigation: React.FC = () => {
 
   const items = [
     { label: 'صفحه اصلی', href: '/index' },
-    { label: 'مشاهده اعضا', href: '/family' },
     { label: 'داشبورد', href: '/dashboard' },
     { label: 'درخواست کد دعوت', href: '/request-invite' },
     { label: 'ثبت‌نام', href: '/register' },
-    { label: 'داشبورد ادمین', href: '/admin' },
   ];
+
+  // Add admin panel only for admins
+  if (isAdmin) {
+    items.push({ label: 'داشبورد ادمین', href: '/admin' });
+  }
 
   const isActive = (href: string) => (href === '/index' && pathname === '/') || pathname === href;
 
@@ -95,8 +104,10 @@ const Navigation: React.FC = () => {
                 variant="flat"
                 onClick={() => {
                   localStorage.removeItem('token');
+                  localStorage.removeItem('admin_token');
                   setIsLoggedIn(false);
-                  if (pathname.startsWith('/dashboard')) router.push('/index');
+                  setIsAdmin(false);
+                  if (pathname.startsWith('/dashboard') || pathname.startsWith('/admin')) router.push('/index');
                 }}
               >
                 خروج
@@ -152,7 +163,7 @@ const Navigation: React.FC = () => {
           {isLoggedIn ? (
             <>
               <Button fullWidth variant="flat" onClick={() => router.push('/dashboard')}>حساب من</Button>
-              <Button fullWidth color="danger" variant="flat" onClick={() => { localStorage.removeItem('token'); setIsLoggedIn(false); router.push('/index'); }}>خروج</Button>
+              <Button fullWidth color="danger" variant="flat" onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('admin_token'); setIsLoggedIn(false); setIsAdmin(false); router.push('/index'); }}>خروج</Button>
             </>
           ) : (
             <>

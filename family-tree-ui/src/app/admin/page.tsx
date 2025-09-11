@@ -24,6 +24,17 @@ const AdminDashboard: React.FC = () => {
   const [familyData, setFamilyData] = useState<FamilyMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Check admin authentication
+  useEffect(() => {
+    const adminToken = localStorage.getItem('admin_token');
+    if (!adminToken) {
+      router.push('/login');
+      return;
+    }
+    setIsAdmin(true);
+  }, [router]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState<keyof FamilyMember>('name');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
@@ -208,6 +219,18 @@ const AdminDashboard: React.FC = () => {
             <div className="text-6xl mb-4">❌</div>
             {error}
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render anything if not admin
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">در حال بررسی دسترسی...</p>
         </div>
       </div>
     );
