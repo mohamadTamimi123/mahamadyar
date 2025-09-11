@@ -7,7 +7,7 @@ set -e
 
 ENVIRONMENT=${1:-production}
 PROJECT_DIR="/root/peligent"
-COMPOSE_FILE="deploy/docker-compose.prod.yml"
+COMPOSE_FILE="docker-compose.yml"
 
 echo "🚀 Starting deployment to $ENVIRONMENT environment..."
 
@@ -81,7 +81,7 @@ sleep 30
 echo "🔍 Running health checks..."
 
 # Check API
-if curl -f -s http://localhost:5001/family-members > /dev/null; then
+if curl -f -s http://localhost:5002/family-members > /dev/null; then
     echo "✅ API health check passed"
 else
     echo "❌ API health check failed"
@@ -90,7 +90,7 @@ else
 fi
 
 # Check UI
-if curl -f -s http://localhost:3001 > /dev/null; then
+if curl -f -s http://localhost:3002 > /dev/null; then
     echo "✅ UI health check passed"
 else
     echo "❌ UI health check failed"
@@ -117,7 +117,7 @@ docker stats --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsa
 
 echo "🎉 Deployment completed successfully!"
 echo "🌐 Application is available at:"
-echo "   - UI: http://localhost:3001"
-echo "   - API: http://localhost:5001"
-echo "   - MailHog: http://localhost:8025"
-echo "   - Database: localhost:5025"
+echo "   - UI: http://localhost:3002"
+echo "   - API: http://localhost:5002"
+echo "   - MailHog: http://localhost:8026"
+echo "   - Database: localhost:5433"
