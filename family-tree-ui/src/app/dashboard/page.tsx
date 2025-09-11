@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import CompleteProfile from '@/components/CompleteProfile';
+import DashboardTabs from '@/components/DashboardTabs';
 // import axios from 'axios';
 
 interface UserData {
@@ -75,9 +75,10 @@ const DashboardPage: React.FC = () => {
     <>
       {/* Content inside dashboard layout */}
       <div className="space-y-6">
-        {/* Complete Profile Card */}
-        <CompleteProfile />
+        {/* Dashboard Tabs */}
+        <DashboardTabs />
 
+        {/* Quick Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* User Info Card */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
@@ -161,12 +162,6 @@ const DashboardPage: React.FC = () => {
               </div>
             </div>
             <div className="space-y-3">
-              <button
-                onClick={() => router.push('/family')}
-                className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-sm hover:shadow"
-              >
-                🌳 مشاهده شجره‌نامه
-              </button>
               <button
                 onClick={() => router.push('/index')}
                 className="w-full py-3 bg-gray-100 text-gray-800 rounded-lg font-medium hover:bg-gray-200 transition-all duration-300"
