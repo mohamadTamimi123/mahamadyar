@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import api from '@/lib/api'
 import PersonalTree, { TreeNode } from '@/components/PersonalTree'
 
 export default function DashboardTreePage() {
@@ -13,7 +14,7 @@ export default function DashboardTreePage() {
     const fetch = async () => {
       try {
         setLoading(true)
-        const res = await axios.get('http://localhost:5000/family-members')
+        const res = await api.get('/family-members')
         const members = res.data as Array<{id: number; name: string; family_name?: string; father_name?: string; father_id?: number}>
         if (!members || members.length === 0) {
           setError('داده‌ای یافت نشد')

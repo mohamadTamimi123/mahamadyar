@@ -74,7 +74,7 @@ const EditMemberPage: React.FC = () => {
   const loadMember = useCallback(async () => {
     try {
       setLoadingMember(true);
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/family-members/${memberId}`);
+      const response = await api.get(`/family-members/${memberId}`);
       const member = response.data;
       setCurrentMember(member);
       
@@ -86,7 +86,7 @@ const EditMemberPage: React.FC = () => {
 
       // اگر عضو پدر دارد، آن را در selectedFather قرار بده
       if (member.father_id) {
-        const fatherResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/family-members/${member.father_id}`);
+        const fatherResponse = await api.get(`/family-members/${member.father_id}`);
         setSelectedFather(fatherResponse.data);
       }
     } catch (err: unknown) {
@@ -143,7 +143,7 @@ const EditMemberPage: React.FC = () => {
         father_id: formData.fatherId ? parseInt(formData.fatherId) : null,
       };
 
-      const response = await axios.patch(`http://localhost:5000/family-members/${memberId}`, memberData);
+      const response = await api.patch(`/family-members/${memberId}`, memberData);
 
       if (response.data) {
         setSuccess('اطلاعات عضو با موفقیت به‌روزرسانی شد!');

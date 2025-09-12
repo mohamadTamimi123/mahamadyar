@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
+import api from '@/lib/api';
 
 interface FamilyMember {
   id: number;
@@ -53,11 +54,11 @@ const EditMemberPage: React.FC = () => {
       setLoading(true);
       
       // دریافت اطلاعات عضو
-      const memberResponse = await axios.get(`http://localhost:5000/family-members/${memberId}`);
+      const memberResponse = await api.get(`/family-members/${memberId}`);
       setMember(memberResponse.data);
 
       // دریافت همه اعضا برای انتخاب پدر
-      const allMembersResponse = await axios.get('http://localhost:5000/family-members');
+      const allMembersResponse = await api.get('/family-members');
       setAllMembers(allMembersResponse.data);
 
       // تنظیم فرم
@@ -86,7 +87,7 @@ const EditMemberPage: React.FC = () => {
       setError(null);
 
       const response = await axios.patch(
-        `http://localhost:5000/family-members/${memberId}/edit`,
+        `/family-members/${memberId}/edit`,
         formData,
         {
           headers: {
@@ -113,7 +114,7 @@ const EditMemberPage: React.FC = () => {
     try {
       setSaving(true);
       const response = await axios.post(
-        `http://localhost:5000/family-members/${memberId}/generate-invite-code`,
+        `/family-members/${memberId}/generate-invite-code`,
         {},
         {
           headers: {

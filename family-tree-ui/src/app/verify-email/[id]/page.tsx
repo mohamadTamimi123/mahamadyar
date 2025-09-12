@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import api from '@/lib/api';
 
 interface VerifyEmailPageProps {
   params: {
@@ -49,7 +50,7 @@ const VerifyEmailPage: React.FC<VerifyEmailPageProps> = ({ params }) => {
         setLoading(true);
         setError(null);
 
-        const response = await axios.post(`http://localhost:5000/family-members/verify-email/${params.id}`);
+        const response = await api.post(`/auth/verify-email/${params.id}`);
 
         if (response.data.success) {
           setSuccess(response.data.message);
