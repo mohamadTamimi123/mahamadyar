@@ -8,23 +8,7 @@ export const publicRoutes = {
     requiresAuth: false,
     icon: '🏠'
   },
-  index: {
-    path: '/index',
-    component: 'IndexPage',
-    title: 'صفحه اصلی',
-    description: 'صفحه اصلی سیستم',
-    requiresAuth: false,
-    icon: '🏠'
-  },
-  edit: {
-    path: '/edit/[id]',
-    component: 'EditPage',
-    title: 'ویرایش',
-    description: 'ویرایش اطلاعات',
-    requiresAuth: true,
-    icon: '✏️',
-    dynamic: true
-  }
+
 };
 
 // Public navigation helper

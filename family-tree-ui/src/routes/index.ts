@@ -34,13 +34,7 @@ export const getNavigationItems = (isAuthenticated: boolean, isAdmin: boolean) =
   items.push(...getPublicNavItems());
   
   // Show auth routes only if not authenticated
-  if (!isAuthenticated) {
-    items.push(
-      { label: 'ورود', href: '/login', icon: '🔑' },
-      { label: 'ثبت‌نام', href: '/register', icon: '📝' }
-    );
-  }
-  
+ 
   // Show dashboard routes if authenticated
   if (isAuthenticated) {
     items.push(...getDashboardNavItems());
