@@ -20,6 +20,24 @@ const EditMemberPage: React.FC = () => {
   const router = useRouter();
   const params = useParams();
   const memberId = params.id as string;
+
+  // Validate memberId
+  if (!memberId || memberId === 'undefined' || isNaN(Number(memberId))) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">خطا</h1>
+          <p className="text-gray-600 mb-4">شناسه عضو نامعتبر است</p>
+          <button
+            onClick={() => router.push('/admin')}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            بازگشت به پنل مدیریت
+          </button>
+        </div>
+      </div>
+    );
+  }
   
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);

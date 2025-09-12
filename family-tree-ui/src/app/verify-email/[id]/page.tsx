@@ -16,6 +16,33 @@ const VerifyEmailPage: React.FC<VerifyEmailPageProps> = ({ params }) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  // Validate ID parameter
+  if (!params.id || params.id === 'undefined' || isNaN(Number(params.id))) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 flex items-center justify-center p-4">
+        <div className="max-w-md w-full">
+          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-red-500 text-3xl">❌</span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+              شناسه نامعتبر
+            </h3>
+            <p className="text-gray-600 mb-6">
+              شناسه تأیید ایمیل نامعتبر است
+            </p>
+            <button
+              onClick={() => router.push('/index')}
+              className="w-full py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-colors"
+            >
+              بازگشت به صفحه اصلی
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   useEffect(() => {
     const verifyEmail = async () => {
       try {
