@@ -40,7 +40,7 @@ const RegisterPage: React.FC = () => {
       setLoading(true);
       setError(null);
       
-      const response = await api.get(`/family-members/invite/${inviteData.inviteCode}`);
+      const response = await api.get(`/auth/invite/${inviteData.inviteCode}`);
       
 
       console.log(response.data);
