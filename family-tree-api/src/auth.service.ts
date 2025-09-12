@@ -146,11 +146,18 @@ export class AuthService {
 
   async findByInviteCode(inviteCode: string) {
     const familyMember = await this.familyMemberRepository.findOne({
-      where: { invite_code: inviteCode }
+      where: { invite_code: inviteCode },
+      relations: ['father']
     });
 
     if (!familyMember) {
       throw new BadRequestException('کد دعوت نامعتبر است');
+    }
+
+    // اگر عضو پدر دارد، نام پدر را از relation پر کن
+    let fatherName = familyMember.father_name;
+    if (familyMember.father && !fatherName) {
+      fatherName = familyMember.father.name;
     }
 
     return {
@@ -159,7 +166,7 @@ export class AuthService {
         id: familyMember.id,
         name: familyMember.name,
         family_name: familyMember.family_name,
-        father_name: familyMember.father_name,
+        father_name: fatherName,
       },
     };
   }
