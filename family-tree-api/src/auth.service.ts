@@ -276,7 +276,10 @@ export class AuthService {
   async verifyOtp(body: { email: string; otp: string }) {
     const { email, otp } = body;
 
-    const user = await this.userRepository.findOne({ where: { email } });
+    const user = await this.userRepository.findOne({ 
+      where: { email },
+      relations: ['member']
+    });
     
     if (!user) {
       throw new BadRequestException('کاربر یافت نشد');
@@ -288,9 +291,27 @@ export class AuthService {
 
     await this.userRepository.update(user.id, { is_verified: true, otp_code: null });
 
+    // تولید JWT token برای کاربر تأیید شده
+    const token = jwt.sign(
+      { 
+        userId: user.id, 
+        email: user.email,
+        memberId: user.member?.id 
+      },
+      process.env.JWT_SECRET || 'default-secret',
+      { expiresIn: '7d' }
+    );
+
     return {
       success: true,
       message: 'ایمیل با موفقیت تأیید شد',
+      token: token,
+      user: {
+        id: user.id,
+        email: user.email,
+        is_verified: true,
+        member: user.member
+      }
     };
   }
 
