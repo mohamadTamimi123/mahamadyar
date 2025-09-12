@@ -44,20 +44,22 @@ const RegisterPage: React.FC = () => {
       
 
       console.log(response.data);
-      if (response.data) {
+      if (response.data && response.data.member) {
+        const memberData = response.data.member;
+        
         // ذخیره اطلاعات دعوت‌کننده
-        setInviterData(response.data);
+        setInviterData(memberData);
         
         // پر کردن خودکار فرم با اطلاعات دعوت‌کننده
         setCredentialsData(prev => ({
           ...prev,
-          name: response.data.name,
-          family_name: response.data.family_name,
-          fatherName: response.data.father_name || '',
+          name: memberData.name,
+          family_name: memberData.family_name,
+          fatherName: memberData.father_name || '',
         }));
         
         setStep('credentials');
-        setSuccess(`کد دعوت معتبر است. اطلاعات دعوت‌کننده: ${response.data.name} ${response.data.family_name}. لطفاً اطلاعات خود را تکمیل کنید.`);
+        setSuccess(`کد دعوت معتبر است. اطلاعات دعوت‌کننده: ${memberData.name} ${memberData.family_name}. لطفاً اطلاعات خود را تکمیل کنید.`);
       }
     } catch {
       setError('کد دعوت نامعتبر است');
