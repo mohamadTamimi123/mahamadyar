@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // تنظیم base URL از متغیر محیطی
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:5002';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:5000';
 
 // ایجاد instance از axios با تنظیمات پیش‌فرض
 const api = axios.create({
