@@ -1,10 +1,19 @@
-import { Controller, Post, Body, Param, Get, Patch, Headers, Req } from '@nestjs/common';
+import { Controller, Post, Body, Param, Get, Patch, Headers, Req, BadRequestException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import * as jwt from 'jsonwebtoken';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  // Helper method to validate and convert ID parameter
+  private validateId(id: string): number {
+    const numericId = Number(id);
+    if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
+      throw new BadRequestException('Invalid ID parameter. ID must be a positive integer.');
+    }
+    return numericId;
+  }
 
   // ============= Registration & Invite Code Management =============
   
@@ -67,7 +76,7 @@ export class AuthController {
   
   @Post('verify-email/:id')
   verifyEmail(@Param('id') id: string) {
-    return this.authService.verifyEmail(+id);
+    return this.authService.verifyEmail(this.validateId(id));
   }
 
   @Post('verify-otp')
