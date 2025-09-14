@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.People = void 0;
 const typeorm_1 = require("typeorm");
+const photo_entity_1 = require("../photo/photo.entity");
 let People = class People {
     id;
     name;
@@ -22,6 +23,7 @@ let People = class People {
     children;
     spouse;
     spouseOf;
+    photos;
     createdAt;
     updatedAt;
 };
@@ -68,6 +70,10 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => People, (people) => people.spouse),
     __metadata("design:type", Array)
 ], People.prototype, "spouseOf", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => photo_entity_1.Photo, photo => photo.people),
+    __metadata("design:type", Array)
+], People.prototype, "photos", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

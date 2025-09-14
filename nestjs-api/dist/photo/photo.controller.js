@@ -81,8 +81,10 @@ let PhotoController = class PhotoController {
             file_path: filePath,
             description: body.description,
             is_profile_picture: body.is_profile_picture === 'true',
+            people_id: body.people_id ? parseInt(body.people_id) : undefined,
         };
-        return this.photoService.create(createPhotoDto, req.user.id);
+        const peopleId = body.people_id ? parseInt(body.people_id) : undefined;
+        return this.photoService.create(createPhotoDto, req.user.id, peopleId);
     }
     async findAll(req) {
         return this.photoService.findAllByUser(req.user.id);
@@ -109,6 +111,9 @@ let PhotoController = class PhotoController {
         res.setHeader('Content-Disposition', `inline; filename="${photo.original_name}"`);
         const fileStream = fs.createReadStream(photo.file_path);
         fileStream.pipe(res);
+    }
+    async getPhotosByPeople(peopleId, req) {
+        return this.photoService.getPhotosByPeople(+peopleId);
     }
 };
 exports.PhotoController = PhotoController;
@@ -170,6 +175,14 @@ __decorate([
     __metadata("design:paramtypes", [String, Object, Object]),
     __metadata("design:returntype", Promise)
 ], PhotoController.prototype, "getPhotoFile", null);
+__decorate([
+    (0, common_1.Get)('people/:peopleId'),
+    __param(0, (0, common_1.Param)('peopleId')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], PhotoController.prototype, "getPhotosByPeople", null);
 exports.PhotoController = PhotoController = __decorate([
     (0, common_1.Controller)('photos'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

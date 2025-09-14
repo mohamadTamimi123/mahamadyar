@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Photo } from '../photo/photo.entity';
 
 @Entity('people')
 export class People {
@@ -37,6 +38,10 @@ export class People {
   // Self-referencing relationship - Spouse (reverse)
   @OneToMany(() => People, (people) => people.spouse)
   spouseOf: People[];
+
+  // Photos relationship
+  @OneToMany(() => Photo, photo => photo.people)
+  photos: Photo[];
 
   @CreateDateColumn()
   createdAt: Date;

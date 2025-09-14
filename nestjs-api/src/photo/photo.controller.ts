@@ -30,7 +30,7 @@ export class PhotoController {
   @UseInterceptors(FileInterceptor('file'))
   async uploadPhoto(
     @UploadedFile() file: Express.Multer.File,
-    @Body() body: { description?: string; is_profile_picture?: string },
+    @Body() body: { description?: string; is_profile_picture?: string; people_id?: string },
     @Request() req: any,
   ) {
     if (!file) {
@@ -64,9 +64,11 @@ export class PhotoController {
       file_path: filePath,
       description: body.description,
       is_profile_picture: body.is_profile_picture === 'true',
+      people_id: body.people_id ? parseInt(body.people_id) : undefined,
     };
 
-    return this.photoService.create(createPhotoDto, req.user.id);
+    const peopleId = body.people_id ? parseInt(body.people_id) : undefined;
+    return this.photoService.create(createPhotoDto, req.user.id, peopleId);
   }
 
   @Get()
@@ -112,6 +114,11 @@ export class PhotoController {
     
     const fileStream = fs.createReadStream(photo.file_path);
     fileStream.pipe(res);
+  }
+
+  @Get('people/:peopleId')
+  async getPhotosByPeople(@Param('peopleId') peopleId: string, @Request() req: any) {
+    return this.photoService.getPhotosByPeople(+peopleId);
   }
 
 }

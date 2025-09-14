@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { User } from '../user/user.entity';
+import { People } from '../people/people.entity';
 
 @Entity('photos')
 export class Photo {
@@ -33,9 +34,16 @@ export class Photo {
   @Column()
   user_id: number;
 
+  @Column({ nullable: true })
+  people_id: number;
+
   @ManyToOne(() => User, user => user.photos, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @ManyToOne(() => People, people => people.photos, { onDelete: 'CASCADE', nullable: true })
+  @JoinColumn({ name: 'people_id' })
+  people: People;
 
   @CreateDateColumn()
   created_at: Date;

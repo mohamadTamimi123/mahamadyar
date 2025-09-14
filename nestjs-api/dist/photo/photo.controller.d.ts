@@ -7,6 +7,7 @@ export declare class PhotoController {
     uploadPhoto(file: Express.Multer.File, body: {
         description?: string;
         is_profile_picture?: string;
+        people_id?: string;
     }, req: any): Promise<import("./photo.entity").Photo>;
     findAll(req: any): Promise<import("./photo.entity").Photo[]>;
     getProfilePicture(req: any): Promise<import("./photo.entity").Photo | null>;
@@ -16,6 +17,7 @@ export declare class PhotoController {
         message: string;
     }>;
     getPhotoFile(id: string, req: any, res: Response): Promise<void>;
+    getPhotosByPeople(peopleId: string, req: any): Promise<import("./photo.entity").Photo[]>;
 }
 export declare class PublicPhotoController {
     private readonly photoService;

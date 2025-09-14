@@ -14,6 +14,7 @@ export interface CreatePhotoDto {
   file_path: string;
   description?: string;
   is_profile_picture?: boolean;
+  people_id?: number;
 }
 
 export interface UpdatePhotoDto {
@@ -31,7 +32,7 @@ export class PhotoService {
     private userRepository: Repository<User>,
   ) {}
 
-  async create(createPhotoDto: CreatePhotoDto, userId: number): Promise<Photo> {
+  async create(createPhotoDto: CreatePhotoDto, userId: number, peopleId?: number): Promise<Photo> {
     const user = await this.userRepository.findOne({ where: { id: userId } });
     if (!user) {
       throw new NotFoundException('کاربر یافت نشد');
@@ -48,6 +49,7 @@ export class PhotoService {
     const photo = this.photoRepository.create({
       ...createPhotoDto,
       user_id: userId,
+      people_id: peopleId,
     });
 
     return this.photoRepository.save(photo);
@@ -120,6 +122,36 @@ export class PhotoService {
       where: { user_id: userId },
       order: { created_at: 'DESC' },
     });
+  }
+
+  async getPhotosByPeople(peopleId: number): Promise<Photo[]> {
+    return this.photoRepository.find({
+      where: { people_id: peopleId, is_active: true },
+      order: { created_at: 'DESC' },
+    });
+  }
+
+  async createForPeople(createPhotoDto: CreatePhotoDto, userId: number, peopleId: number): Promise<Photo> {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new NotFoundException('کاربر یافت نشد');
+    }
+
+    // If this is a profile picture, deactivate other profile pictures for this person
+    if (createPhotoDto.is_profile_picture) {
+      await this.photoRepository.update(
+        { people_id: peopleId, is_profile_picture: true },
+        { is_profile_picture: false }
+      );
+    }
+
+    const photo = this.photoRepository.create({
+      ...createPhotoDto,
+      user_id: userId,
+      people_id: peopleId,
+    });
+
+    return this.photoRepository.save(photo);
   }
 
   async findPublicPhoto(id: number): Promise<Photo | null> {

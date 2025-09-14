@@ -60,7 +60,7 @@ let PhotoService = class PhotoService {
         this.photoRepository = photoRepository;
         this.userRepository = userRepository;
     }
-    async create(createPhotoDto, userId) {
+    async create(createPhotoDto, userId, peopleId) {
         const user = await this.userRepository.findOne({ where: { id: userId } });
         if (!user) {
             throw new common_1.NotFoundException('کاربر یافت نشد');
@@ -71,6 +71,7 @@ let PhotoService = class PhotoService {
         const photo = this.photoRepository.create({
             ...createPhotoDto,
             user_id: userId,
+            people_id: peopleId,
         });
         return this.photoRepository.save(photo);
     }
@@ -125,6 +126,27 @@ let PhotoService = class PhotoService {
             where: { user_id: userId },
             order: { created_at: 'DESC' },
         });
+    }
+    async getPhotosByPeople(peopleId) {
+        return this.photoRepository.find({
+            where: { people_id: peopleId, is_active: true },
+            order: { created_at: 'DESC' },
+        });
+    }
+    async createForPeople(createPhotoDto, userId, peopleId) {
+        const user = await this.userRepository.findOne({ where: { id: userId } });
+        if (!user) {
+            throw new common_1.NotFoundException('کاربر یافت نشد');
+        }
+        if (createPhotoDto.is_profile_picture) {
+            await this.photoRepository.update({ people_id: peopleId, is_profile_picture: true }, { is_profile_picture: false });
+        }
+        const photo = this.photoRepository.create({
+            ...createPhotoDto,
+            user_id: userId,
+            people_id: peopleId,
+        });
+        return this.photoRepository.save(photo);
     }
     async findPublicPhoto(id) {
         return this.photoRepository.findOne({

@@ -1,4 +1,5 @@
 import { User } from '../user/user.entity';
+import { People } from '../people/people.entity';
 export declare class Photo {
     id: number;
     filename: string;
@@ -10,7 +11,9 @@ export declare class Photo {
     is_profile_picture: boolean;
     is_active: boolean;
     user_id: number;
+    people_id: number;
     user: User;
+    people: People;
     created_at: Date;
     updated_at: Date;
 }

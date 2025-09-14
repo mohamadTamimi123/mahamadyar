@@ -9,6 +9,7 @@ export interface CreatePhotoDto {
     file_path: string;
     description?: string;
     is_profile_picture?: boolean;
+    people_id?: number;
 }
 export interface UpdatePhotoDto {
     description?: string;
@@ -19,7 +20,7 @@ export declare class PhotoService {
     private photoRepository;
     private userRepository;
     constructor(photoRepository: Repository<Photo>, userRepository: Repository<User>);
-    create(createPhotoDto: CreatePhotoDto, userId: number): Promise<Photo>;
+    create(createPhotoDto: CreatePhotoDto, userId: number, peopleId?: number): Promise<Photo>;
     findAllByUser(userId: number): Promise<Photo[]>;
     findOne(id: number, userId: number): Promise<Photo>;
     update(id: number, updatePhotoDto: UpdatePhotoDto, userId: number): Promise<Photo>;
@@ -27,6 +28,8 @@ export declare class PhotoService {
     getProfilePicture(userId: number): Promise<Photo | null>;
     getAllPhotos(): Promise<Photo[]>;
     getPhotosByUser(userId: number): Promise<Photo[]>;
+    getPhotosByPeople(peopleId: number): Promise<Photo[]>;
+    createForPeople(createPhotoDto: CreatePhotoDto, userId: number, peopleId: number): Promise<Photo>;
     findPublicPhoto(id: number): Promise<Photo | null>;
     ensureUploadDir(): Promise<string>;
     generateUniqueFilename(originalName: string): string;

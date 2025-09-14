@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Photo = void 0;
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("../user/user.entity");
+const people_entity_1 = require("../people/people.entity");
 let Photo = class Photo {
     id;
     filename;
@@ -23,7 +24,9 @@ let Photo = class Photo {
     is_profile_picture;
     is_active;
     user_id;
+    people_id;
     user;
+    people;
     created_at;
     updated_at;
 };
@@ -69,10 +72,19 @@ __decorate([
     __metadata("design:type", Number)
 ], Photo.prototype, "user_id", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], Photo.prototype, "people_id", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User, user => user.photos, { onDelete: 'CASCADE' }),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", user_entity_1.User)
 ], Photo.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => people_entity_1.People, people => people.photos, { onDelete: 'CASCADE', nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'people_id' }),
+    __metadata("design:type", people_entity_1.People)
+], Photo.prototype, "people", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

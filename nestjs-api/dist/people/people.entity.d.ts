@@ -1,3 +1,4 @@
+import { Photo } from '../photo/photo.entity';
 export declare class People {
     id: number;
     name: string;
@@ -9,6 +10,7 @@ export declare class People {
     children: People[];
     spouse: People;
     spouseOf: People[];
+    photos: Photo[];
     createdAt: Date;
     updatedAt: Date;
 }
