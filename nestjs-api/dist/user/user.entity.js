@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
+const people_entity_1 = require("../people/people.entity");
 let User = class User {
     id;
     email;
     name;
     password;
     phone;
+    people_id;
+    people;
     createdAt;
     updatedAt;
 };
@@ -41,6 +44,15 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "phone", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], User.prototype, "people_id", void 0);
+__decorate([
+    (0, typeorm_1.OneToOne)(() => people_entity_1.People, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'people_id' }),
+    __metadata("design:type", people_entity_1.People)
+], User.prototype, "people", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

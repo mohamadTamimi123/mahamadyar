@@ -52,18 +52,33 @@ const typeorm_2 = require("typeorm");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt = __importStar(require("bcryptjs"));
 const user_entity_1 = require("../user/user.entity");
+const people_entity_1 = require("../people/people.entity");
 let AuthService = class AuthService {
     userRepository;
+    peopleRepository;
     jwtService;
-    constructor(userRepository, jwtService) {
+    constructor(userRepository, peopleRepository, jwtService) {
         this.userRepository = userRepository;
+        this.peopleRepository = peopleRepository;
         this.jwtService = jwtService;
     }
     async register(registerDto) {
-        const { email, name, password, phone } = registerDto;
+        const { email, name, password, phone, registrationCode } = registerDto;
+        const people = await this.peopleRepository.findOne({
+            where: { registration_code: registrationCode }
+        });
+        if (!people) {
+            throw new common_1.BadRequestException('کد ثبت نام نامعتبر است');
+        }
+        const existingUserForPeople = await this.userRepository.findOne({
+            where: { people_id: people.id }
+        });
+        if (existingUserForPeople) {
+            throw new common_1.ConflictException('این عضو خانواده قبلاً حساب کاربری دارد');
+        }
         const existingUser = await this.userRepository.findOne({ where: { email } });
         if (existingUser) {
-            throw new common_1.ConflictException('User with this email already exists');
+            throw new common_1.ConflictException('کاربری با این ایمیل قبلاً وجود دارد');
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = this.userRepository.create({
@@ -71,6 +86,7 @@ let AuthService = class AuthService {
             name,
             password: hashedPassword,
             phone,
+            people_id: people.id,
         });
         const savedUser = await this.userRepository.save(user);
         const payload = { sub: savedUser.id, email: savedUser.email };
@@ -111,7 +127,9 @@ exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
+    __param(1, (0, typeorm_1.InjectRepository)(people_entity_1.People)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository,
         jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map
