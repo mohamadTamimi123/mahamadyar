@@ -132,14 +132,34 @@ let PeopleService = class PeopleService {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
         }
         const familyMembers = [person];
-        if (person.father) {
+        const processedIds = new Set([personId]);
+        if (person.father && !processedIds.has(person.father.id)) {
             familyMembers.push(person.father);
+            processedIds.add(person.father.id);
+            if (person.father.spouse && !processedIds.has(person.father.spouse.id)) {
+                familyMembers.push(person.father.spouse);
+                processedIds.add(person.father.spouse.id);
+            }
         }
-        if (person.spouse) {
+        if (person.spouse && !processedIds.has(person.spouse.id)) {
             familyMembers.push(person.spouse);
+            processedIds.add(person.spouse.id);
+            if (person.spouse.father && !processedIds.has(person.spouse.father.id)) {
+                familyMembers.push(person.spouse.father);
+                processedIds.add(person.spouse.father.id);
+            }
         }
         if (person.children && person.children.length > 0) {
-            familyMembers.push(...person.children);
+            for (const child of person.children) {
+                if (!processedIds.has(child.id)) {
+                    familyMembers.push(child);
+                    processedIds.add(child.id);
+                    if (child.spouse && !processedIds.has(child.spouse.id)) {
+                        familyMembers.push(child.spouse);
+                        processedIds.add(child.spouse.id);
+                    }
+                }
+            }
         }
         return familyMembers;
     }

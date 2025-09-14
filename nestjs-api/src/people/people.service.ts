@@ -174,17 +174,46 @@ export class PeopleService {
 
     // Get all family members including the person themselves
     const familyMembers: People[] = [person];
+    const processedIds = new Set<number>([personId]);
     
-    if (person.father) {
+    // Add father and his family
+    if (person.father && !processedIds.has(person.father.id)) {
       familyMembers.push(person.father);
+      processedIds.add(person.father.id);
+      
+      // Add father's spouse (if different from current person)
+      if (person.father.spouse && !processedIds.has(person.father.spouse.id)) {
+        familyMembers.push(person.father.spouse);
+        processedIds.add(person.father.spouse.id);
+      }
     }
     
-    if (person.spouse) {
+    // Add spouse and spouse's family
+    if (person.spouse && !processedIds.has(person.spouse.id)) {
       familyMembers.push(person.spouse);
+      processedIds.add(person.spouse.id);
+      
+      // Add spouse's father
+      if (person.spouse.father && !processedIds.has(person.spouse.father.id)) {
+        familyMembers.push(person.spouse.father);
+        processedIds.add(person.spouse.father.id);
+      }
     }
     
+    // Add children and their spouses
     if (person.children && person.children.length > 0) {
-      familyMembers.push(...person.children);
+      for (const child of person.children) {
+        if (!processedIds.has(child.id)) {
+          familyMembers.push(child);
+          processedIds.add(child.id);
+          
+          // Add child's spouse
+          if (child.spouse && !processedIds.has(child.spouse.id)) {
+            familyMembers.push(child.spouse);
+            processedIds.add(child.spouse.id);
+          }
+        }
+      }
     }
 
     return familyMembers;
