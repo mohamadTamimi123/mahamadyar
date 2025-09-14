@@ -122,6 +122,13 @@ export class PhotoService {
     });
   }
 
+  async findPublicPhoto(id: number): Promise<Photo | null> {
+    return this.photoRepository.findOne({
+      where: { id, is_active: true },
+      relations: ['user'],
+    });
+  }
+
   // Helper method to ensure upload directory exists
   async ensureUploadDir(): Promise<string> {
     const uploadDir = path.join(process.cwd(), 'uploads', 'photos');

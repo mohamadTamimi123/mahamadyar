@@ -110,6 +110,20 @@ let PhotoController = class PhotoController {
         const fileStream = fs.createReadStream(photo.file_path);
         fileStream.pipe(res);
     }
+    async getPublicPhotoFile(id, res) {
+        const photo = await this.photoService.findPublicPhoto(+id);
+        if (!photo) {
+            throw new common_1.BadRequestException('عکس یافت نشد');
+        }
+        if (!fs.existsSync(photo.file_path)) {
+            throw new common_1.BadRequestException('فایل یافت نشد');
+        }
+        res.setHeader('Content-Type', photo.mime_type);
+        res.setHeader('Content-Disposition', `inline; filename="${photo.original_name}"`);
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+        const fileStream = fs.createReadStream(photo.file_path);
+        fileStream.pipe(res);
+    }
 };
 exports.PhotoController = PhotoController;
 __decorate([
@@ -170,6 +184,14 @@ __decorate([
     __metadata("design:paramtypes", [String, Object, Object]),
     __metadata("design:returntype", Promise)
 ], PhotoController.prototype, "getPhotoFile", null);
+__decorate([
+    (0, common_1.Get)('public/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], PhotoController.prototype, "getPublicPhotoFile", null);
 exports.PhotoController = PhotoController = __decorate([
     (0, common_1.Controller)('photos'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

@@ -126,6 +126,12 @@ let PhotoService = class PhotoService {
             order: { created_at: 'DESC' },
         });
     }
+    async findPublicPhoto(id) {
+        return this.photoRepository.findOne({
+            where: { id, is_active: true },
+            relations: ['user'],
+        });
+    }
     async ensureUploadDir() {
         const uploadDir = path.join(process.cwd(), 'uploads', 'photos');
         if (!fs.existsSync(uploadDir)) {

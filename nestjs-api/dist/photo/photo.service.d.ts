@@ -27,6 +27,7 @@ export declare class PhotoService {
     getProfilePicture(userId: number): Promise<Photo | null>;
     getAllPhotos(): Promise<Photo[]>;
     getPhotosByUser(userId: number): Promise<Photo[]>;
+    findPublicPhoto(id: number): Promise<Photo | null>;
     ensureUploadDir(): Promise<string>;
     generateUniqueFilename(originalName: string): string;
 }

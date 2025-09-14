@@ -113,6 +113,26 @@ export class PhotoController {
     const fileStream = fs.createReadStream(photo.file_path);
     fileStream.pipe(res);
   }
+
+  @Get('public/:id')
+  async getPublicPhotoFile(@Param('id') id: string, @Res() res: Response) {
+    const photo = await this.photoService.findPublicPhoto(+id);
+    
+    if (!photo) {
+      throw new BadRequestException('عکس یافت نشد');
+    }
+
+    if (!fs.existsSync(photo.file_path)) {
+      throw new BadRequestException('فایل یافت نشد');
+    }
+
+    res.setHeader('Content-Type', photo.mime_type);
+    res.setHeader('Content-Disposition', `inline; filename="${photo.original_name}"`);
+    res.setHeader('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
+    
+    const fileStream = fs.createReadStream(photo.file_path);
+    fileStream.pipe(res);
+  }
 }
 
 // Admin endpoints

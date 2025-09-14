@@ -16,6 +16,7 @@ export declare class PhotoController {
         message: string;
     }>;
     getPhotoFile(id: string, req: any, res: Response): Promise<void>;
+    getPublicPhotoFile(id: string, res: Response): Promise<void>;
 }
 export declare class AdminPhotoController {
     private readonly photoService;
