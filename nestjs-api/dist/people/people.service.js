@@ -161,6 +161,19 @@ let PeopleService = class PeopleService {
                 }
             }
         }
+        if (person.father) {
+            const siblings = allPeople.filter(p => p.father_id === person.father_id &&
+                p.id !== personId &&
+                !processedIds.has(p.id));
+            for (const sibling of siblings) {
+                familyMembers.push(sibling);
+                processedIds.add(sibling.id);
+                if (sibling.spouse && !processedIds.has(sibling.spouse.id)) {
+                    familyMembers.push(sibling.spouse);
+                    processedIds.add(sibling.spouse.id);
+                }
+            }
+        }
         return familyMembers;
     }
     async addSpouse(personId, spouseData, ipAddress, userAgent) {

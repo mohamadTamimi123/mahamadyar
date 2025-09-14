@@ -217,6 +217,26 @@ export class PeopleService {
       }
     }
 
+    // Add siblings (children of the same father)
+    if (person.father) {
+      const siblings = allPeople.filter(p => 
+        p.father_id === person.father_id && 
+        p.id !== personId && 
+        !processedIds.has(p.id)
+      );
+      
+      for (const sibling of siblings) {
+        familyMembers.push(sibling);
+        processedIds.add(sibling.id);
+        
+        // Add sibling's spouse
+        if (sibling.spouse && !processedIds.has(sibling.spouse.id)) {
+          familyMembers.push(sibling.spouse);
+          processedIds.add(sibling.spouse.id);
+        }
+      }
+    }
+
     return familyMembers;
   }
 
