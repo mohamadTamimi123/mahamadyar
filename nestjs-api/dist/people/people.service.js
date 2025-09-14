@@ -42,7 +42,13 @@ let PeopleService = class PeopleService {
             ...peopleData,
             registration_code: registrationCode,
         });
-        return this.peopleRepository.save(people);
+        const savedPeople = await this.peopleRepository.save(people);
+        if (peopleData.spouse_id) {
+            await this.peopleRepository.update(peopleData.spouse_id, {
+                spouse_id: savedPeople.id,
+            });
+        }
+        return savedPeople;
     }
     async generateUniqueRegistrationCode() {
         let code = '';
