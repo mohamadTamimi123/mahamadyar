@@ -15,14 +15,54 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
+const otp_service_1 = require("./otp.service");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {
     authService;
-    constructor(authService) {
+    otpService;
+    constructor(authService, otpService) {
         this.authService = authService;
+        this.otpService = otpService;
     }
-    async register(registerDto) {
-        return this.authService.register(registerDto);
+    async validateRegistrationCode(body) {
+        const result = await this.otpService.validateRegistrationCode(body.registrationCode);
+        if (!result.valid) {
+            return { valid: false, message: 'کد ثبت نام نامعتبر است' };
+        }
+        const sessionId = this.otpService.createOtpSession(body.registrationCode, result.people.id);
+        return {
+            valid: true,
+            sessionId,
+            people: {
+                name: result.people.name,
+                last_name: result.people.last_name,
+            },
+            otp: this.otpService.getOtpForTesting(sessionId),
+        };
+    }
+    async verifyOtp(body) {
+        const isValid = this.otpService.verifyOtp(body.sessionId, body.otp);
+        if (!isValid) {
+            return { valid: false, message: 'کد OTP نامعتبر یا منقضی شده است' };
+        }
+        return { valid: true };
+    }
+    async completeRegistration(body) {
+        const session = this.otpService.getSession(body.sessionId);
+        if (!session) {
+            return { success: false, message: 'جلسه منقضی شده است' };
+        }
+        this.otpService.updateSession(body.sessionId, { email: body.email });
+        const registerDto = {
+            email: body.email,
+            name: session.name || '',
+            password: body.password,
+            phone: session.phone,
+            registrationCode: session.registrationCode,
+        };
+        const result = await this.authService.register(registerDto);
+        this.otpService.deleteSession(body.sessionId);
+        return result;
     }
     async login(loginDto) {
         return this.authService.login(loginDto);
@@ -36,12 +76,26 @@ let AuthController = class AuthController {
 };
 exports.AuthController = AuthController;
 __decorate([
-    (0, common_1.Post)('register'),
+    (0, common_1.Post)('validate-code'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], AuthController.prototype, "register", null);
+], AuthController.prototype, "validateRegistrationCode", null);
+__decorate([
+    (0, common_1.Post)('verify-otp'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "verifyOtp", null);
+__decorate([
+    (0, common_1.Post)('complete-registration'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "completeRegistration", null);
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
@@ -67,6 +121,7 @@ __decorate([
 ], AuthController.prototype, "verifyToken", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService,
+        otp_service_1.OtpService])
 ], AuthController);
 //# sourceMappingURL=auth.controller.js.map
