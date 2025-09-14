@@ -20,7 +20,7 @@ exports.PhotoModule = PhotoModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([photo_entity_1.Photo, user_entity_1.User])],
         providers: [photo_service_1.PhotoService],
-        controllers: [photo_controller_1.PhotoController, photo_controller_1.AdminPhotoController],
+        controllers: [photo_controller_1.PhotoController, photo_controller_1.AdminPhotoController, photo_controller_1.PublicPhotoController],
         exports: [photo_service_1.PhotoService],
     })
 ], PhotoModule);

@@ -45,7 +45,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AdminPhotoController = exports.PhotoController = void 0;
+exports.AdminPhotoController = exports.PublicPhotoController = exports.PhotoController = void 0;
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
 const photo_service_1 = require("./photo.service");
@@ -110,20 +110,6 @@ let PhotoController = class PhotoController {
         const fileStream = fs.createReadStream(photo.file_path);
         fileStream.pipe(res);
     }
-    async getPublicPhotoFile(id, res) {
-        const photo = await this.photoService.findPublicPhoto(+id);
-        if (!photo) {
-            throw new common_1.BadRequestException('عکس یافت نشد');
-        }
-        if (!fs.existsSync(photo.file_path)) {
-            throw new common_1.BadRequestException('فایل یافت نشد');
-        }
-        res.setHeader('Content-Type', photo.mime_type);
-        res.setHeader('Content-Disposition', `inline; filename="${photo.original_name}"`);
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-        const fileStream = fs.createReadStream(photo.file_path);
-        fileStream.pipe(res);
-    }
 };
 exports.PhotoController = PhotoController;
 __decorate([
@@ -184,6 +170,32 @@ __decorate([
     __metadata("design:paramtypes", [String, Object, Object]),
     __metadata("design:returntype", Promise)
 ], PhotoController.prototype, "getPhotoFile", null);
+exports.PhotoController = PhotoController = __decorate([
+    (0, common_1.Controller)('photos'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    __metadata("design:paramtypes", [photo_service_1.PhotoService])
+], PhotoController);
+let PublicPhotoController = class PublicPhotoController {
+    photoService;
+    constructor(photoService) {
+        this.photoService = photoService;
+    }
+    async getPublicPhotoFile(id, res) {
+        const photo = await this.photoService.findPublicPhoto(+id);
+        if (!photo) {
+            throw new common_1.BadRequestException('عکس یافت نشد');
+        }
+        if (!fs.existsSync(photo.file_path)) {
+            throw new common_1.BadRequestException('فایل یافت نشد');
+        }
+        res.setHeader('Content-Type', photo.mime_type);
+        res.setHeader('Content-Disposition', `inline; filename="${photo.original_name}"`);
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+        const fileStream = fs.createReadStream(photo.file_path);
+        fileStream.pipe(res);
+    }
+};
+exports.PublicPhotoController = PublicPhotoController;
 __decorate([
     (0, common_1.Get)('public/:id'),
     __param(0, (0, common_1.Param)('id')),
@@ -191,12 +203,11 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], PhotoController.prototype, "getPublicPhotoFile", null);
-exports.PhotoController = PhotoController = __decorate([
+], PublicPhotoController.prototype, "getPublicPhotoFile", null);
+exports.PublicPhotoController = PublicPhotoController = __decorate([
     (0, common_1.Controller)('photos'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [photo_service_1.PhotoService])
-], PhotoController);
+], PublicPhotoController);
 let AdminPhotoController = class AdminPhotoController {
     photoService;
     constructor(photoService) {

@@ -114,6 +114,13 @@ export class PhotoController {
     fileStream.pipe(res);
   }
 
+}
+
+// Public endpoints (no authentication required)
+@Controller('photos')
+export class PublicPhotoController {
+  constructor(private readonly photoService: PhotoService) {}
+
   @Get('public/:id')
   async getPublicPhotoFile(@Param('id') id: string, @Res() res: Response) {
     const photo = await this.photoService.findPublicPhoto(+id);
