@@ -172,8 +172,8 @@ export class PeopleService {
       throw new NotFoundException(`Person with ID ${personId} not found`);
     }
 
-    // Get all family members (father, spouse, children)
-    const familyMembers: People[] = [];
+    // Get all family members including the person themselves
+    const familyMembers: People[] = [person];
     
     if (person.father) {
       familyMembers.push(person.father);

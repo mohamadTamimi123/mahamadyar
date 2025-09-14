@@ -131,7 +131,7 @@ let PeopleService = class PeopleService {
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
         }
-        const familyMembers = [];
+        const familyMembers = [person];
         if (person.father) {
             familyMembers.push(person.father);
         }
