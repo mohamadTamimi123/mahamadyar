@@ -186,6 +186,33 @@ let AdminPhotoController = class AdminPhotoController {
     async findByUser(userId) {
         return this.photoService.getPhotosByUser(+userId);
     }
+    async uploadPhotoForUser(file, body, req) {
+        if (!file) {
+            throw new common_1.BadRequestException('فایل انتخاب نشده است');
+        }
+        const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!allowedMimeTypes.includes(file.mimetype)) {
+            throw new common_1.BadRequestException('نوع فایل پشتیبانی نمی‌شود');
+        }
+        const maxSize = 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            throw new common_1.BadRequestException('حجم فایل بیش از حد مجاز است (5MB)');
+        }
+        const uploadDir = await this.photoService.ensureUploadDir();
+        const filename = this.photoService.generateUniqueFilename(file.originalname);
+        const filePath = path.join(uploadDir, filename);
+        fs.writeFileSync(filePath, file.buffer);
+        const createPhotoDto = {
+            filename,
+            original_name: file.originalname,
+            mime_type: file.mimetype,
+            file_size: file.size,
+            file_path: filePath,
+            description: body.description,
+            is_profile_picture: body.is_profile_picture === 'true',
+        };
+        return this.photoService.create(createPhotoDto, +body.user_id);
+    }
 };
 exports.AdminPhotoController = AdminPhotoController;
 __decorate([
@@ -201,6 +228,16 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AdminPhotoController.prototype, "findByUser", null);
+__decorate([
+    (0, common_1.Post)('upload'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
+    __param(0, (0, common_1.UploadedFile)()),
+    __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], AdminPhotoController.prototype, "uploadPhotoForUser", null);
 exports.AdminPhotoController = AdminPhotoController = __decorate([
     (0, common_1.Controller)('admin/photos'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

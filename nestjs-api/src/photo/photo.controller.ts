@@ -130,4 +130,47 @@ export class AdminPhotoController {
   async findByUser(@Param('userId') userId: string) {
     return this.photoService.getPhotosByUser(+userId);
   }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadPhotoForUser(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() body: { description?: string; is_profile_picture?: string; user_id: string },
+    @Request() req: any,
+  ) {
+    if (!file) {
+      throw new BadRequestException('فایل انتخاب نشده است');
+    }
+
+    // Validate file type
+    const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedMimeTypes.includes(file.mimetype)) {
+      throw new BadRequestException('نوع فایل پشتیبانی نمی‌شود');
+    }
+
+    // Validate file size (5MB max)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      throw new BadRequestException('حجم فایل بیش از حد مجاز است (5MB)');
+    }
+
+    const uploadDir = await this.photoService.ensureUploadDir();
+    const filename = this.photoService.generateUniqueFilename(file.originalname);
+    const filePath = path.join(uploadDir, filename);
+
+    // Save file to disk
+    fs.writeFileSync(filePath, file.buffer);
+
+    const createPhotoDto: CreatePhotoDto = {
+      filename,
+      original_name: file.originalname,
+      mime_type: file.mimetype,
+      file_size: file.size,
+      file_path: filePath,
+      description: body.description,
+      is_profile_picture: body.is_profile_picture === 'true',
+    };
+
+    return this.photoService.create(createPhotoDto, +body.user_id);
+  }
 }

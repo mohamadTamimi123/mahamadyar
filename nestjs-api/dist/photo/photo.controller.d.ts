@@ -22,4 +22,9 @@ export declare class AdminPhotoController {
     constructor(photoService: PhotoService);
     findAll(): Promise<import("./photo.entity").Photo[]>;
     findByUser(userId: string): Promise<import("./photo.entity").Photo[]>;
+    uploadPhotoForUser(file: Express.Multer.File, body: {
+        description?: string;
+        is_profile_picture?: string;
+        user_id: string;
+    }, req: any): Promise<import("./photo.entity").Photo>;
 }
