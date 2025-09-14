@@ -41,6 +41,16 @@ export class PeopleController {
     return people;
   }
 
+  @Get(':id/family')
+  async getImmediateFamily(@Param('id', ParseIntPipe) id: number) {
+    return this.peopleService.getImmediateFamily(id);
+  }
+
+  @Get(':id/family-tree')
+  async getFamilyTree(@Param('id', ParseIntPipe) id: number): Promise<People[]> {
+    return this.peopleService.getFamilyTree(id);
+  }
+
   @Post()
   async create(@Body() peopleData: Partial<People>): Promise<People> {
     return this.peopleService.create(peopleData);

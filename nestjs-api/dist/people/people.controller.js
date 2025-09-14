@@ -49,6 +49,12 @@ let PeopleController = class PeopleController {
         }
         return people;
     }
+    async getImmediateFamily(id) {
+        return this.peopleService.getImmediateFamily(id);
+    }
+    async getFamilyTree(id) {
+        return this.peopleService.getFamilyTree(id);
+    }
     async create(peopleData) {
         return this.peopleService.create(peopleData);
     }
@@ -88,6 +94,20 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PeopleController.prototype, "findByRegistrationCode", null);
+__decorate([
+    (0, common_1.Get)(':id/family'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], PeopleController.prototype, "getImmediateFamily", null);
+__decorate([
+    (0, common_1.Get)(':id/family-tree'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], PeopleController.prototype, "getFamilyTree", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

@@ -95,6 +95,41 @@ let PeopleService = class PeopleService {
             relations: ['father', 'children'],
         });
     }
+    async getImmediateFamily(personId) {
+        const person = await this.peopleRepository.findOne({
+            where: { id: personId },
+            relations: ['father', 'spouse', 'children'],
+        });
+        if (!person) {
+            throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
+        }
+        return {
+            person,
+            father: person.father,
+            spouse: person.spouse,
+            children: person.children || [],
+        };
+    }
+    async getFamilyTree(personId) {
+        const person = await this.peopleRepository.findOne({
+            where: { id: personId },
+            relations: ['father', 'spouse', 'children'],
+        });
+        if (!person) {
+            throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
+        }
+        const familyMembers = [];
+        if (person.father) {
+            familyMembers.push(person.father);
+        }
+        if (person.spouse) {
+            familyMembers.push(person.spouse);
+        }
+        if (person.children && person.children.length > 0) {
+            familyMembers.push(...person.children);
+        }
+        return familyMembers;
+    }
 };
 exports.PeopleService = PeopleService;
 exports.PeopleService = PeopleService = __decorate([

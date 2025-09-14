@@ -106,4 +106,57 @@ export class PeopleService {
       relations: ['father', 'children'],
     });
   }
+
+  // Get immediate family members (father, spouse, children)
+  async getImmediateFamily(personId: number): Promise<{
+    person: People;
+    father?: People;
+    spouse?: People;
+    children: People[];
+  }> {
+    const person = await this.peopleRepository.findOne({
+      where: { id: personId },
+      relations: ['father', 'spouse', 'children'],
+    });
+
+    if (!person) {
+      throw new NotFoundException(`Person with ID ${personId} not found`);
+    }
+
+    return {
+      person,
+      father: person.father,
+      spouse: person.spouse,
+      children: person.children || [],
+    };
+  }
+
+  // Get family tree for a person
+  async getFamilyTree(personId: number): Promise<People[]> {
+    const person = await this.peopleRepository.findOne({
+      where: { id: personId },
+      relations: ['father', 'spouse', 'children'],
+    });
+
+    if (!person) {
+      throw new NotFoundException(`Person with ID ${personId} not found`);
+    }
+
+    // Get all family members (father, spouse, children)
+    const familyMembers: People[] = [];
+    
+    if (person.father) {
+      familyMembers.push(person.father);
+    }
+    
+    if (person.spouse) {
+      familyMembers.push(person.spouse);
+    }
+    
+    if (person.children && person.children.length > 0) {
+      familyMembers.push(...person.children);
+    }
+
+    return familyMembers;
+  }
 }

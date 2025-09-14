@@ -14,4 +14,11 @@ export declare class PeopleService {
     findByFatherId(fatherId: number): Promise<People[]>;
     findRootPeople(): Promise<People[]>;
     findByRegistrationCode(registrationCode: string): Promise<People | null>;
+    getImmediateFamily(personId: number): Promise<{
+        person: People;
+        father?: People;
+        spouse?: People;
+        children: People[];
+    }>;
+    getFamilyTree(personId: number): Promise<People[]>;
 }
