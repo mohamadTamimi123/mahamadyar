@@ -26,7 +26,7 @@ let AuthController = class AuthController {
     }
     async validateRegistrationCode(body) {
         const result = await this.otpService.validateRegistrationCode(body.registrationCode);
-        if (!result.valid) {
+        if (!result.valid || !result.people) {
             return { valid: false, message: 'کد ثبت نام نامعتبر است' };
         }
         const sessionId = this.otpService.createOtpSession(body.registrationCode, result.people.id);

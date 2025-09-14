@@ -1,5 +1,6 @@
-import { AuthService, LoginDto } from './auth.service';
+import { AuthService } from './auth.service';
 import { OtpService } from './otp.service';
+import type { LoginDto as LoginDtoType } from './auth.service';
 export declare class AuthController {
     private readonly authService;
     private readonly otpService;
@@ -43,7 +44,7 @@ export declare class AuthController {
         success: boolean;
         message: string;
     }>;
-    login(loginDto: LoginDto): Promise<{
+    login(loginDto: LoginDtoType): Promise<{
         user: import("../user/user.entity").User;
         token: string;
     }>;

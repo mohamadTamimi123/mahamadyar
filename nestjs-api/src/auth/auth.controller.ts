@@ -2,6 +2,7 @@ import { Controller, Post, Body, Get, UseGuards, Request } from '@nestjs/common'
 import { AuthService, RegisterDto, LoginDto } from './auth.service';
 import { OtpService } from './otp.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import type { LoginDto as LoginDtoType } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
@@ -14,7 +15,7 @@ export class AuthController {
   async validateRegistrationCode(@Body() body: { registrationCode: string }) {
     const result = await this.otpService.validateRegistrationCode(body.registrationCode);
     
-    if (!result.valid) {
+    if (!result.valid || !result.people) {
       return { valid: false, message: 'کد ثبت نام نامعتبر است' };
     }
 
@@ -76,7 +77,7 @@ export class AuthController {
   }
 
   @Post('login')
-  async login(@Body() loginDto: LoginDto) {
+  async login(@Body() loginDto: LoginDtoType) {
     return this.authService.login(loginDto);
   }
 
