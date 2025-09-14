@@ -25,7 +25,7 @@ export class PeopleService {
     });
   }
 
-  async create(peopleData: Partial<People>): Promise<People> {
+  async create(peopleData: Partial<People>, ipAddress?: string, userAgent?: string): Promise<People> {
     // Generate unique registration code
     const registrationCode = await this.generateUniqueRegistrationCode();
     
@@ -41,6 +41,24 @@ export class PeopleService {
       await this.peopleRepository.update(peopleData.spouse_id, {
         spouse_id: savedPeople.id,
       });
+      
+      // Log the family member addition for the current person
+      await this.activityLogService.logFamilyMemberAdded(
+        peopleData.spouse_id,
+        savedPeople,
+        ipAddress,
+        userAgent,
+      );
+    }
+    
+    // If this is a child, log the family member addition for the father
+    if (peopleData.father_id) {
+      await this.activityLogService.logFamilyMemberAdded(
+        peopleData.father_id,
+        savedPeople,
+        ipAddress,
+        userAgent,
+      );
     }
     
     return savedPeople;

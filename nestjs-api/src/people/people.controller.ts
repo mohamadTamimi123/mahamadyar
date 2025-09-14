@@ -52,8 +52,12 @@ export class PeopleController {
   }
 
   @Post()
-  async create(@Body() peopleData: Partial<People>): Promise<People> {
-    return this.peopleService.create(peopleData);
+  async create(@Body() peopleData: Partial<People>, @Req() req: any): Promise<People> {
+    // Get IP address and user agent
+    const ipAddress = req.ip || req.connection.remoteAddress;
+    const userAgent = req.headers['user-agent'];
+    
+    return this.peopleService.create(peopleData, ipAddress, userAgent);
   }
 
   @Put(':id')

@@ -66,6 +66,28 @@ export class ActivityLogService {
     await this.activityLogRepository.delete({ people_id: peopleId });
   }
 
+  // Helper method to log family member addition
+  async logFamilyMemberAdded(
+    peopleId: number,
+    memberData: any,
+    ipAddress?: string,
+    userAgent?: string,
+  ): Promise<ActivityLog> {
+    return this.createActivityLog({
+      people_id: peopleId,
+      activity_type: ActivityType.FAMILY_MEMBER_ADDED,
+      description: `عضو خانواده جدید اضافه شد: ${memberData.name} ${memberData.last_name}`,
+      metadata: {
+        member_name: memberData.name,
+        member_last_name: memberData.last_name,
+        relationship: memberData.relationship,
+        member_id: memberData.id,
+      },
+      ip_address: ipAddress,
+      user_agent: userAgent,
+    });
+  }
+
   // Helper method to log profile completion
   async logProfileCompletion(
     peopleId: number,

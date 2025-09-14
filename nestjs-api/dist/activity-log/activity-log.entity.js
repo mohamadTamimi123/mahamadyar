@@ -17,6 +17,7 @@ var ActivityType;
     ActivityType["PROFILE_CREATED"] = "profile_created";
     ActivityType["PROFILE_UPDATED"] = "profile_updated";
     ActivityType["PROFILE_COMPLETED"] = "profile_completed";
+    ActivityType["FAMILY_MEMBER_ADDED"] = "family_member_added";
     ActivityType["PHOTO_UPLOADED"] = "photo_uploaded";
     ActivityType["PHOTO_DELETED"] = "photo_deleted";
     ActivityType["PROFILE_PHOTO_SET"] = "profile_photo_set";

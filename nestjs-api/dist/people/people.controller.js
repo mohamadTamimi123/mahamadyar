@@ -55,8 +55,10 @@ let PeopleController = class PeopleController {
     async getFamilyTree(id) {
         return this.peopleService.getFamilyTree(id);
     }
-    async create(peopleData) {
-        return this.peopleService.create(peopleData);
+    async create(peopleData, req) {
+        const ipAddress = req.ip || req.connection.remoteAddress;
+        const userAgent = req.headers['user-agent'];
+        return this.peopleService.create(peopleData, ipAddress, userAgent);
     }
     async update(id, peopleData) {
         return this.peopleService.update(id, peopleData);
@@ -120,8 +122,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], PeopleController.prototype, "create", null);
 __decorate([

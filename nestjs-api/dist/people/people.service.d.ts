@@ -7,7 +7,7 @@ export declare class PeopleService {
     constructor(peopleRepository: Repository<People>, activityLogService: ActivityLogService);
     findAll(): Promise<People[]>;
     findOne(id: number): Promise<People | null>;
-    create(peopleData: Partial<People>): Promise<People>;
+    create(peopleData: Partial<People>, ipAddress?: string, userAgent?: string): Promise<People>;
     private generateUniqueRegistrationCode;
     update(id: number, peopleData: Partial<People>): Promise<People>;
     remove(id: number): Promise<void>;

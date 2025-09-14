@@ -56,6 +56,21 @@ let ActivityLogService = class ActivityLogService {
     async deleteActivityLogsByPersonId(peopleId) {
         await this.activityLogRepository.delete({ people_id: peopleId });
     }
+    async logFamilyMemberAdded(peopleId, memberData, ipAddress, userAgent) {
+        return this.createActivityLog({
+            people_id: peopleId,
+            activity_type: activity_log_entity_1.ActivityType.FAMILY_MEMBER_ADDED,
+            description: `عضو خانواده جدید اضافه شد: ${memberData.name} ${memberData.last_name}`,
+            metadata: {
+                member_name: memberData.name,
+                member_last_name: memberData.last_name,
+                relationship: memberData.relationship,
+                member_id: memberData.id,
+            },
+            ip_address: ipAddress,
+            user_agent: userAgent,
+        });
+    }
     async logProfileCompletion(peopleId, profileData, ipAddress, userAgent) {
         return this.createActivityLog({
             people_id: peopleId,

@@ -5,6 +5,7 @@ export enum ActivityType {
   PROFILE_CREATED = 'profile_created',
   PROFILE_UPDATED = 'profile_updated',
   PROFILE_COMPLETED = 'profile_completed',
+  FAMILY_MEMBER_ADDED = 'family_member_added',
   PHOTO_UPLOADED = 'photo_uploaded',
   PHOTO_DELETED = 'photo_deleted',
   PROFILE_PHOTO_SET = 'profile_photo_set',

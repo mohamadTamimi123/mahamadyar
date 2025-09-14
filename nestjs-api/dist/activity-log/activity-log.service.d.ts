@@ -16,6 +16,7 @@ export declare class ActivityLogService {
     getActivityLogsCount(peopleId: number): Promise<number>;
     deleteActivityLog(id: number): Promise<void>;
     deleteActivityLogsByPersonId(peopleId: number): Promise<void>;
+    logFamilyMemberAdded(peopleId: number, memberData: any, ipAddress?: string, userAgent?: string): Promise<ActivityLog>;
     logProfileCompletion(peopleId: number, profileData: any, ipAddress?: string, userAgent?: string): Promise<ActivityLog>;
     logPhotoUpload(peopleId: number, photoData: any, ipAddress?: string, userAgent?: string): Promise<ActivityLog>;
     logProfilePhotoSet(peopleId: number, photoId: number, ipAddress?: string, userAgent?: string): Promise<ActivityLog>;

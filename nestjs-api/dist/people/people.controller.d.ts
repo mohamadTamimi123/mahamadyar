@@ -14,7 +14,7 @@ export declare class PeopleController {
         children: People[];
     }>;
     getFamilyTree(id: number): Promise<People[]>;
-    create(peopleData: Partial<People>): Promise<People>;
+    create(peopleData: Partial<People>, req: any): Promise<People>;
     update(id: number, peopleData: Partial<People>): Promise<People>;
     remove(id: number): Promise<void>;
     completeProfile(id: number, profileData: {

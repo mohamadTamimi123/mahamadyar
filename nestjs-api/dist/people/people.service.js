@@ -36,7 +36,7 @@ let PeopleService = class PeopleService {
             relations: ['father', 'children'],
         });
     }
-    async create(peopleData) {
+    async create(peopleData, ipAddress, userAgent) {
         const registrationCode = await this.generateUniqueRegistrationCode();
         const people = this.peopleRepository.create({
             ...peopleData,
@@ -47,6 +47,10 @@ let PeopleService = class PeopleService {
             await this.peopleRepository.update(peopleData.spouse_id, {
                 spouse_id: savedPeople.id,
             });
+            await this.activityLogService.logFamilyMemberAdded(peopleData.spouse_id, savedPeople, ipAddress, userAgent);
+        }
+        if (peopleData.father_id) {
+            await this.activityLogService.logFamilyMemberAdded(peopleData.father_id, savedPeople, ipAddress, userAgent);
         }
         return savedPeople;
     }
