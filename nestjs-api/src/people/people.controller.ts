@@ -73,6 +73,19 @@ export class PeopleController {
     return this.peopleService.remove(id);
   }
 
+  @Post(':id/add-spouse')
+  async addSpouse(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() spouseData: { name: string; last_name: string },
+    @Req() req: any,
+  ): Promise<People> {
+    // Get IP address and user agent
+    const ipAddress = req.ip || req.connection.remoteAddress;
+    const userAgent = req.headers['user-agent'];
+    
+    return this.peopleService.addSpouse(id, spouseData, ipAddress, userAgent);
+  }
+
   @Put(':id/complete-profile')
   async completeProfile(
     @Param('id', ParseIntPipe) id: number,

@@ -163,6 +163,22 @@ let PeopleService = class PeopleService {
         }
         return familyMembers;
     }
+    async addSpouse(personId, spouseData, ipAddress, userAgent) {
+        const person = await this.findOne(personId);
+        if (!person) {
+            throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
+        }
+        const spouse = await this.create({
+            name: spouseData.name,
+            last_name: spouseData.last_name,
+            spouse_id: personId,
+        }, ipAddress, userAgent);
+        await this.peopleRepository.update(personId, {
+            spouse_id: spouse.id,
+        });
+        await this.activityLogService.logFamilyMemberAdded(personId, spouse, ipAddress, userAgent);
+        return spouse;
+    }
     async completeProfile(personId, profileData, ipAddress, userAgent) {
         const person = await this.findOne(personId);
         if (!person) {

@@ -23,6 +23,10 @@ export declare class PeopleService {
         children: People[];
     }>;
     getFamilyTree(personId: number): Promise<People[]>;
+    addSpouse(personId: number, spouseData: {
+        name: string;
+        last_name: string;
+    }, ipAddress?: string, userAgent?: string): Promise<People>;
     completeProfile(personId: number, profileData: {
         birth_date?: Date;
         birth_place?: string;

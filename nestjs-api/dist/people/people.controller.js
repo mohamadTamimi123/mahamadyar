@@ -66,6 +66,11 @@ let PeopleController = class PeopleController {
     async remove(id) {
         return this.peopleService.remove(id);
     }
+    async addSpouse(id, spouseData, req) {
+        const ipAddress = req.ip || req.connection.remoteAddress;
+        const userAgent = req.headers['user-agent'];
+        return this.peopleService.addSpouse(id, spouseData, ipAddress, userAgent);
+    }
     async completeProfile(id, profileData, req) {
         const processedData = {
             ...profileData,
@@ -142,6 +147,15 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PeopleController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Post)(':id/add-spouse'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object, Object]),
+    __metadata("design:returntype", Promise)
+], PeopleController.prototype, "addSpouse", null);
 __decorate([
     (0, common_1.Put)(':id/complete-profile'),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),

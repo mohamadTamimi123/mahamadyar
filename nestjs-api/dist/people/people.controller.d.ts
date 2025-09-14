@@ -17,6 +17,10 @@ export declare class PeopleController {
     create(peopleData: Partial<People>, req: any): Promise<People>;
     update(id: number, peopleData: Partial<People>): Promise<People>;
     remove(id: number): Promise<void>;
+    addSpouse(id: number, spouseData: {
+        name: string;
+        last_name: string;
+    }, req: any): Promise<People>;
     completeProfile(id: number, profileData: {
         birth_date?: string;
         birth_place?: string;

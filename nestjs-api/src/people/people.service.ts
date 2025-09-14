@@ -220,6 +220,41 @@ export class PeopleService {
     return familyMembers;
   }
 
+  // Add spouse to a person
+  async addSpouse(
+    personId: number,
+    spouseData: { name: string; last_name: string },
+    ipAddress?: string,
+    userAgent?: string,
+  ): Promise<People> {
+    const person = await this.findOne(personId);
+    if (!person) {
+      throw new NotFoundException(`Person with ID ${personId} not found`);
+    }
+
+    // Create spouse
+    const spouse = await this.create({
+      name: spouseData.name,
+      last_name: spouseData.last_name,
+      spouse_id: personId,
+    }, ipAddress, userAgent);
+
+    // Update person's spouse_id
+    await this.peopleRepository.update(personId, {
+      spouse_id: spouse.id,
+    });
+
+    // Log the activity
+    await this.activityLogService.logFamilyMemberAdded(
+      personId,
+      spouse,
+      ipAddress,
+      userAgent,
+    );
+
+    return spouse;
+  }
+
   // Complete profile for a person
   async completeProfile(personId: number, profileData: {
     birth_date?: Date;
