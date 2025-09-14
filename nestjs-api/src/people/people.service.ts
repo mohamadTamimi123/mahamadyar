@@ -2,12 +2,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, IsNull } from 'typeorm';
 import { People } from './people.entity';
+import { ActivityLogService } from '../activity-log/activity-log.service';
 
 @Injectable()
 export class PeopleService {
   constructor(
     @InjectRepository(People)
     private peopleRepository: Repository<People>,
+    private activityLogService: ActivityLogService,
   ) {}
 
   async findAll(): Promise<People[]> {
@@ -167,7 +169,7 @@ export class PeopleService {
     job?: string;
     current_location?: string;
     profile_photo?: string;
-  }): Promise<People> {
+  }, ipAddress?: string, userAgent?: string): Promise<People> {
     const person = await this.findOne(personId);
     if (!person) {
       throw new NotFoundException(`Person with ID ${personId} not found`);
@@ -178,6 +180,16 @@ export class PeopleService {
       profile_completed: true,
     };
 
-    return this.update(personId, updatedData);
+    const updatedPerson = await this.update(personId, updatedData);
+
+    // Log the activity
+    await this.activityLogService.logProfileCompletion(
+      personId,
+      profileData,
+      ipAddress,
+      userAgent,
+    );
+
+    return updatedPerson;
   }
 }

@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { PeopleModule } from './people/people.module';
 import { AuthModule } from './auth/auth.module';
 import { PhotoModule } from './photo/photo.module';
+import { ActivityLogModule } from './activity-log/activity-log.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { PhotoModule } from './photo/photo.module';
     PeopleModule,
     AuthModule,
     PhotoModule,
+    ActivityLogModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe, NotFoundException, Query } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe, NotFoundException, Query, Req } from '@nestjs/common';
 import { PeopleService } from './people.service';
 import { People } from './people.entity';
 
@@ -79,6 +79,7 @@ export class PeopleController {
       current_location?: string;
       profile_photo?: string;
     },
+    @Req() req: any,
   ): Promise<People> {
     // Convert birth_date string to Date if provided
     const processedData = {
@@ -86,6 +87,10 @@ export class PeopleController {
       birth_date: profileData.birth_date ? new Date(profileData.birth_date) : undefined,
     };
     
-    return this.peopleService.completeProfile(id, processedData);
+    // Get IP address and user agent
+    const ipAddress = req.ip || req.connection.remoteAddress;
+    const userAgent = req.headers['user-agent'];
+    
+    return this.peopleService.completeProfile(id, processedData, ipAddress, userAgent);
   }
 }

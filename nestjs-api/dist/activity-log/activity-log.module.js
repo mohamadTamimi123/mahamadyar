@@ -6,24 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PeopleModule = void 0;
+exports.ActivityLogModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const people_controller_1 = require("./people.controller");
-const people_service_1 = require("./people.service");
-const people_entity_1 = require("./people.entity");
-const activity_log_module_1 = require("../activity-log/activity-log.module");
-let PeopleModule = class PeopleModule {
+const activity_log_entity_1 = require("./activity-log.entity");
+const activity_log_service_1 = require("./activity-log.service");
+const activity_log_controller_1 = require("./activity-log.controller");
+let ActivityLogModule = class ActivityLogModule {
 };
-exports.PeopleModule = PeopleModule;
-exports.PeopleModule = PeopleModule = __decorate([
+exports.ActivityLogModule = ActivityLogModule;
+exports.ActivityLogModule = ActivityLogModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            typeorm_1.TypeOrmModule.forFeature([people_entity_1.People]),
-            activity_log_module_1.ActivityLogModule,
-        ],
-        controllers: [people_controller_1.PeopleController],
-        providers: [people_service_1.PeopleService],
+        imports: [typeorm_1.TypeOrmModule.forFeature([activity_log_entity_1.ActivityLog])],
+        providers: [activity_log_service_1.ActivityLogService],
+        controllers: [activity_log_controller_1.ActivityLogController],
+        exports: [activity_log_service_1.ActivityLogService],
     })
-], PeopleModule);
-//# sourceMappingURL=people.module.js.map
+], ActivityLogModule);
+//# sourceMappingURL=activity-log.module.js.map

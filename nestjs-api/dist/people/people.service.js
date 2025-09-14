@@ -17,10 +17,13 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const people_entity_1 = require("./people.entity");
+const activity_log_service_1 = require("../activity-log/activity-log.service");
 let PeopleService = class PeopleService {
     peopleRepository;
-    constructor(peopleRepository) {
+    activityLogService;
+    constructor(peopleRepository, activityLogService) {
         this.peopleRepository = peopleRepository;
+        this.activityLogService = activityLogService;
     }
     async findAll() {
         return this.peopleRepository.find({
@@ -130,7 +133,7 @@ let PeopleService = class PeopleService {
         }
         return familyMembers;
     }
-    async completeProfile(personId, profileData) {
+    async completeProfile(personId, profileData, ipAddress, userAgent) {
         const person = await this.findOne(personId);
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
@@ -139,13 +142,16 @@ let PeopleService = class PeopleService {
             ...profileData,
             profile_completed: true,
         };
-        return this.update(personId, updatedData);
+        const updatedPerson = await this.update(personId, updatedData);
+        await this.activityLogService.logProfileCompletion(personId, profileData, ipAddress, userAgent);
+        return updatedPerson;
     }
 };
 exports.PeopleService = PeopleService;
 exports.PeopleService = PeopleService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(people_entity_1.People)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        activity_log_service_1.ActivityLogService])
 ], PeopleService);
 //# sourceMappingURL=people.service.js.map

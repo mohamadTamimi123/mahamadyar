@@ -1,8 +1,10 @@
 import { Repository } from 'typeorm';
 import { People } from './people.entity';
+import { ActivityLogService } from '../activity-log/activity-log.service';
 export declare class PeopleService {
     private peopleRepository;
-    constructor(peopleRepository: Repository<People>);
+    private activityLogService;
+    constructor(peopleRepository: Repository<People>, activityLogService: ActivityLogService);
     findAll(): Promise<People[]>;
     findOne(id: number): Promise<People | null>;
     create(peopleData: Partial<People>): Promise<People>;
@@ -27,5 +29,5 @@ export declare class PeopleService {
         job?: string;
         current_location?: string;
         profile_photo?: string;
-    }): Promise<People>;
+    }, ipAddress?: string, userAgent?: string): Promise<People>;
 }

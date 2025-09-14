@@ -23,5 +23,5 @@ export declare class PeopleController {
         job?: string;
         current_location?: string;
         profile_photo?: string;
-    }): Promise<People>;
+    }, req: any): Promise<People>;
 }

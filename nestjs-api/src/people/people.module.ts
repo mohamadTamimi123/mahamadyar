@@ -3,9 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PeopleController } from './people.controller';
 import { PeopleService } from './people.service';
 import { People } from './people.entity';
+import { ActivityLogModule } from '../activity-log/activity-log.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([People])],
+  imports: [
+    TypeOrmModule.forFeature([People]),
+    ActivityLogModule,
+  ],
   controllers: [PeopleController],
   providers: [PeopleService],
 })
