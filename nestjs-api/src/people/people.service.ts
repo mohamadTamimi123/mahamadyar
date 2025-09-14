@@ -1,0 +1,109 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, IsNull } from 'typeorm';
+import { People } from './people.entity';
+
+@Injectable()
+export class PeopleService {
+  constructor(
+    @InjectRepository(People)
+    private peopleRepository: Repository<People>,
+  ) {}
+
+  async findAll(): Promise<People[]> {
+    return this.peopleRepository.find({
+      relations: ['father', 'children'],
+    });
+  }
+
+  async findOne(id: number): Promise<People | null> {
+    return this.peopleRepository.findOne({
+      where: { id },
+      relations: ['father', 'children'],
+    });
+  }
+
+  async create(peopleData: Partial<People>): Promise<People> {
+    // Generate unique registration code
+    const registrationCode = await this.generateUniqueRegistrationCode();
+    
+    const people = this.peopleRepository.create({
+      ...peopleData,
+      registration_code: registrationCode,
+    });
+    return this.peopleRepository.save(people);
+  }
+
+  private async generateUniqueRegistrationCode(): Promise<string> {
+    let code: string = '';
+    let isUnique = false;
+    
+    while (!isUnique) {
+      // Generate a 6-digit code with prefix "REG"
+      const randomNumber = Math.floor(100000 + Math.random() * 900000);
+      code = `REG${randomNumber}`;
+      
+      // Check if code already exists
+      const existingPerson = await this.peopleRepository.findOne({
+        where: { registration_code: code }
+      });
+      
+      if (!existingPerson) {
+        isUnique = true;
+      }
+    }
+    
+    return code;
+  }
+
+  async update(id: number, peopleData: Partial<People>): Promise<People> {
+    await this.peopleRepository.update(id, peopleData);
+    const updatedPeople = await this.findOne(id);
+    if (!updatedPeople) {
+      throw new NotFoundException(`People with ID ${id} not found`);
+    }
+    return updatedPeople;
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.peopleRepository.delete(id);
+  }
+
+  // Get all people with their fathers
+  async findAllWithFathers(): Promise<People[]> {
+    return this.peopleRepository.find({
+      relations: ['father'],
+    });
+  }
+
+  // Get all people with their children
+  async findAllWithChildren(): Promise<People[]> {
+    return this.peopleRepository.find({
+      relations: ['children'],
+    });
+  }
+
+  // Get people by father_id
+  async findByFatherId(fatherId: number): Promise<People[]> {
+    return this.peopleRepository.find({
+      where: { father_id: fatherId },
+      relations: ['father', 'children'],
+    });
+  }
+
+  // Get people without father (root level)
+  async findRootPeople(): Promise<People[]> {
+    return this.peopleRepository.find({
+      where: { father_id: IsNull() },
+      relations: ['children'],
+    });
+  }
+
+  // Find person by registration code
+  async findByRegistrationCode(registrationCode: string): Promise<People | null> {
+    return this.peopleRepository.findOne({
+      where: { registration_code: registrationCode },
+      relations: ['father', 'children'],
+    });
+  }
+}
