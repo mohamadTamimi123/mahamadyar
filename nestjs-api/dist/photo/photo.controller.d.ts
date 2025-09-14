@@ -1,5 +1,6 @@
-import { PhotoService, UpdatePhotoDto } from './photo.service';
-import { Response } from 'express';
+import { PhotoService } from './photo.service';
+import type { UpdatePhotoDto } from './photo.service';
+import type { Response } from 'express';
 export declare class PhotoController {
     private readonly photoService;
     constructor(photoService: PhotoService);

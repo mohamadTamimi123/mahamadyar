@@ -14,9 +14,10 @@ import {
   Res
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { PhotoService, CreatePhotoDto, UpdatePhotoDto } from './photo.service';
+import { PhotoService, CreatePhotoDto } from './photo.service';
+import type { UpdatePhotoDto } from './photo.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { Response } from 'express';
+import type { Response } from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
 
