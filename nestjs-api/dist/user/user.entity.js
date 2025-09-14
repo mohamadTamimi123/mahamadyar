@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 const people_entity_1 = require("../people/people.entity");
+const photo_entity_1 = require("../photo/photo.entity");
 let User = class User {
     id;
     email;
@@ -20,6 +21,7 @@ let User = class User {
     phone;
     people_id;
     people;
+    photos;
     createdAt;
     updatedAt;
 };
@@ -53,6 +55,10 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: 'people_id' }),
     __metadata("design:type", people_entity_1.People)
 ], User.prototype, "people", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => photo_entity_1.Photo, photo => photo.user),
+    __metadata("design:type", Array)
+], User.prototype, "photos", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

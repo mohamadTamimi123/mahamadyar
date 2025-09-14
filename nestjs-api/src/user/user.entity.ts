@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { People } from '../people/people.entity';
+import { Photo } from '../photo/photo.entity';
 
 @Entity('users')
 export class User {
@@ -24,6 +25,9 @@ export class User {
   @OneToOne(() => People, { nullable: true })
   @JoinColumn({ name: 'people_id' })
   people: People;
+
+  @OneToMany(() => Photo, photo => photo.user)
+  photos: Photo[];
 
   @CreateDateColumn()
   createdAt: Date;
