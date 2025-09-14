@@ -68,4 +68,24 @@ export class PeopleController {
   async remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.peopleService.remove(id);
   }
+
+  @Put(':id/complete-profile')
+  async completeProfile(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() profileData: {
+      birth_date?: string;
+      birth_place?: string;
+      job?: string;
+      current_location?: string;
+      profile_photo?: string;
+    },
+  ): Promise<People> {
+    // Convert birth_date string to Date if provided
+    const processedData = {
+      ...profileData,
+      birth_date: profileData.birth_date ? new Date(profileData.birth_date) : undefined,
+    };
+    
+    return this.peopleService.completeProfile(id, processedData);
+  }
 }

@@ -21,4 +21,11 @@ export declare class PeopleService {
         children: People[];
     }>;
     getFamilyTree(personId: number): Promise<People[]>;
+    completeProfile(personId: number, profileData: {
+        birth_date?: Date;
+        birth_place?: string;
+        job?: string;
+        current_location?: string;
+        profile_photo?: string;
+    }): Promise<People>;
 }

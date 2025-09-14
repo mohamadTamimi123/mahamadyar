@@ -17,4 +17,11 @@ export declare class PeopleController {
     create(peopleData: Partial<People>): Promise<People>;
     update(id: number, peopleData: Partial<People>): Promise<People>;
     remove(id: number): Promise<void>;
+    completeProfile(id: number, profileData: {
+        birth_date?: string;
+        birth_place?: string;
+        job?: string;
+        current_location?: string;
+        profile_photo?: string;
+    }): Promise<People>;
 }

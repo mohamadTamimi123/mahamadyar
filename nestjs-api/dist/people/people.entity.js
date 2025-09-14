@@ -19,6 +19,12 @@ let People = class People {
     registration_code;
     father_id;
     spouse_id;
+    birth_date;
+    birth_place;
+    job;
+    current_location;
+    profile_photo;
+    profile_completed;
     father;
     children;
     spouse;
@@ -52,6 +58,30 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], People.prototype, "spouse_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Date)
+], People.prototype, "birth_date", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], People.prototype, "birth_place", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], People.prototype, "job", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], People.prototype, "current_location", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], People.prototype, "profile_photo", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], People.prototype, "profile_completed", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => People, (people) => people.children, { nullable: true }),
     (0, typeorm_1.JoinColumn)({ name: 'father_id' }),

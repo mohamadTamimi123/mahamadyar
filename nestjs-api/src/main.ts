@@ -4,6 +4,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
+  // Increase payload size limit for image uploads
+  app.use(require('express').json({ limit: '10mb' }));
+  app.use(require('express').urlencoded({ limit: '10mb', extended: true }));
+  
   // Enable CORS
   app.enableCors({
     origin: ['http://localhost:3001', 'http://127.0.0.1:3001'],

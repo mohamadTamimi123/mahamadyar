@@ -21,6 +21,24 @@ export class People {
   @Column({ nullable: true })
   spouse_id: number;
 
+  @Column({ nullable: true })
+  birth_date: Date;
+
+  @Column({ nullable: true })
+  birth_place: string;
+
+  @Column({ nullable: true })
+  job: string;
+
+  @Column({ nullable: true })
+  current_location: string;
+
+  @Column({ nullable: true })
+  profile_photo: string;
+
+  @Column({ default: false })
+  profile_completed: boolean;
+
   // Self-referencing relationship - Father
   @ManyToOne(() => People, (people) => people.children, { nullable: true })
   @JoinColumn({ name: 'father_id' })

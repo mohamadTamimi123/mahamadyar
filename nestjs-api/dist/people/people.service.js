@@ -130,6 +130,17 @@ let PeopleService = class PeopleService {
         }
         return familyMembers;
     }
+    async completeProfile(personId, profileData) {
+        const person = await this.findOne(personId);
+        if (!person) {
+            throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
+        }
+        const updatedData = {
+            ...profileData,
+            profile_completed: true,
+        };
+        return this.update(personId, updatedData);
+    }
 };
 exports.PeopleService = PeopleService;
 exports.PeopleService = PeopleService = __decorate([

@@ -64,6 +64,13 @@ let PeopleController = class PeopleController {
     async remove(id) {
         return this.peopleService.remove(id);
     }
+    async completeProfile(id, profileData) {
+        const processedData = {
+            ...profileData,
+            birth_date: profileData.birth_date ? new Date(profileData.birth_date) : undefined,
+        };
+        return this.peopleService.completeProfile(id, processedData);
+    }
 };
 exports.PeopleController = PeopleController;
 __decorate([
@@ -130,6 +137,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PeopleController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Put)(':id/complete-profile'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], PeopleController.prototype, "completeProfile", null);
 exports.PeopleController = PeopleController = __decorate([
     (0, common_1.Controller)('people'),
     __metadata("design:paramtypes", [people_service_1.PeopleService])

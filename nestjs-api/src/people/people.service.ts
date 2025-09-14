@@ -159,4 +159,25 @@ export class PeopleService {
 
     return familyMembers;
   }
+
+  // Complete profile for a person
+  async completeProfile(personId: number, profileData: {
+    birth_date?: Date;
+    birth_place?: string;
+    job?: string;
+    current_location?: string;
+    profile_photo?: string;
+  }): Promise<People> {
+    const person = await this.findOne(personId);
+    if (!person) {
+      throw new NotFoundException(`Person with ID ${personId} not found`);
+    }
+
+    const updatedData = {
+      ...profileData,
+      profile_completed: true,
+    };
+
+    return this.update(personId, updatedData);
+  }
 }

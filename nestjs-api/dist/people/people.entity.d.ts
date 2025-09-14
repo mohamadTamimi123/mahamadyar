@@ -6,6 +6,12 @@ export declare class People {
     registration_code: string;
     father_id: number;
     spouse_id: number;
+    birth_date: Date;
+    birth_place: string;
+    job: string;
+    current_location: string;
+    profile_photo: string;
+    profile_completed: boolean;
     father: People;
     children: People[];
     spouse: People;
