@@ -128,60 +128,74 @@ let PeopleService = class PeopleService {
             relations: ['father', 'spouse', 'children'],
             cache: false,
         });
+        console.log('=== FAMILY TREE DEBUG ===');
         console.log('All people from database:', allPeople.length);
-        console.log('All people IDs:', allPeople.map(p => ({ id: p.id, name: p.name, father_id: p.father_id, spouse_id: p.spouse_id })));
+        console.log('All people details:', allPeople.map(p => ({
+            id: p.id,
+            name: p.name,
+            last_name: p.last_name,
+            father_id: p.father_id,
+            spouse_id: p.spouse_id,
+            has_father: !!p.father,
+            has_spouse: !!p.spouse,
+            children_count: p.children?.length || 0
+        })));
         const person = allPeople.find(p => p.id === personId);
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
         }
-        console.log('Main person:', { id: person.id, name: person.name, father_id: person.father_id, spouse_id: person.spouse_id });
-        console.log('Person children:', person.children?.map(c => ({ id: c.id, name: c.name })));
-        console.log('Person spouse:', person.spouse ? { id: person.spouse.id, name: person.spouse.name } : null);
-        const familyMembers = [person];
-        const processedIds = new Set([personId]);
-        if (person.father && !processedIds.has(person.father.id)) {
-            familyMembers.push(person.father);
-            processedIds.add(person.father.id);
-            if (person.father.spouse && !processedIds.has(person.father.spouse.id)) {
-                familyMembers.push(person.father.spouse);
-                processedIds.add(person.father.spouse.id);
-            }
-        }
-        if (person.spouse && !processedIds.has(person.spouse.id)) {
-            familyMembers.push(person.spouse);
-            processedIds.add(person.spouse.id);
-            if (person.spouse.father && !processedIds.has(person.spouse.father.id)) {
-                familyMembers.push(person.spouse.father);
-                processedIds.add(person.spouse.father.id);
-            }
-        }
-        if (person.children && person.children.length > 0) {
-            for (const child of person.children) {
-                if (!processedIds.has(child.id)) {
-                    familyMembers.push(child);
-                    processedIds.add(child.id);
-                    if (child.spouse && !processedIds.has(child.spouse.id)) {
-                        familyMembers.push(child.spouse);
-                        processedIds.add(child.spouse.id);
-                    }
+        console.log('Main person:', {
+            id: person.id,
+            name: person.name,
+            last_name: person.last_name,
+            father_id: person.father_id,
+            spouse_id: person.spouse_id
+        });
+        const familyMembers = [];
+        const processedIds = new Set();
+        familyMembers.push(person);
+        processedIds.add(person.id);
+        for (const p of allPeople) {
+            if (processedIds.has(p.id))
+                continue;
+            let isConnected = false;
+            for (const familyMember of familyMembers) {
+                if (p.id === familyMember.father_id) {
+                    isConnected = true;
+                    break;
+                }
+                if (p.id === familyMember.spouse_id) {
+                    isConnected = true;
+                    break;
+                }
+                if (familyMember.children?.some(child => child.id === p.id)) {
+                    isConnected = true;
+                    break;
+                }
+                if (p.father_id && familyMembers.some(fm => fm.id === p.father_id)) {
+                    isConnected = true;
+                    break;
+                }
+                if (p.spouse_id && familyMembers.some(fm => fm.id === p.spouse_id)) {
+                    isConnected = true;
+                    break;
                 }
             }
-        }
-        if (person.father) {
-            const siblings = allPeople.filter(p => p.father_id === person.father_id &&
-                p.id !== personId &&
-                !processedIds.has(p.id));
-            for (const sibling of siblings) {
-                familyMembers.push(sibling);
-                processedIds.add(sibling.id);
-                if (sibling.spouse && !processedIds.has(sibling.spouse.id)) {
-                    familyMembers.push(sibling.spouse);
-                    processedIds.add(sibling.spouse.id);
-                }
+            if (isConnected) {
+                familyMembers.push(p);
+                processedIds.add(p.id);
+                console.log(`Added connected person: ${p.name} ${p.last_name} (ID: ${p.id})`);
             }
         }
-        console.log('Final family members:', familyMembers.length);
-        console.log('Family member IDs:', familyMembers.map(f => ({ id: f.id, name: f.name })));
+        console.log('=== FINAL RESULT ===');
+        console.log('Final family members count:', familyMembers.length);
+        console.log('Final family members:', familyMembers.map(f => ({
+            id: f.id,
+            name: f.name,
+            last_name: f.last_name,
+            father_id: f.father_id,
+            spouse_id: f.spouse_id
+        })));
         return familyMembers;
     }
     async addSpouse(personId, spouseData, ipAddress, userAgent) {
