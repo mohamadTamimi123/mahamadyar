@@ -124,10 +124,10 @@ let PeopleService = class PeopleService {
         };
     }
     async getFamilyTree(personId) {
-        const person = await this.peopleRepository.findOne({
-            where: { id: personId },
+        const allPeople = await this.peopleRepository.find({
             relations: ['father', 'spouse', 'children'],
         });
+        const person = allPeople.find(p => p.id === personId);
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
         }

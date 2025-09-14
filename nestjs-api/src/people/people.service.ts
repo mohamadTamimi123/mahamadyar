@@ -163,11 +163,12 @@ export class PeopleService {
 
   // Get family tree for a person
   async getFamilyTree(personId: number): Promise<People[]> {
-    const person = await this.peopleRepository.findOne({
-      where: { id: personId },
+    // Get all people with their relations
+    const allPeople = await this.peopleRepository.find({
       relations: ['father', 'spouse', 'children'],
     });
 
+    const person = allPeople.find(p => p.id === personId);
     if (!person) {
       throw new NotFoundException(`Person with ID ${personId} not found`);
     }
