@@ -11,7 +11,7 @@ export class People {
   @Column({ nullable: true })
   last_name: string;
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: true })
   registration_code: string;
 
   @Column({ nullable: true })

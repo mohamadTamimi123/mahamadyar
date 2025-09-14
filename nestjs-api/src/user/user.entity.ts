@@ -11,6 +11,9 @@ export class User {
   @Column()
   name: string;
 
+  @Column()
+  password: string;
+
   @Column({ nullable: true })
   phone: string;
 

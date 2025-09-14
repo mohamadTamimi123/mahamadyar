@@ -34,8 +34,27 @@ let PeopleService = class PeopleService {
         });
     }
     async create(peopleData) {
-        const people = this.peopleRepository.create(peopleData);
+        const registrationCode = await this.generateUniqueRegistrationCode();
+        const people = this.peopleRepository.create({
+            ...peopleData,
+            registration_code: registrationCode,
+        });
         return this.peopleRepository.save(people);
+    }
+    async generateUniqueRegistrationCode() {
+        let code = '';
+        let isUnique = false;
+        while (!isUnique) {
+            const randomNumber = Math.floor(100000 + Math.random() * 900000);
+            code = `REG${randomNumber}`;
+            const existingPerson = await this.peopleRepository.findOne({
+                where: { registration_code: code }
+            });
+            if (!existingPerson) {
+                isUnique = true;
+            }
+        }
+        return code;
     }
     async update(id, peopleData) {
         await this.peopleRepository.update(id, peopleData);
@@ -68,6 +87,12 @@ let PeopleService = class PeopleService {
         return this.peopleRepository.find({
             where: { father_id: (0, typeorm_2.IsNull)() },
             relations: ['children'],
+        });
+    }
+    async findByRegistrationCode(registrationCode) {
+        return this.peopleRepository.findOne({
+            where: { registration_code: registrationCode },
+            relations: ['father', 'children'],
         });
     }
 };

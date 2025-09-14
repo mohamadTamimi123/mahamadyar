@@ -15,6 +15,7 @@ let People = class People {
     id;
     name;
     last_name;
+    registration_code;
     father_id;
     spouse_id;
     father;
@@ -37,6 +38,10 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], People.prototype, "last_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true, nullable: true }),
+    __metadata("design:type", String)
+], People.prototype, "registration_code", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)

@@ -42,6 +42,13 @@ let PeopleController = class PeopleController {
     async findByFatherId(fatherId) {
         return this.peopleService.findByFatherId(fatherId);
     }
+    async findByRegistrationCode(registrationCode) {
+        const people = await this.peopleService.findByRegistrationCode(registrationCode);
+        if (!people) {
+            throw new common_1.NotFoundException(`People with registration code ${registrationCode} not found`);
+        }
+        return people;
+    }
     async create(peopleData) {
         return this.peopleService.create(peopleData);
     }
@@ -74,6 +81,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PeopleController.prototype, "findByFatherId", null);
+__decorate([
+    (0, common_1.Get)('code/:registrationCode'),
+    __param(0, (0, common_1.Param)('registrationCode')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PeopleController.prototype, "findByRegistrationCode", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

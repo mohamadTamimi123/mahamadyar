@@ -6,6 +6,7 @@ export declare class PeopleController {
     findAll(withParam?: string): Promise<People[]>;
     findOne(id: number): Promise<People>;
     findByFatherId(fatherId: number): Promise<People[]>;
+    findByRegistrationCode(registrationCode: string): Promise<People>;
     create(peopleData: Partial<People>): Promise<People>;
     update(id: number, peopleData: Partial<People>): Promise<People>;
     remove(id: number): Promise<void>;
