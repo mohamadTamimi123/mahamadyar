@@ -126,11 +126,17 @@ let PeopleService = class PeopleService {
     async getFamilyTree(personId) {
         const allPeople = await this.peopleRepository.find({
             relations: ['father', 'spouse', 'children'],
+            cache: false,
         });
+        console.log('All people from database:', allPeople.length);
+        console.log('All people IDs:', allPeople.map(p => ({ id: p.id, name: p.name, father_id: p.father_id, spouse_id: p.spouse_id })));
         const person = allPeople.find(p => p.id === personId);
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
         }
+        console.log('Main person:', { id: person.id, name: person.name, father_id: person.father_id, spouse_id: person.spouse_id });
+        console.log('Person children:', person.children?.map(c => ({ id: c.id, name: c.name })));
+        console.log('Person spouse:', person.spouse ? { id: person.spouse.id, name: person.spouse.name } : null);
         const familyMembers = [person];
         const processedIds = new Set([personId]);
         if (person.father && !processedIds.has(person.father.id)) {
@@ -174,6 +180,8 @@ let PeopleService = class PeopleService {
                 }
             }
         }
+        console.log('Final family members:', familyMembers.length);
+        console.log('Family member IDs:', familyMembers.map(f => ({ id: f.id, name: f.name })));
         return familyMembers;
     }
     async addSpouse(personId, spouseData, ipAddress, userAgent) {
