@@ -38,6 +38,8 @@ const typeorm_1 = require("typeorm");
 const bcrypt = __importStar(require("bcryptjs"));
 const dotenv_1 = require("dotenv");
 const user_entity_1 = require("./user.entity");
+const people_entity_1 = require("../people/people.entity");
+const photo_entity_1 = require("../photo/photo.entity");
 (0, dotenv_1.config)();
 const AppDataSource = new typeorm_1.DataSource({
     type: 'postgres',
@@ -46,7 +48,7 @@ const AppDataSource = new typeorm_1.DataSource({
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_DATABASE || 'nestjs_db',
-    entities: [user_entity_1.User],
+    entities: [user_entity_1.User, people_entity_1.People, photo_entity_1.Photo],
     synchronize: false,
 });
 async function main() {
