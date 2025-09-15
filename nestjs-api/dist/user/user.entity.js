@@ -22,6 +22,7 @@ let User = class User {
     people_id;
     people;
     photos;
+    role;
     createdAt;
     updatedAt;
 };
@@ -59,6 +60,15 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => photo_entity_1.Photo, photo => photo.user),
     __metadata("design:type", Array)
 ], User.prototype, "photos", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 32,
+        default: 'user',
+        comment: 'User role: admin | branch_manager | user'
+    }),
+    __metadata("design:type", String)
+], User.prototype, "role", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

@@ -9,6 +9,7 @@ export declare class User {
     people_id: number;
     people: People;
     photos: Photo[];
+    role: string;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -89,7 +89,7 @@ let AuthService = class AuthService {
             people_id: people.id,
         });
         const savedUser = await this.userRepository.save(user);
-        const payload = { sub: savedUser.id, email: savedUser.email };
+        const payload = { sub: savedUser.id, email: savedUser.email, role: savedUser.role };
         const token = this.jwtService.sign(payload);
         const { password: _, ...userWithoutPassword } = savedUser;
         return {
@@ -107,7 +107,7 @@ let AuthService = class AuthService {
         if (!isPasswordValid) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
-        const payload = { sub: user.id, email: user.email };
+        const payload = { sub: user.id, email: user.email, role: user.role };
         const token = this.jwtService.sign(payload);
         const { password: _, ...userWithoutPassword } = user;
         return {

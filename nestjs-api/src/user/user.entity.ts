@@ -29,6 +29,14 @@ export class User {
   @OneToMany(() => Photo, photo => photo.user)
   photos: Photo[];
 
+  @Column({
+    type: 'varchar',
+    length: 32,
+    default: 'user',
+    comment: 'User role: admin | branch_manager | user'
+  })
+  role: string;
+
   @CreateDateColumn()
   createdAt: Date;
 
