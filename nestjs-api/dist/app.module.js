@@ -17,6 +17,9 @@ const people_module_1 = require("./people/people.module");
 const auth_module_1 = require("./auth/auth.module");
 const photo_module_1 = require("./photo/photo.module");
 const activity_log_module_1 = require("./activity-log/activity-log.module");
+const groups_module_1 = require("./groups/groups.module");
+const notifications_module_1 = require("./notifications/notifications.module");
+const events_module_1 = require("./events/events.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -45,6 +48,9 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             photo_module_1.PhotoModule,
             activity_log_module_1.ActivityLogModule,
+            groups_module_1.GroupsModule,
+            notifications_module_1.NotificationsModule,
+            events_module_1.EventsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

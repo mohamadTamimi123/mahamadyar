@@ -8,6 +8,9 @@ import { PeopleModule } from './people/people.module';
 import { AuthModule } from './auth/auth.module';
 import { PhotoModule } from './photo/photo.module';
 import { ActivityLogModule } from './activity-log/activity-log.module';
+import { GroupsModule } from './groups/groups.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -33,6 +36,9 @@ import { ActivityLogModule } from './activity-log/activity-log.module';
     AuthModule,
     PhotoModule,
     ActivityLogModule,
+    GroupsModule,
+    NotificationsModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
