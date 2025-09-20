@@ -65,18 +65,6 @@ const majorCities = {
     'PRK': ['Pyongyang', 'Hamhung', 'Chongjin', 'Nampo', 'Wonsan', 'Sinuiju', 'Tanchon', 'Kaechon'],
     'TWN': ['Taipei', 'Kaohsiung', 'Taichung', 'Tainan', 'Banqiao', 'Hsinchu', 'Taoyuan', 'Keelung'],
     'HKG': ['Hong Kong'],
-    'MAC': ['Macau'],
-    'MYS': ['Kuala Lumpur', 'George Town', 'Ipoh', 'Shah Alam', 'Petaling Jaya', 'Klang', 'Johor Bahru', 'Subang Jaya'],
-    'IDN': ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang', 'Makassar', 'Palembang', 'Tangerang'],
-    'PHL': ['Quezon City', 'Manila', 'Caloocan', 'Davao City', 'Cebu City', 'Zamboanga City', 'Antipolo', 'Pasig'],
-    'BRN': ['Bandar Seri Begawan', 'Kuala Belait', 'Seria', 'Tutong', 'Bangar', 'Kampong Ayer'],
-    'TLS': ['Dili', 'Baucau', 'Maliana', 'Suai', 'Liquiçá', 'Aileu', 'Manatuto', 'Viqueque'],
-    'MMR': ['Yangon', 'Mandalay', 'Naypyidaw', 'Mawlamyine', 'Taunggyi', 'Monywa', 'Meiktila', 'Sittwe'],
-    'MNG': ['Ulaanbaatar', 'Darkhan', 'Erdenet', 'Choibalsan', 'Mörön', 'Khovd', 'Ölgii', 'Bayankhongor'],
-    'KOR': ['Seoul', 'Busan', 'Incheon', 'Daegu', 'Daejeon', 'Gwangju', 'Suwon', 'Ulsan'],
-    'PRK': ['Pyongyang', 'Hamhung', 'Chongjin', 'Nampo', 'Wonsan', 'Sinuiju', 'Tanchon', 'Kaechon'],
-    'TWN': ['Taipei', 'Kaohsiung', 'Taichung', 'Tainan', 'Banqiao', 'Hsinchu', 'Taoyuan', 'Keelung'],
-    'HKG': ['Hong Kong'],
     'MAC': ['Macau']
 };
 async function seedCitiesManually() {
