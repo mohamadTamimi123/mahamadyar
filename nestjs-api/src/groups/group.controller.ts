@@ -38,8 +38,8 @@ export class GroupController {
     const userId = req.user.id;
     const userRole = req.user.role;
     
-    // Only branch managers and admins can create groups
-    if (userRole !== 'branch_manager' && userRole !== 'admin') {
+    // Only branch managers can create groups
+    if (userRole !== 'branch_manager') {
       throw new ForbiddenException('Only branch managers can create groups');
     }
     

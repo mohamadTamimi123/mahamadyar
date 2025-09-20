@@ -38,7 +38,7 @@ let GroupController = class GroupController {
     async create(groupData, req) {
         const userId = req.user.id;
         const userRole = req.user.role;
-        if (userRole !== 'branch_manager' && userRole !== 'admin') {
+        if (userRole !== 'branch_manager') {
             throw new common_1.ForbiddenException('Only branch managers can create groups');
         }
         return this.groupService.create({
