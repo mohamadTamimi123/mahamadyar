@@ -40,6 +40,8 @@ const dotenv_1 = require("dotenv");
 const user_entity_1 = require("./user.entity");
 const people_entity_1 = require("../people/people.entity");
 const photo_entity_1 = require("../photo/photo.entity");
+const country_entity_1 = require("../country/country.entity");
+const city_entity_1 = require("../city/city.entity");
 (0, dotenv_1.config)();
 const AppDataSource = new typeorm_1.DataSource({
     type: 'postgres',
@@ -48,7 +50,7 @@ const AppDataSource = new typeorm_1.DataSource({
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_DATABASE || 'nestjs_db',
-    entities: [user_entity_1.User, people_entity_1.People, photo_entity_1.Photo],
+    entities: [user_entity_1.User, people_entity_1.People, photo_entity_1.Photo, country_entity_1.Country, city_entity_1.City],
     synchronize: false,
 });
 async function main() {

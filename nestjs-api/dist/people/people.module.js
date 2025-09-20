@@ -11,6 +11,8 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const people_controller_1 = require("./people.controller");
 const people_service_1 = require("./people.service");
+const family_tree_controller_1 = require("./family-tree.controller");
+const family_tree_service_1 = require("./family-tree.service");
 const people_entity_1 = require("./people.entity");
 const activity_log_module_1 = require("../activity-log/activity-log.module");
 let PeopleModule = class PeopleModule {
@@ -22,8 +24,9 @@ exports.PeopleModule = PeopleModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([people_entity_1.People]),
             activity_log_module_1.ActivityLogModule,
         ],
-        controllers: [people_controller_1.PeopleController],
-        providers: [people_service_1.PeopleService],
+        controllers: [people_controller_1.PeopleController, family_tree_controller_1.FamilyTreeController],
+        providers: [people_service_1.PeopleService, family_tree_service_1.FamilyTreeService],
+        exports: [family_tree_service_1.FamilyTreeService],
     })
 ], PeopleModule);
 //# sourceMappingURL=people.module.js.map
