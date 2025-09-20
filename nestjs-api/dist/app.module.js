@@ -20,6 +20,8 @@ const activity_log_module_1 = require("./activity-log/activity-log.module");
 const groups_module_1 = require("./groups/groups.module");
 const notifications_module_1 = require("./notifications/notifications.module");
 const events_module_1 = require("./events/events.module");
+const country_module_1 = require("./country/country.module");
+const city_module_1 = require("./city/city.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -51,6 +53,8 @@ exports.AppModule = AppModule = __decorate([
             groups_module_1.GroupsModule,
             notifications_module_1.NotificationsModule,
             events_module_1.EventsModule,
+            country_module_1.CountryModule,
+            city_module_1.CityModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

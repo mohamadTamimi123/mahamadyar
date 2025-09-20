@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed:superadmin": "node -r ts-node/register src/user/seed-super-admin.ts"
+    "seed:superadmin": "node -r ts-node/register src/user/seed-super-admin.ts",
+    "seed:countries": "node -r ts-node/register src/seed-countries-cities.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -33,6 +34,7 @@
     "@types/multer": "^2.0.0",
     "@types/passport-jwt": "^4.0.1",
     "@types/pg": "^8.15.5",
+    "axios": "^1.6.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "multer": "^2.0.2",

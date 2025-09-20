@@ -11,6 +11,8 @@ import { ActivityLogModule } from './activity-log/activity-log.module';
 import { GroupsModule } from './groups/groups.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { EventsModule } from './events/events.module';
+import { CountryModule } from './country/country.module';
+import { CityModule } from './city/city.module';
 
 @Module({
   imports: [
@@ -39,6 +41,8 @@ import { EventsModule } from './events/events.module';
     GroupsModule,
     NotificationsModule,
     EventsModule,
+    CountryModule,
+    CityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

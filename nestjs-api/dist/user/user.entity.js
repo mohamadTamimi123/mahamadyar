@@ -13,6 +13,8 @@ exports.User = void 0;
 const typeorm_1 = require("typeorm");
 const people_entity_1 = require("../people/people.entity");
 const photo_entity_1 = require("../photo/photo.entity");
+const country_entity_1 = require("../country/country.entity");
+const city_entity_1 = require("../city/city.entity");
 let User = class User {
     id;
     email;
@@ -23,6 +25,10 @@ let User = class User {
     people;
     photos;
     role;
+    country_id;
+    country;
+    city_id;
+    city;
     createdAt;
     updatedAt;
 };
@@ -69,6 +75,24 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], User.prototype, "country_id", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => country_entity_1.Country, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'country_id' }),
+    __metadata("design:type", country_entity_1.Country)
+], User.prototype, "country", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], User.prototype, "city_id", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => city_entity_1.City, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'city_id' }),
+    __metadata("design:type", city_entity_1.City)
+], User.prototype, "city", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

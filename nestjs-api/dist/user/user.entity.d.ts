@@ -1,5 +1,7 @@
 import { People } from '../people/people.entity';
 import { Photo } from '../photo/photo.entity';
+import { Country } from '../country/country.entity';
+import { City } from '../city/city.entity';
 export declare class User {
     id: number;
     email: string;
@@ -10,6 +12,10 @@ export declare class User {
     people: People;
     photos: Photo[];
     role: string;
+    country_id: number;
+    country: Country;
+    city_id: number;
+    city: City;
     createdAt: Date;
     updatedAt: Date;
 }
