@@ -38,11 +38,18 @@ let PeopleService = class PeopleService {
     }
     async create(peopleData, ipAddress, userAgent) {
         const registrationCode = await this.generateUniqueRegistrationCode();
+        console.log('=== PEOPLE CREATE DEBUG ===');
+        console.log('Received peopleData:', peopleData);
+        console.log('country_id:', peopleData.country_id);
+        console.log('city_id:', peopleData.city_id);
         const people = this.peopleRepository.create({
             ...peopleData,
             registration_code: registrationCode,
         });
+        console.log('Created people object:', people);
         const savedPeople = await this.peopleRepository.save(people);
+        console.log('Saved people:', savedPeople);
+        console.log('=== END DEBUG ===');
         if (peopleData.spouse_id) {
             await this.peopleRepository.update(peopleData.spouse_id, {
                 spouse_id: savedPeople.id,
@@ -70,11 +77,19 @@ let PeopleService = class PeopleService {
         return code;
     }
     async update(id, peopleData) {
+        console.log('=== PEOPLE UPDATE DEBUG ===');
+        console.log('Updating person ID:', id);
+        console.log('Received peopleData:', peopleData);
+        console.log('country_id:', peopleData.country_id);
+        console.log('city_id:', peopleData.city_id);
         await this.peopleRepository.update(id, peopleData);
+        console.log('Update completed, fetching updated person...');
         const updatedPeople = await this.findOne(id);
         if (!updatedPeople) {
             throw new common_1.NotFoundException(`People with ID ${id} not found`);
         }
+        console.log('Updated people:', updatedPeople);
+        console.log('=== END UPDATE DEBUG ===');
         return updatedPeople;
     }
     async remove(id) {

@@ -29,12 +29,22 @@ export class PeopleService {
     // Generate unique registration code
     const registrationCode = await this.generateUniqueRegistrationCode();
     
+    console.log('=== PEOPLE CREATE DEBUG ===');
+    console.log('Received peopleData:', peopleData);
+    console.log('country_id:', peopleData.country_id);
+    console.log('city_id:', peopleData.city_id);
+    
     const people = this.peopleRepository.create({
       ...peopleData,
       registration_code: registrationCode,
     });
     
+    console.log('Created people object:', people);
+    
     const savedPeople = await this.peopleRepository.save(people);
+    
+    console.log('Saved people:', savedPeople);
+    console.log('=== END DEBUG ===');
     
     // If this is a spouse, update the current person's spouse_id
     if (peopleData.spouse_id) {
@@ -87,11 +97,24 @@ export class PeopleService {
   }
 
   async update(id: number, peopleData: Partial<People>): Promise<People> {
+    console.log('=== PEOPLE UPDATE DEBUG ===');
+    console.log('Updating person ID:', id);
+    console.log('Received peopleData:', peopleData);
+    console.log('country_id:', peopleData.country_id);
+    console.log('city_id:', peopleData.city_id);
+    
     await this.peopleRepository.update(id, peopleData);
+    
+    console.log('Update completed, fetching updated person...');
+    
     const updatedPeople = await this.findOne(id);
     if (!updatedPeople) {
       throw new NotFoundException(`People with ID ${id} not found`);
     }
+    
+    console.log('Updated people:', updatedPeople);
+    console.log('=== END UPDATE DEBUG ===');
+    
     return updatedPeople;
   }
 
