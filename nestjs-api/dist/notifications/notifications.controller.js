@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotificationsController = void 0;
 const common_1 = require("@nestjs/common");
 const notifications_service_1 = require("./notifications.service");
-const groups_service_1 = require("../groups/groups.service");
+const group_service_1 = require("../groups/group.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let NotificationsController = class NotificationsController {
     notifications;
@@ -44,14 +44,8 @@ let NotificationsController = class NotificationsController {
         if (!(user.role === 'branch_manager' || user.role === 'admin')) {
             throw new common_1.ForbiddenException('Only group leaders or admins can send notifications');
         }
-        const country = body.country || 'IR';
-        const city = body.city || 'Tehran';
-        const group = await this.groups.findOrCreate(country, city, user.role === 'branch_manager' ? user.id : null);
-        if (user.role === 'branch_manager' && group.leader_user_id && group.leader_user_id !== user.id) {
-            throw new common_1.ForbiddenException('You are not the leader of this group');
-        }
         return this.notifications.create({
-            group_id: group.id,
+            group_id: null,
             type: body.type,
             title: body.title,
             body: body.body ?? null,
@@ -86,6 +80,6 @@ __decorate([
 exports.NotificationsController = NotificationsController = __decorate([
     (0, common_1.Controller)('notifications'),
     __metadata("design:paramtypes", [notifications_service_1.NotificationsService,
-        groups_service_1.GroupsService])
+        group_service_1.GroupService])
 ], NotificationsController);
 //# sourceMappingURL=notifications.controller.js.map

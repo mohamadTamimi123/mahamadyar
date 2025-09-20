@@ -1,5 +1,6 @@
 import { User } from '../user/user.entity';
 import { Notification } from '../notifications/notification.entity';
+import { Event } from '../events/event.entity';
 export declare class Group {
     id: number;
     name: string;
@@ -13,6 +14,7 @@ export declare class Group {
     createdByUser: User;
     members: User[];
     notifications: Notification[];
+    events: Event[];
     createdAt: Date;
     updatedAt: Date;
 }

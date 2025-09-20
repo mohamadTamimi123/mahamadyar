@@ -62,7 +62,11 @@ let GroupService = class GroupService {
         });
         const savedGroup = await this.groupRepository.save(group);
         await this.addMember(savedGroup.id, groupData.created_by_user_id);
-        return this.findOne(savedGroup.id);
+        const result = await this.findOne(savedGroup.id);
+        if (!result) {
+            throw new Error('Failed to retrieve created group');
+        }
+        return result;
     }
     async update(id, groupData, userId) {
         const group = await this.findOne(id);
@@ -73,7 +77,11 @@ let GroupService = class GroupService {
             throw new common_1.ForbiddenException('Only the group creator can update the group');
         }
         await this.groupRepository.update(id, groupData);
-        return this.findOne(id);
+        const result = await this.findOne(id);
+        if (!result) {
+            throw new common_1.NotFoundException(`Group with ID ${id} not found`);
+        }
+        return result;
     }
     async delete(id, userId) {
         const group = await this.findOne(id);
@@ -99,11 +107,19 @@ let GroupService = class GroupService {
         }
         const isAlreadyMember = group.members.some(member => member.id === userId);
         if (isAlreadyMember) {
-            return this.findOne(groupId);
+            const result = await this.findOne(groupId);
+            if (!result) {
+                throw new common_1.NotFoundException(`Group with ID ${groupId} not found`);
+            }
+            return result;
         }
         group.members.push(user);
         await this.groupRepository.save(group);
-        return this.findOne(groupId);
+        const result = await this.findOne(groupId);
+        if (!result) {
+            throw new common_1.NotFoundException(`Group with ID ${groupId} not found`);
+        }
+        return result;
     }
     async removeMember(groupId, userId, requesterId) {
         const group = await this.groupRepository.findOne({
@@ -118,7 +134,11 @@ let GroupService = class GroupService {
         }
         group.members = group.members.filter(member => member.id !== userId);
         await this.groupRepository.save(group);
-        return this.findOne(groupId);
+        const result = await this.findOne(groupId);
+        if (!result) {
+            throw new common_1.NotFoundException(`Group with ID ${groupId} not found`);
+        }
+        return result;
     }
     async joinByInviteCode(inviteCode, userId) {
         const group = await this.groupRepository.findOne({

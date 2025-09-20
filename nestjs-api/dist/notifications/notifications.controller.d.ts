@@ -1,9 +1,9 @@
 import { NotificationsService } from './notifications.service';
-import { GroupsService } from '../groups/groups.service';
+import { GroupService } from '../groups/group.service';
 export declare class NotificationsController {
     private readonly notifications;
     private readonly groups;
-    constructor(notifications: NotificationsService, groups: GroupsService);
+    constructor(notifications: NotificationsService, groups: GroupService);
     list(group_id?: number): Promise<import("./notification.entity").Notification[]>;
     create(body: {
         group_id?: number;

@@ -65,7 +65,11 @@ export class GroupService {
     // Add creator as a member
     await this.addMember(savedGroup.id, groupData.created_by_user_id);
 
-    return this.findOne(savedGroup.id);
+    const result = await this.findOne(savedGroup.id);
+    if (!result) {
+      throw new Error('Failed to retrieve created group');
+    }
+    return result;
   }
 
   async update(id: number, groupData: Partial<Group>, userId: number): Promise<Group> {
@@ -80,7 +84,11 @@ export class GroupService {
     }
 
     await this.groupRepository.update(id, groupData);
-    return this.findOne(id);
+    const result = await this.findOne(id);
+    if (!result) {
+      throw new NotFoundException(`Group with ID ${id} not found`);
+    }
+    return result;
   }
 
   async delete(id: number, userId: number): Promise<void> {
@@ -115,13 +123,21 @@ export class GroupService {
     // Check if user is already a member
     const isAlreadyMember = group.members.some(member => member.id === userId);
     if (isAlreadyMember) {
-      return this.findOne(groupId);
+      const result = await this.findOne(groupId);
+      if (!result) {
+        throw new NotFoundException(`Group with ID ${groupId} not found`);
+      }
+      return result;
     }
 
     group.members.push(user);
     await this.groupRepository.save(group);
 
-    return this.findOne(groupId);
+    const result = await this.findOne(groupId);
+    if (!result) {
+      throw new NotFoundException(`Group with ID ${groupId} not found`);
+    }
+    return result;
   }
 
   async removeMember(groupId: number, userId: number, requesterId: number): Promise<Group> {
@@ -142,7 +158,11 @@ export class GroupService {
     group.members = group.members.filter(member => member.id !== userId);
     await this.groupRepository.save(group);
 
-    return this.findOne(groupId);
+    const result = await this.findOne(groupId);
+    if (!result) {
+      throw new NotFoundException(`Group with ID ${groupId} not found`);
+    }
+    return result;
   }
 
   async joinByInviteCode(inviteCode: string, userId: number): Promise<Group> {

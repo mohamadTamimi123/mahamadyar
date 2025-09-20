@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Body, Query, UseGuards, ForbiddenException, Request } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
-import { GroupsService } from '../groups/groups.service';
+import { GroupService } from '../groups/group.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('notifications')
 export class NotificationsController {
   constructor(
     private readonly notifications: NotificationsService,
-    private readonly groups: GroupsService,
+    private readonly groups: GroupService,
   ) {}
 
   @Get()
@@ -46,18 +46,10 @@ export class NotificationsController {
       throw new ForbiddenException('Only group leaders or admins can send notifications');
     }
 
-    // Derive group from provided country/city or fallback to user profile if later available
-    const country = body.country || 'IR';
-    const city = body.city || 'Tehran';
-    const group = await this.groups.findOrCreate(country, city, user.role === 'branch_manager' ? user.id : null);
-
-    // If branch_manager, enforce ownership of the group
-    if (user.role === 'branch_manager' && group.leader_user_id && group.leader_user_id !== user.id) {
-      throw new ForbiddenException('You are not the leader of this group');
-    }
-
+    // For now, create notification without group association
+    // This can be updated later to work with the new group system
     return this.notifications.create({
-      group_id: group.id,
+      group_id: null,
       type: body.type,
       title: body.title,
       body: body.body ?? null,

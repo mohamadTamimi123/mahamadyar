@@ -12,13 +12,13 @@ const typeorm_1 = require("@nestjs/typeorm");
 const notification_entity_1 = require("./notification.entity");
 const notifications_service_1 = require("./notifications.service");
 const notifications_controller_1 = require("./notifications.controller");
-const groups_module_1 = require("../groups/groups.module");
+const group_module_1 = require("../groups/group.module");
 let NotificationsModule = class NotificationsModule {
 };
 exports.NotificationsModule = NotificationsModule;
 exports.NotificationsModule = NotificationsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([notification_entity_1.Notification]), groups_module_1.GroupsModule],
+        imports: [typeorm_1.TypeOrmModule.forFeature([notification_entity_1.Notification]), group_module_1.GroupModule],
         providers: [notifications_service_1.NotificationsService],
         controllers: [notifications_controller_1.NotificationsController],
     })

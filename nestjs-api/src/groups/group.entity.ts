@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, JoinColumn, ManyToMany, JoinTable } from 'typeorm';
 import { User } from '../user/user.entity';
 import { Notification } from '../notifications/notification.entity';
+import { Event } from '../events/event.entity';
 
 @Entity('groups')
 export class Group {
@@ -46,6 +47,9 @@ export class Group {
 
   @OneToMany(() => Notification, notification => notification.group)
   notifications: Notification[];
+
+  @OneToMany(() => Event, event => event.group)
+  events: Event[];
 
   @CreateDateColumn()
   createdAt: Date;
