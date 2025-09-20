@@ -22,7 +22,7 @@ export class City {
   @Column({ nullable: true })
   longitude: number;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'bigint' })
   population: number;
 
   @Column({ nullable: true })

@@ -52,7 +52,7 @@ __decorate([
     __metadata("design:type", Number)
 ], City.prototype, "longitude", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, type: 'bigint' }),
     __metadata("design:type", Number)
 ], City.prototype, "population", void 0);
 __decorate([

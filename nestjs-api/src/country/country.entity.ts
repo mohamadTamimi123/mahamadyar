@@ -15,10 +15,10 @@ export class Country {
   @Column({ nullable: true })
   capital: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'bigint' })
   population: number;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'decimal' })
   area: number;
 
   @Column({ nullable: true })

@@ -48,11 +48,11 @@ __decorate([
     __metadata("design:type", String)
 ], Country.prototype, "capital", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, type: 'bigint' }),
     __metadata("design:type", Number)
 ], Country.prototype, "population", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, type: 'decimal' }),
     __metadata("design:type", Number)
 ], Country.prototype, "area", void 0);
 __decorate([
