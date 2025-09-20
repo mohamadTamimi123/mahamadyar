@@ -5,6 +5,8 @@ import { config as loadEnv } from 'dotenv';
 import { User } from './user.entity';
 import { People } from '../people/people.entity';
 import { Photo } from '../photo/photo.entity';
+import { Country } from '../country/country.entity';
+import { City } from '../city/city.entity';
 
 loadEnv();
 
@@ -15,7 +17,7 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_DATABASE || 'nestjs_db',
-  entities: [User, People, Photo],
+  entities: [User, People, Photo, Country, City],
   synchronize: false,
 });
 
