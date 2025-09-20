@@ -7,5 +7,5 @@ export declare class GroupsController {
         country: string;
         city: string;
         leader_user_id?: number;
-    }): Promise<import("./group.entity").Group>;
+    }): Promise<import("./group.entity").Group | import("./group.entity").Group[]>;
 }

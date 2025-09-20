@@ -16,6 +16,7 @@ const photo_entity_1 = require("../photo/photo.entity");
 const country_entity_1 = require("../country/country.entity");
 const city_entity_1 = require("../city/city.entity");
 const family_branch_entity_1 = require("../family-branch/family-branch.entity");
+const group_entity_1 = require("../groups/group.entity");
 let User = class User {
     id;
     email;
@@ -26,6 +27,8 @@ let User = class User {
     people;
     photos;
     familyBranches;
+    createdGroups;
+    groups;
     role;
     country_id;
     country;
@@ -72,6 +75,14 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => family_branch_entity_1.FamilyBranch, branch => branch.createdByUser),
     __metadata("design:type", Array)
 ], User.prototype, "familyBranches", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => group_entity_1.Group, group => group.createdByUser),
+    __metadata("design:type", Array)
+], User.prototype, "createdGroups", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)(() => group_entity_1.Group, group => group.members),
+    __metadata("design:type", Array)
+], User.prototype, "groups", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         type: 'varchar',

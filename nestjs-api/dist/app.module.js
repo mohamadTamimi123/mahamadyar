@@ -17,7 +17,7 @@ const people_module_1 = require("./people/people.module");
 const auth_module_1 = require("./auth/auth.module");
 const photo_module_1 = require("./photo/photo.module");
 const activity_log_module_1 = require("./activity-log/activity-log.module");
-const groups_module_1 = require("./groups/groups.module");
+const group_module_1 = require("./groups/group.module");
 const notifications_module_1 = require("./notifications/notifications.module");
 const events_module_1 = require("./events/events.module");
 const country_module_1 = require("./country/country.module");
@@ -51,7 +51,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             photo_module_1.PhotoModule,
             activity_log_module_1.ActivityLogModule,
-            groups_module_1.GroupsModule,
+            group_module_1.GroupModule,
             notifications_module_1.NotificationsModule,
             events_module_1.EventsModule,
             country_module_1.CountryModule,

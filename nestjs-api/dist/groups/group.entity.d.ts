@@ -1,13 +1,18 @@
+import { User } from '../user/user.entity';
 import { Notification } from '../notifications/notification.entity';
-import { Event } from '../events/event.entity';
 export declare class Group {
     id: number;
-    country: string;
-    city: string;
     name: string;
-    leader_user_id: number | null;
+    description: string;
+    group_color: string;
+    is_active: boolean;
+    created_by_user_id: number;
+    group_image: string;
+    is_private: boolean;
+    invite_code: string;
+    createdByUser: User;
+    members: User[];
     notifications: Notification[];
-    events: Event[];
     createdAt: Date;
     updatedAt: Date;
 }

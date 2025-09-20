@@ -8,7 +8,7 @@ import { PeopleModule } from './people/people.module';
 import { AuthModule } from './auth/auth.module';
 import { PhotoModule } from './photo/photo.module';
 import { ActivityLogModule } from './activity-log/activity-log.module';
-import { GroupsModule } from './groups/groups.module';
+import { GroupModule } from './groups/group.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { EventsModule } from './events/events.module';
 import { CountryModule } from './country/country.module';
@@ -39,7 +39,7 @@ import { FamilyBranchModule } from './family-branch/family-branch.module';
     AuthModule,
     PhotoModule,
     ActivityLogModule,
-    GroupsModule,
+    GroupModule,
     NotificationsModule,
     EventsModule,
     CountryModule,

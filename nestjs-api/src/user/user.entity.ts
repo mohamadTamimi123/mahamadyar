@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany, ManyToOne, ManyToMany } from 'typeorm';
 import { People } from '../people/people.entity';
 import { Photo } from '../photo/photo.entity';
 import { Country } from '../country/country.entity';
 import { City } from '../city/city.entity';
 import { FamilyBranch } from '../family-branch/family-branch.entity';
+import { Group } from '../groups/group.entity';
 
 @Entity('users')
 export class User {
@@ -34,6 +35,12 @@ export class User {
 
   @OneToMany(() => FamilyBranch, branch => branch.createdByUser)
   familyBranches: FamilyBranch[];
+
+  @OneToMany(() => Group, group => group.createdByUser)
+  createdGroups: Group[];
+
+  @ManyToMany(() => Group, group => group.members)
+  groups: Group[];
 
   @Column({
     type: 'varchar',

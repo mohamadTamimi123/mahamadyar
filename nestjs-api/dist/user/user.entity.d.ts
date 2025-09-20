@@ -3,6 +3,7 @@ import { Photo } from '../photo/photo.entity';
 import { Country } from '../country/country.entity';
 import { City } from '../city/city.entity';
 import { FamilyBranch } from '../family-branch/family-branch.entity';
+import { Group } from '../groups/group.entity';
 export declare class User {
     id: number;
     email: string;
@@ -13,6 +14,8 @@ export declare class User {
     people: People;
     photos: Photo[];
     familyBranches: FamilyBranch[];
+    createdGroups: Group[];
+    groups: Group[];
     role: string;
     country_id: number;
     country: Country;
