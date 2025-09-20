@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, IsNull } from 'typeorm';
 import { People } from './people.entity';
 
 export interface FamilyTreeNode {
@@ -41,7 +41,7 @@ export class FamilyTreeService {
   async createFamilyTreeForAllPeople(): Promise<FamilyTreeNode[]> {
     // Get all root people (people without fathers)
     const rootPeople = await this.peopleRepository.find({
-      where: { father_id: null },
+      where: { father_id: IsNull() },
       relations: ['father', 'spouse', 'children', 'photos']
     });
 
@@ -119,7 +119,7 @@ export class FamilyTreeService {
     completedProfiles: number;
   }> {
     const totalPeople = await this.peopleRepository.count();
-    const rootPeople = await this.peopleRepository.count({ where: { father_id: null } });
+    const rootPeople = await this.peopleRepository.count({ where: { father_id: IsNull() } });
     const completedProfiles = await this.peopleRepository.count({ where: { profile_completed: true } });
     
     // Calculate average children per family

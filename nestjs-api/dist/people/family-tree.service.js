@@ -34,7 +34,7 @@ let FamilyTreeService = class FamilyTreeService {
     }
     async createFamilyTreeForAllPeople() {
         const rootPeople = await this.peopleRepository.find({
-            where: { father_id: null },
+            where: { father_id: (0, typeorm_2.IsNull)() },
             relations: ['father', 'spouse', 'children', 'photos']
         });
         return Promise.all(rootPeople.map(person => this.buildFamilyTreeNode(person)));
@@ -93,7 +93,7 @@ let FamilyTreeService = class FamilyTreeService {
     }
     async getFamilyTreeStats() {
         const totalPeople = await this.peopleRepository.count();
-        const rootPeople = await this.peopleRepository.count({ where: { father_id: null } });
+        const rootPeople = await this.peopleRepository.count({ where: { father_id: (0, typeorm_2.IsNull)() } });
         const completedProfiles = await this.peopleRepository.count({ where: { profile_completed: true } });
         const familiesWithChildren = await this.peopleRepository
             .createQueryBuilder('person')
