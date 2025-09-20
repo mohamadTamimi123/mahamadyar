@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Photo } from '../photo/photo.entity';
+import { FamilyBranch } from '../family-branch/family-branch.entity';
 
 @Entity('people')
 export class People {
@@ -39,6 +40,9 @@ export class People {
   @Column({ default: false })
   profile_completed: boolean;
 
+  @Column({ nullable: true })
+  family_branch_id: number;
+
   // Self-referencing relationship - Father
   @ManyToOne(() => People, (people) => people.children, { nullable: true })
   @JoinColumn({ name: 'father_id' })
@@ -60,6 +64,11 @@ export class People {
   // Photos relationship
   @OneToMany(() => Photo, photo => photo.people)
   photos: Photo[];
+
+  // Family Branch relationship
+  @ManyToOne(() => FamilyBranch, branch => branch.members, { nullable: true })
+  @JoinColumn({ name: 'family_branch_id' })
+  familyBranch: FamilyBranch;
 
   @CreateDateColumn()
   createdAt: Date;

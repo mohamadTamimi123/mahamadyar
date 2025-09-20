@@ -3,6 +3,7 @@ import { People } from '../people/people.entity';
 import { Photo } from '../photo/photo.entity';
 import { Country } from '../country/country.entity';
 import { City } from '../city/city.entity';
+import { FamilyBranch } from '../family-branch/family-branch.entity';
 
 @Entity('users')
 export class User {
@@ -30,6 +31,9 @@ export class User {
 
   @OneToMany(() => Photo, photo => photo.user)
   photos: Photo[];
+
+  @OneToMany(() => FamilyBranch, branch => branch.createdByUser)
+  familyBranches: FamilyBranch[];
 
   @Column({
     type: 'varchar',

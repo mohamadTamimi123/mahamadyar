@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.People = void 0;
 const typeorm_1 = require("typeorm");
 const photo_entity_1 = require("../photo/photo.entity");
+const family_branch_entity_1 = require("../family-branch/family-branch.entity");
 let People = class People {
     id;
     name;
@@ -25,11 +26,13 @@ let People = class People {
     current_location;
     profile_photo;
     profile_completed;
+    family_branch_id;
     father;
     children;
     spouse;
     spouseOf;
     photos;
+    familyBranch;
     createdAt;
     updatedAt;
 };
@@ -83,6 +86,10 @@ __decorate([
     __metadata("design:type", Boolean)
 ], People.prototype, "profile_completed", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], People.prototype, "family_branch_id", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => People, (people) => people.children, { nullable: true }),
     (0, typeorm_1.JoinColumn)({ name: 'father_id' }),
     __metadata("design:type", People)
@@ -104,6 +111,11 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => photo_entity_1.Photo, photo => photo.people),
     __metadata("design:type", Array)
 ], People.prototype, "photos", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => family_branch_entity_1.FamilyBranch, branch => branch.members, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'family_branch_id' }),
+    __metadata("design:type", family_branch_entity_1.FamilyBranch)
+], People.prototype, "familyBranch", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

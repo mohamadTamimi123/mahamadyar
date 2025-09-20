@@ -13,6 +13,7 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { EventsModule } from './events/events.module';
 import { CountryModule } from './country/country.module';
 import { CityModule } from './city/city.module';
+import { FamilyBranchModule } from './family-branch/family-branch.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { CityModule } from './city/city.module';
     EventsModule,
     CountryModule,
     CityModule,
+    FamilyBranchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
