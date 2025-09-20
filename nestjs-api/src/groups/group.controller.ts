@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe, NotFoundException, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe, NotFoundException, UseGuards, Request, ForbiddenException } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { Group } from './group.entity';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -36,6 +36,13 @@ export class GroupController {
     is_private?: boolean;
   }, @Request() req): Promise<Group> {
     const userId = req.user.id;
+    const userRole = req.user.role;
+    
+    // Only branch managers and admins can create groups
+    if (userRole !== 'branch_manager' && userRole !== 'admin') {
+      throw new ForbiddenException('Only branch managers can create groups');
+    }
+    
     return this.groupService.create({
       ...groupData,
       created_by_user_id: userId,
