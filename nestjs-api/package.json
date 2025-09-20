@@ -20,6 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "seed:superadmin": "node -r ts-node/register src/user/seed-super-admin.ts",
     "seed:countries": "node -r ts-node/register src/seed-countries-cities.ts",
+    "seed:cities-manual": "node -r ts-node/register src/seed-cities-manual.ts",
+    "check:database": "node -r ts-node/register src/check-database.ts",
     "drop:tables": "node -r ts-node/register src/drop-tables.ts"
   },
   "dependencies": {
