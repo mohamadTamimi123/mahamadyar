@@ -93,7 +93,7 @@ let GroupService = class GroupService {
         }
         await this.groupRepository.delete(id);
     }
-    async addMember(groupId, userId) {
+    async addMember(groupId, userId, requesterId, requesterRole) {
         const group = await this.groupRepository.findOne({
             where: { id: groupId },
             relations: ['members'],
@@ -104,6 +104,12 @@ let GroupService = class GroupService {
         const user = await this.userRepository.findOne({ where: { id: userId } });
         if (!user) {
             throw new common_1.NotFoundException(`User with ID ${userId} not found`);
+        }
+        const isGroupCreator = group.created_by_user_id === requesterId;
+        const isBranchManager = requesterRole === 'branch_manager';
+        const isAdmin = requesterRole === 'admin';
+        if (!isGroupCreator && !isBranchManager && !isAdmin) {
+            throw new common_1.ForbiddenException('Only group creators, branch managers, or admins can add members');
         }
         const isAlreadyMember = group.members.some(member => member.id === userId);
         if (isAlreadyMember) {

@@ -56,7 +56,8 @@ let GroupController = class GroupController {
     }
     async addMember(groupId, body, req) {
         const requesterId = req.user.id;
-        return this.groupService.addMember(groupId, body.user_id);
+        const requesterRole = req.user.role;
+        return this.groupService.addMember(groupId, body.user_id, requesterId, requesterRole);
     }
     async removeMember(groupId, userId, req) {
         const requesterId = req.user.id;

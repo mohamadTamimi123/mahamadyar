@@ -19,7 +19,7 @@ export declare class GroupService {
     }): Promise<Group>;
     update(id: number, groupData: Partial<Group>, userId: number): Promise<Group>;
     delete(id: number, userId: number): Promise<void>;
-    addMember(groupId: number, userId: number): Promise<Group>;
+    addMember(groupId: number, userId: number, requesterId: number, requesterRole: string): Promise<Group>;
     removeMember(groupId: number, userId: number, requesterId: number): Promise<Group>;
     joinByInviteCode(inviteCode: string, userId: number): Promise<Group>;
     sendNotification(groupId: number, notificationData: {

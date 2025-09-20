@@ -72,7 +72,8 @@ export class GroupController {
     @Request() req,
   ): Promise<Group> {
     const requesterId = req.user.id;
-    return this.groupService.addMember(groupId, body.user_id);
+    const requesterRole = req.user.role;
+    return this.groupService.addMember(groupId, body.user_id, requesterId, requesterRole);
   }
 
   @Delete(':id/members/:userId')
