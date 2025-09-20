@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Photo } from '../photo/photo.entity';
 import { FamilyBranch } from '../family-branch/family-branch.entity';
+import { Country } from '../country/country.entity';
+import { City } from '../city/city.entity';
 
 @Entity('people')
 export class People {
@@ -43,6 +45,12 @@ export class People {
   @Column({ nullable: true })
   family_branch_id: number | null;
 
+  @Column({ nullable: true })
+  country_id: number;
+
+  @Column({ nullable: true })
+  city_id: number;
+
   // Self-referencing relationship - Father
   @ManyToOne(() => People, (people) => people.children, { nullable: true })
   @JoinColumn({ name: 'father_id' })
@@ -69,6 +77,16 @@ export class People {
   @ManyToOne(() => FamilyBranch, branch => branch.members, { nullable: true })
   @JoinColumn({ name: 'family_branch_id' })
   familyBranch: FamilyBranch;
+
+  // Country relationship
+  @ManyToOne(() => Country, { nullable: true })
+  @JoinColumn({ name: 'country_id' })
+  country: Country;
+
+  // City relationship
+  @ManyToOne(() => City, { nullable: true })
+  @JoinColumn({ name: 'city_id' })
+  city: City;
 
   @CreateDateColumn()
   createdAt: Date;

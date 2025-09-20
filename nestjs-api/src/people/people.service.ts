@@ -14,14 +14,14 @@ export class PeopleService {
 
   async findAll(): Promise<People[]> {
     return this.peopleRepository.find({
-      relations: ['father', 'children'],
+      relations: ['father', 'children', 'country', 'city', 'familyBranch'],
     });
   }
 
   async findOne(id: number): Promise<People | null> {
     return this.peopleRepository.findOne({
       where: { id },
-      relations: ['father', 'children'],
+      relations: ['father', 'children', 'country', 'city', 'familyBranch'],
     });
   }
 
@@ -102,14 +102,14 @@ export class PeopleService {
   // Get all people with their fathers
   async findAllWithFathers(): Promise<People[]> {
     return this.peopleRepository.find({
-      relations: ['father'],
+      relations: ['father', 'country', 'city', 'familyBranch'],
     });
   }
 
   // Get all people with their children
   async findAllWithChildren(): Promise<People[]> {
     return this.peopleRepository.find({
-      relations: ['children'],
+      relations: ['children', 'country', 'city', 'familyBranch'],
     });
   }
 
@@ -117,7 +117,7 @@ export class PeopleService {
   async findByFatherId(fatherId: number): Promise<People[]> {
     return this.peopleRepository.find({
       where: { father_id: fatherId },
-      relations: ['father', 'children'],
+      relations: ['father', 'children', 'country', 'city', 'familyBranch'],
     });
   }
 
@@ -125,7 +125,7 @@ export class PeopleService {
   async findRootPeople(): Promise<People[]> {
     return this.peopleRepository.find({
       where: { father_id: IsNull() },
-      relations: ['children'],
+      relations: ['children', 'country', 'city', 'familyBranch'],
     });
   }
 
@@ -133,7 +133,7 @@ export class PeopleService {
   async findByRegistrationCode(registrationCode: string): Promise<People | null> {
     return this.peopleRepository.findOne({
       where: { registration_code: registrationCode },
-      relations: ['father', 'children'],
+      relations: ['father', 'children', 'country', 'city', 'familyBranch'],
     });
   }
 
@@ -146,7 +146,7 @@ export class PeopleService {
   }> {
     const person = await this.peopleRepository.findOne({
       where: { id: personId },
-      relations: ['father', 'spouse', 'children'],
+      relations: ['father', 'spouse', 'children', 'country', 'city', 'familyBranch'],
     });
 
     if (!person) {
@@ -165,7 +165,7 @@ export class PeopleService {
   async getFamilyTree(personId: number): Promise<People[]> {
     // Get all people with their relations - force fresh data
     const allPeople = await this.peopleRepository.find({
-      relations: ['father', 'spouse', 'children'],
+      relations: ['father', 'spouse', 'children', 'country', 'city', 'familyBranch'],
       cache: false, // Disable cache to get fresh data
     });
 

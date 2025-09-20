@@ -27,13 +27,13 @@ let PeopleService = class PeopleService {
     }
     async findAll() {
         return this.peopleRepository.find({
-            relations: ['father', 'children'],
+            relations: ['father', 'children', 'country', 'city', 'familyBranch'],
         });
     }
     async findOne(id) {
         return this.peopleRepository.findOne({
             where: { id },
-            relations: ['father', 'children'],
+            relations: ['father', 'children', 'country', 'city', 'familyBranch'],
         });
     }
     async create(peopleData, ipAddress, userAgent) {
@@ -82,36 +82,36 @@ let PeopleService = class PeopleService {
     }
     async findAllWithFathers() {
         return this.peopleRepository.find({
-            relations: ['father'],
+            relations: ['father', 'country', 'city', 'familyBranch'],
         });
     }
     async findAllWithChildren() {
         return this.peopleRepository.find({
-            relations: ['children'],
+            relations: ['children', 'country', 'city', 'familyBranch'],
         });
     }
     async findByFatherId(fatherId) {
         return this.peopleRepository.find({
             where: { father_id: fatherId },
-            relations: ['father', 'children'],
+            relations: ['father', 'children', 'country', 'city', 'familyBranch'],
         });
     }
     async findRootPeople() {
         return this.peopleRepository.find({
             where: { father_id: (0, typeorm_2.IsNull)() },
-            relations: ['children'],
+            relations: ['children', 'country', 'city', 'familyBranch'],
         });
     }
     async findByRegistrationCode(registrationCode) {
         return this.peopleRepository.findOne({
             where: { registration_code: registrationCode },
-            relations: ['father', 'children'],
+            relations: ['father', 'children', 'country', 'city', 'familyBranch'],
         });
     }
     async getImmediateFamily(personId) {
         const person = await this.peopleRepository.findOne({
             where: { id: personId },
-            relations: ['father', 'spouse', 'children'],
+            relations: ['father', 'spouse', 'children', 'country', 'city', 'familyBranch'],
         });
         if (!person) {
             throw new common_1.NotFoundException(`Person with ID ${personId} not found`);
@@ -125,7 +125,7 @@ let PeopleService = class PeopleService {
     }
     async getFamilyTree(personId) {
         const allPeople = await this.peopleRepository.find({
-            relations: ['father', 'spouse', 'children'],
+            relations: ['father', 'spouse', 'children', 'country', 'city', 'familyBranch'],
             cache: false,
         });
         console.log('=== FAMILY TREE DEBUG ===');

@@ -1,5 +1,7 @@
 import { Photo } from '../photo/photo.entity';
 import { FamilyBranch } from '../family-branch/family-branch.entity';
+import { Country } from '../country/country.entity';
+import { City } from '../city/city.entity';
 export declare class People {
     id: number;
     name: string;
@@ -14,12 +16,16 @@ export declare class People {
     profile_photo: string;
     profile_completed: boolean;
     family_branch_id: number | null;
+    country_id: number;
+    city_id: number;
     father: People;
     children: People[];
     spouse: People;
     spouseOf: People[];
     photos: Photo[];
     familyBranch: FamilyBranch;
+    country: Country;
+    city: City;
     createdAt: Date;
     updatedAt: Date;
 }

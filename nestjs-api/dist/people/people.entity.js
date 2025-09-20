@@ -13,6 +13,8 @@ exports.People = void 0;
 const typeorm_1 = require("typeorm");
 const photo_entity_1 = require("../photo/photo.entity");
 const family_branch_entity_1 = require("../family-branch/family-branch.entity");
+const country_entity_1 = require("../country/country.entity");
+const city_entity_1 = require("../city/city.entity");
 let People = class People {
     id;
     name;
@@ -27,12 +29,16 @@ let People = class People {
     profile_photo;
     profile_completed;
     family_branch_id;
+    country_id;
+    city_id;
     father;
     children;
     spouse;
     spouseOf;
     photos;
     familyBranch;
+    country;
+    city;
     createdAt;
     updatedAt;
 };
@@ -90,6 +96,14 @@ __decorate([
     __metadata("design:type", Object)
 ], People.prototype, "family_branch_id", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], People.prototype, "country_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], People.prototype, "city_id", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => People, (people) => people.children, { nullable: true }),
     (0, typeorm_1.JoinColumn)({ name: 'father_id' }),
     __metadata("design:type", People)
@@ -116,6 +130,16 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: 'family_branch_id' }),
     __metadata("design:type", family_branch_entity_1.FamilyBranch)
 ], People.prototype, "familyBranch", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => country_entity_1.Country, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'country_id' }),
+    __metadata("design:type", country_entity_1.Country)
+], People.prototype, "country", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => city_entity_1.City, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'city_id' }),
+    __metadata("design:type", city_entity_1.City)
+], People.prototype, "city", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
