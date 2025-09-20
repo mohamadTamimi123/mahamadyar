@@ -36,7 +36,7 @@ async function checkDatabase() {
                 .select('country.name', 'countryName')
                 .addSelect('COUNT(city.id)', 'cityCount')
                 .groupBy('country.id, country.name')
-                .orderBy('cityCount', 'DESC')
+                .orderBy('COUNT(city.id)', 'DESC')
                 .limit(10)
                 .getRawMany();
             console.log('\n🏆 Top 10 countries by city count:');
