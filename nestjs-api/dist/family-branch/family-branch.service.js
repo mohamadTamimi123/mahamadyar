@@ -72,7 +72,7 @@ let FamilyBranchService = class FamilyBranchService {
         if (!person) {
             return null;
         }
-        person.family_branch_id = undefined;
+        person.family_branch_id = null;
         await this.peopleRepository.save(person);
         return this.findOne(branchId);
     }

@@ -87,7 +87,7 @@ __decorate([
 ], People.prototype, "profile_completed", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", Object)
 ], People.prototype, "family_branch_id", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => People, (people) => people.children, { nullable: true }),

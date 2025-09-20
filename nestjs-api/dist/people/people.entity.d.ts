@@ -13,7 +13,7 @@ export declare class People {
     current_location: string;
     profile_photo: string;
     profile_completed: boolean;
-    family_branch_id: number;
+    family_branch_id: number | null;
     father: People;
     children: People[];
     spouse: People;

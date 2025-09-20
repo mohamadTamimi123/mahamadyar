@@ -41,7 +41,7 @@ export class People {
   profile_completed: boolean;
 
   @Column({ nullable: true })
-  family_branch_id: number;
+  family_branch_id: number | null;
 
   // Self-referencing relationship - Father
   @ManyToOne(() => People, (people) => people.children, { nullable: true })
