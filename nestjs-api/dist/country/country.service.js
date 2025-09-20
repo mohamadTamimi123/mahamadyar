@@ -61,7 +61,7 @@ let CountryService = class CountryService {
     async seedCountriesFromAPI() {
         try {
             console.log('Starting to seed countries from REST Countries API...');
-            const response = await axios_1.default.get('https://restcountries.com/v3.1/all');
+            const response = await axios_1.default.get('https://restcountries.com/v3.1/all?fields=name,cca3,capital,population,area,region,subregion,flags,currencies,languages');
             const countries = response.data;
             for (const countryData of countries) {
                 const existingCountry = await this.countryRepository.findOne({
@@ -100,7 +100,7 @@ let CountryService = class CountryService {
             const countries = await this.countryRepository.find();
             for (const country of countries) {
                 try {
-                    const response = await axios_1.default.get(`http://api.geonames.org/searchJSON?country=${country.iso_code}&maxRows=50&username=demo&featureClass=P`);
+                    const response = await axios_1.default.get(`http://api.geonames.org/searchJSON?country=${country.iso_code}&maxRows=50&username=demo&featureClass=P&orderby=population`);
                     const cities = response.data.geonames || [];
                     for (const cityData of cities) {
                         const existingCity = await this.cityRepository.findOne({
@@ -124,7 +124,7 @@ let CountryService = class CountryService {
                         }
                     }
                     console.log(`Added cities for country: ${country.name}`);
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                 }
                 catch (error) {
                     console.error(`Error fetching cities for ${country.name}:`, error.message);

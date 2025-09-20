@@ -53,7 +53,7 @@ export class CountryService {
     try {
       console.log('Starting to seed countries from REST Countries API...');
       
-      const response = await axios.get('https://restcountries.com/v3.1/all');
+      const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,cca3,capital,population,area,region,subregion,flags,currencies,languages');
       const countries = response.data;
 
       for (const countryData of countries) {
@@ -101,7 +101,7 @@ export class CountryService {
         try {
           // Use GeoNames API to get cities for each country
           const response = await axios.get(
-            `http://api.geonames.org/searchJSON?country=${country.iso_code}&maxRows=50&username=demo&featureClass=P`
+            `http://api.geonames.org/searchJSON?country=${country.iso_code}&maxRows=50&username=demo&featureClass=P&orderby=population`
           );
           
           const cities = response.data.geonames || [];
@@ -133,7 +133,7 @@ export class CountryService {
           console.log(`Added cities for country: ${country.name}`);
           
           // Add delay to avoid rate limiting
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          await new Promise(resolve => setTimeout(resolve, 2000));
           
         } catch (error) {
           console.error(`Error fetching cities for ${country.name}:`, error.message);
