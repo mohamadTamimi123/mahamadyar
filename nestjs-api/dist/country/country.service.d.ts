@@ -6,8 +6,8 @@ export declare class CountryService {
     private cityRepository;
     constructor(countryRepository: Repository<Country>, cityRepository: Repository<City>);
     findAll(): Promise<Country[]>;
-    findOne(id: number): Promise<Country>;
-    findByIsoCode(isoCode: string): Promise<Country>;
+    findOne(id: number): Promise<Country | null>;
+    findByIsoCode(isoCode: string): Promise<Country | null>;
     create(countryData: Partial<Country>): Promise<Country>;
     update(id: number, countryData: Partial<Country>): Promise<Country>;
     delete(id: number): Promise<void>;

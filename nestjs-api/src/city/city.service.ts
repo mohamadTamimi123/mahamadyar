@@ -20,7 +20,7 @@ export class CityService {
     });
   }
 
-  async findOne(id: number): Promise<City> {
+  async findOne(id: number): Promise<City | null> {
     return this.cityRepository.findOne({
       where: { id },
       relations: ['country']

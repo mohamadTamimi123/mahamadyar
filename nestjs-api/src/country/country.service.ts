@@ -21,14 +21,14 @@ export class CountryService {
     });
   }
 
-  async findOne(id: number): Promise<Country> {
+  async findOne(id: number): Promise<Country | null> {
     return this.countryRepository.findOne({
       where: { id },
       relations: ['cities']
     });
   }
 
-  async findByIsoCode(isoCode: string): Promise<Country> {
+  async findByIsoCode(isoCode: string): Promise<Country | null> {
     return this.countryRepository.findOne({
       where: { iso_code: isoCode },
       relations: ['cities']
@@ -72,7 +72,7 @@ export class CountryService {
             subregion: countryData.subregion || null,
             flag_url: countryData.flags?.png || null,
             currency_code: countryData.currencies ? Object.keys(countryData.currencies)[0] : null,
-            currency_name: countryData.currencies ? Object.values(countryData.currencies)[0]?.name : null,
+            currency_name: countryData.currencies ? (Object.values(countryData.currencies)[0] as any)?.name : null,
             language_code: countryData.languages ? Object.keys(countryData.languages)[0] : null,
             language_name: countryData.languages ? Object.values(countryData.languages)[0] : null,
           });

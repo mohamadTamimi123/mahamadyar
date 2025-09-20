@@ -6,7 +6,7 @@ export declare class CityService {
     private countryRepository;
     constructor(cityRepository: Repository<City>, countryRepository: Repository<Country>);
     findAll(): Promise<City[]>;
-    findOne(id: number): Promise<City>;
+    findOne(id: number): Promise<City | null>;
     findByCountry(countryId: number): Promise<City[]>;
     search(searchTerm: string): Promise<City[]>;
     create(cityData: Partial<City>): Promise<City>;
