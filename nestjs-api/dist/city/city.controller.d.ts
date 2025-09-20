@@ -7,6 +7,6 @@ export declare class CityController {
     findOne(id: string): Promise<City | null>;
     findByCountry(countryId: string): Promise<City[]>;
     create(cityData: Partial<City>): Promise<City>;
-    update(id: string, cityData: Partial<City>): Promise<City>;
+    update(id: string, cityData: Partial<City>): Promise<City | null>;
     delete(id: string): Promise<void>;
 }

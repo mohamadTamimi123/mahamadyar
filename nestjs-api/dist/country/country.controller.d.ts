@@ -7,7 +7,7 @@ export declare class CountryController {
     findOne(id: string): Promise<Country | null>;
     findByIsoCode(code: string): Promise<Country | null>;
     create(countryData: Partial<Country>): Promise<Country>;
-    update(id: string, countryData: Partial<Country>): Promise<Country>;
+    update(id: string, countryData: Partial<Country>): Promise<Country | null>;
     delete(id: string): Promise<void>;
     seedCountries(): Promise<{
         message: string;

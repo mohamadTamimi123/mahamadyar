@@ -62,21 +62,22 @@ export class CountryService {
         });
 
         if (!existingCountry) {
-          const country = this.countryRepository.create({
+          const countryDataToCreate: Partial<Country> = {
             name: countryData.name.common,
             iso_code: countryData.cca3,
-            capital: countryData.capital?.[0] || null,
-            population: countryData.population || null,
-            area: countryData.area || null,
-            region: countryData.region || null,
-            subregion: countryData.subregion || null,
-            flag_url: countryData.flags?.png || null,
-            currency_code: countryData.currencies ? Object.keys(countryData.currencies)[0] : null,
-            currency_name: countryData.currencies ? (Object.values(countryData.currencies)[0] as any)?.name : null,
-            language_code: countryData.languages ? Object.keys(countryData.languages)[0] : null,
-            language_name: countryData.languages ? Object.values(countryData.languages)[0] : null,
-          });
+            capital: countryData.capital?.[0] || undefined,
+            population: countryData.population || undefined,
+            area: countryData.area || undefined,
+            region: countryData.region || undefined,
+            subregion: countryData.subregion || undefined,
+            flag_url: countryData.flags?.png || undefined,
+            currency_code: countryData.currencies ? Object.keys(countryData.currencies)[0] : undefined,
+            currency_name: countryData.currencies ? (Object.values(countryData.currencies)[0] as any)?.name : undefined,
+            language_code: countryData.languages ? Object.keys(countryData.languages)[0] : undefined,
+            language_name: countryData.languages ? (Object.values(countryData.languages)[0] as string) : undefined,
+          };
 
+          const country = this.countryRepository.create(countryDataToCreate);
           await this.countryRepository.save(country);
           console.log(`Added country: ${country.name}`);
         }
@@ -114,16 +115,17 @@ export class CountryService {
             });
 
             if (!existingCity) {
-              const city = this.cityRepository.create({
+              const cityDataToCreate: Partial<City> = {
                 name: cityData.name,
                 country_id: country.id,
-                latitude: cityData.lat ? parseFloat(cityData.lat) : null,
-                longitude: cityData.lng ? parseFloat(cityData.lng) : null,
-                population: cityData.population || null,
-                state_province: cityData.adminName1 || null,
-                timezone: cityData.timezone || null,
-              });
+                latitude: cityData.lat ? parseFloat(cityData.lat) : undefined,
+                longitude: cityData.lng ? parseFloat(cityData.lng) : undefined,
+                population: cityData.population || undefined,
+                state_province: cityData.adminName1 || undefined,
+                timezone: cityData.timezone || undefined,
+              };
 
+              const city = this.cityRepository.create(cityDataToCreate);
               await this.cityRepository.save(city);
             }
           }

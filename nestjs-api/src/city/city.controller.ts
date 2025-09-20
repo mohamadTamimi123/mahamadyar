@@ -30,7 +30,7 @@ export class CityController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() cityData: Partial<City>): Promise<City> {
+  async update(@Param('id') id: string, @Body() cityData: Partial<City>): Promise<City | null> {
     return this.cityService.update(+id, cityData);
   }
 

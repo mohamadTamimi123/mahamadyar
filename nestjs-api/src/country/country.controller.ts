@@ -37,7 +37,7 @@ export class CountryController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() countryData: Partial<Country>): Promise<Country> {
+  async update(@Param('id') id: string, @Body() countryData: Partial<Country>): Promise<Country | null> {
     return this.countryService.update(+id, countryData);
   }
 
