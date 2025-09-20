@@ -48,7 +48,9 @@ export class AuthController {
   async completeRegistration(@Body() body: { 
     sessionId: string; 
     email: string; 
-    password: string; 
+    password: string;
+    country_id?: number;
+    city_id?: number;
   }) {
     const session = this.otpService.getSession(body.sessionId);
     
@@ -66,6 +68,8 @@ export class AuthController {
       password: body.password,
       phone: session.phone,
       registrationCode: session.registrationCode,
+      country_id: body.country_id,
+      city_id: body.city_id,
     };
 
     const result = await this.authService.register(registerDto);
@@ -88,8 +92,18 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('verify')
-  async verifyToken(@Request() req) {
-    return { valid: true, user: req.user };
+  @Post('update-profile')
+  async updateProfile(@Request() req, @Body() body: { 
+    country_id?: number; 
+    city_id?: number; 
+    name?: string; 
+    phone?: string; 
+  }) {
+    const userId = req.user.id;
+    
+    // Update user with new profile data
+    const updatedUser = await this.authService.updateProfile(userId, body);
+    
+    return { success: true, user: updatedUser };
   }
 }

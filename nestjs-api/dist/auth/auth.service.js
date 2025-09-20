@@ -63,7 +63,7 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async register(registerDto) {
-        const { email, name, password, phone, registrationCode } = registerDto;
+        const { email, name, password, phone, registrationCode, country_id, city_id } = registerDto;
         const people = await this.peopleRepository.findOne({
             where: { registration_code: registrationCode }
         });
@@ -87,6 +87,8 @@ let AuthService = class AuthService {
             password: hashedPassword,
             phone,
             people_id: people.id,
+            country_id,
+            city_id,
         });
         const savedUser = await this.userRepository.save(user);
         const payload = { sub: savedUser.id, email: savedUser.email, role: savedUser.role };
@@ -116,11 +118,25 @@ let AuthService = class AuthService {
         };
     }
     async validateUser(payload) {
-        const user = await this.userRepository.findOne({ where: { id: payload.sub } });
+        const user = await this.userRepository.findOne({
+            where: { id: payload.sub },
+            relations: ['country', 'city', 'people']
+        });
         if (!user) {
             throw new common_1.UnauthorizedException('User not found');
         }
         return user;
+    }
+    async updateProfile(userId, profileData) {
+        await this.userRepository.update(userId, profileData);
+        const updatedUser = await this.userRepository.findOne({
+            where: { id: userId },
+            relations: ['country', 'city', 'people']
+        });
+        if (!updatedUser) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        return updatedUser;
     }
 };
 exports.AuthService = AuthService;

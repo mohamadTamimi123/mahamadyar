@@ -37,6 +37,8 @@ export declare class AuthController {
         sessionId: string;
         email: string;
         password: string;
+        country_id?: number;
+        city_id?: number;
     }): Promise<{
         user: import("../user/user.entity").User;
         token: string;
@@ -49,8 +51,13 @@ export declare class AuthController {
         token: string;
     }>;
     getProfile(req: any): Promise<any>;
-    verifyToken(req: any): Promise<{
-        valid: boolean;
-        user: any;
+    updateProfile(req: any, body: {
+        country_id?: number;
+        city_id?: number;
+        name?: string;
+        phone?: string;
+    }): Promise<{
+        success: boolean;
+        user: import("../user/user.entity").User;
     }>;
 }

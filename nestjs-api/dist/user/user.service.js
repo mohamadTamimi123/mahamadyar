@@ -23,10 +23,15 @@ let UserService = class UserService {
         this.userRepository = userRepository;
     }
     async findAll() {
-        return this.userRepository.find();
+        return this.userRepository.find({
+            relations: ['country', 'city', 'people']
+        });
     }
     async findOne(id) {
-        return this.userRepository.findOne({ where: { id } });
+        return this.userRepository.findOne({
+            where: { id },
+            relations: ['country', 'city', 'people']
+        });
     }
     async create(userData) {
         const user = this.userRepository.create(userData);

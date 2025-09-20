@@ -12,6 +12,8 @@ export interface RegisterDto {
   password: string;
   phone?: string;
   registrationCode: string;
+  country_id?: number;
+  city_id?: number;
 }
 
 export interface LoginDto {
@@ -30,7 +32,7 @@ export class AuthService {
   ) {}
 
   async register(registerDto: RegisterDto): Promise<{ user: User; token: string }> {
-    const { email, name, password, phone, registrationCode } = registerDto;
+    const { email, name, password, phone, registrationCode, country_id, city_id } = registerDto;
 
     // Validate registration code
     const people = await this.peopleRepository.findOne({ 
@@ -66,6 +68,8 @@ export class AuthService {
       password: hashedPassword,
       phone,
       people_id: people.id,
+      country_id,
+      city_id,
     });
 
     const savedUser = await this.userRepository.save(user);
@@ -112,10 +116,30 @@ export class AuthService {
   }
 
   async validateUser(payload: any): Promise<User> {
-    const user = await this.userRepository.findOne({ where: { id: payload.sub } });
+    const user = await this.userRepository.findOne({ 
+      where: { id: payload.sub },
+      relations: ['country', 'city', 'people']
+    });
     if (!user) {
       throw new UnauthorizedException('User not found');
     }
     return user;
+  }
+
+  async updateProfile(userId: number, profileData: { 
+    country_id?: number; 
+    city_id?: number; 
+    name?: string; 
+    phone?: string; 
+  }): Promise<User> {
+    await this.userRepository.update(userId, profileData);
+    const updatedUser = await this.userRepository.findOne({ 
+      where: { id: userId },
+      relations: ['country', 'city', 'people']
+    });
+    if (!updatedUser) {
+      throw new UnauthorizedException('User not found');
+    }
+    return updatedUser;
   }
 }

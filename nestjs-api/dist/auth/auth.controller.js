@@ -59,6 +59,8 @@ let AuthController = class AuthController {
             password: body.password,
             phone: session.phone,
             registrationCode: session.registrationCode,
+            country_id: body.country_id,
+            city_id: body.city_id,
         };
         const result = await this.authService.register(registerDto);
         this.otpService.deleteSession(body.sessionId);
@@ -70,8 +72,10 @@ let AuthController = class AuthController {
     async getProfile(req) {
         return req.user;
     }
-    async verifyToken(req) {
-        return { valid: true, user: req.user };
+    async updateProfile(req, body) {
+        const userId = req.user.id;
+        const updatedUser = await this.authService.updateProfile(userId, body);
+        return { success: true, user: updatedUser };
     }
 };
 exports.AuthController = AuthController;
@@ -113,12 +117,13 @@ __decorate([
 ], AuthController.prototype, "getProfile", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, common_1.Get)('verify'),
+    (0, common_1.Post)('update-profile'),
     __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
-], AuthController.prototype, "verifyToken", null);
+], AuthController.prototype, "updateProfile", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService,

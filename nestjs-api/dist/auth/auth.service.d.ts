@@ -8,6 +8,8 @@ export interface RegisterDto {
     password: string;
     phone?: string;
     registrationCode: string;
+    country_id?: number;
+    city_id?: number;
 }
 export interface LoginDto {
     email: string;
@@ -27,4 +29,10 @@ export declare class AuthService {
         token: string;
     }>;
     validateUser(payload: any): Promise<User>;
+    updateProfile(userId: number, profileData: {
+        country_id?: number;
+        city_id?: number;
+        name?: string;
+        phone?: string;
+    }): Promise<User>;
 }
