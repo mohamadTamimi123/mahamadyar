@@ -100,15 +100,16 @@ async function seedCitiesManually() {
           });
 
           if (!existingCity) {
-            const city = cityRepository.create({
+            const cityData = {
               name: cityName,
               country_id: country.id,
-              latitude: null,
-              longitude: null,
-              population: null,
-              state_province: null,
-              timezone: null,
-            });
+              latitude: undefined,
+              longitude: undefined,
+              population: undefined,
+              state_province: undefined,
+              timezone: undefined,
+            };
+            const city = cityRepository.create(cityData);
 
             await cityRepository.save(city);
             totalCitiesAdded++;
