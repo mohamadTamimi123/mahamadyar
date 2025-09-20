@@ -22,12 +22,12 @@ export class CountryController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Country> {
+  async findOne(@Param('id') id: string): Promise<Country | null> {
     return this.countryService.findOne(+id);
   }
 
   @Get('iso/:code')
-  async findByIsoCode(@Param('code') code: string): Promise<Country> {
+  async findByIsoCode(@Param('code') code: string): Promise<Country | null> {
     return this.countryService.findByIsoCode(code);
   }
 

@@ -9,7 +9,7 @@ export declare class CountryService {
     findOne(id: number): Promise<Country | null>;
     findByIsoCode(isoCode: string): Promise<Country | null>;
     create(countryData: Partial<Country>): Promise<Country>;
-    update(id: number, countryData: Partial<Country>): Promise<Country>;
+    update(id: number, countryData: Partial<Country>): Promise<Country | null>;
     delete(id: number): Promise<void>;
     seedCountriesFromAPI(): Promise<void>;
     seedCitiesFromAPI(): Promise<void>;

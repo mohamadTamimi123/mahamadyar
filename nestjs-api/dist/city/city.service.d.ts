@@ -10,6 +10,6 @@ export declare class CityService {
     findByCountry(countryId: number): Promise<City[]>;
     search(searchTerm: string): Promise<City[]>;
     create(cityData: Partial<City>): Promise<City>;
-    update(id: number, cityData: Partial<City>): Promise<City>;
+    update(id: number, cityData: Partial<City>): Promise<City | null>;
     delete(id: number): Promise<void>;
 }

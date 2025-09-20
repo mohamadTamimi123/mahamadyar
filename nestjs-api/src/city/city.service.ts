@@ -50,7 +50,7 @@ export class CityService {
     return this.cityRepository.save(city);
   }
 
-  async update(id: number, cityData: Partial<City>): Promise<City> {
+  async update(id: number, cityData: Partial<City>): Promise<City | null> {
     await this.cityRepository.update(id, cityData);
     return this.findOne(id);
   }

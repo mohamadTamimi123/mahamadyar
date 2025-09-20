@@ -15,7 +15,7 @@ export class CityController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<City> {
+  async findOne(@Param('id') id: string): Promise<City | null> {
     return this.cityService.findOne(+id);
   }
 

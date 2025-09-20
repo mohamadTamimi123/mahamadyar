@@ -40,7 +40,7 @@ export class CountryService {
     return this.countryRepository.save(country);
   }
 
-  async update(id: number, countryData: Partial<Country>): Promise<Country> {
+  async update(id: number, countryData: Partial<Country>): Promise<Country | null> {
     await this.countryRepository.update(id, countryData);
     return this.findOne(id);
   }
