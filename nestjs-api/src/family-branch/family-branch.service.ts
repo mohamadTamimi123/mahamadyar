@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, IsNull } from 'typeorm';
 import { FamilyBranch } from './family-branch.entity';
 import { People } from '../people/people.entity';
 
@@ -80,7 +80,7 @@ export class FamilyBranchService {
       return null;
     }
 
-    person.family_branch_id = null;
+    person.family_branch_id = undefined;
     await this.peopleRepository.save(person);
 
     return this.findOne(branchId);
@@ -89,7 +89,7 @@ export class FamilyBranchService {
   async getBranchHierarchy(): Promise<FamilyBranch[]> {
     // Get all root branches (branches without parent)
     return this.familyBranchRepository.find({
-      where: { parent_branch_id: null },
+      where: { parent_branch_id: IsNull() },
       relations: ['createdByUser', 'rootPerson', 'subBranches', 'members'],
       order: { generation_level: 'ASC', name: 'ASC' }
     });

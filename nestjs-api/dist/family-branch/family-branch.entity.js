@@ -74,7 +74,7 @@ __decorate([
     __metadata("design:type", user_entity_1.User)
 ], FamilyBranch.prototype, "createdByUser", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => people_entity_1.People, people => people.familyBranches, { nullable: true }),
+    (0, typeorm_1.ManyToOne)(() => people_entity_1.People, people => people.familyBranch, { nullable: true }),
     (0, typeorm_1.JoinColumn)({ name: 'root_person_id' }),
     __metadata("design:type", people_entity_1.People)
 ], FamilyBranch.prototype, "rootPerson", void 0);

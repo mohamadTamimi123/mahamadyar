@@ -36,7 +36,7 @@ export class FamilyBranch {
   @JoinColumn({ name: 'created_by_user_id' })
   createdByUser: User;
 
-  @ManyToOne(() => People, people => people.familyBranches, { nullable: true })
+  @ManyToOne(() => People, people => people.familyBranch, { nullable: true })
   @JoinColumn({ name: 'root_person_id' })
   rootPerson: People;
 

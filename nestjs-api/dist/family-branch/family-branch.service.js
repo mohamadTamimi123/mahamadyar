@@ -72,13 +72,13 @@ let FamilyBranchService = class FamilyBranchService {
         if (!person) {
             return null;
         }
-        person.family_branch_id = null;
+        person.family_branch_id = undefined;
         await this.peopleRepository.save(person);
         return this.findOne(branchId);
     }
     async getBranchHierarchy() {
         return this.familyBranchRepository.find({
-            where: { parent_branch_id: null },
+            where: { parent_branch_id: (0, typeorm_2.IsNull)() },
             relations: ['createdByUser', 'rootPerson', 'subBranches', 'members'],
             order: { generation_level: 'ASC', name: 'ASC' }
         });
