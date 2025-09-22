@@ -5,7 +5,7 @@ export declare class NotificationsController {
     private readonly groups;
     constructor(notifications: NotificationsService, groups: GroupService);
     list(group_id?: number): Promise<import("./notification.entity").Notification[]>;
-    create(body: {
+    create(req: any, body: {
         group_id?: number;
         type: string;
         title: string;
@@ -19,5 +19,18 @@ export declare class NotificationsController {
         metadata?: any;
         country?: string;
         city?: string;
+    }): Promise<import("./notification.entity").Notification>;
+    requestNotificationApproval(req: any, body: {
+        group_id: number;
+        type: string;
+        title: string;
+        body?: string;
+        metadata?: any;
+    }): Promise<import("./notification.entity").Notification>;
+    getPendingApprovals(req: any): Promise<import("./notification.entity").Notification[]>;
+    getMyGroupNotifications(req: any): Promise<import("./notification.entity").Notification[]>;
+    approveNotification(id: number, req: any, body: {
+        approved: boolean;
+        notes?: string;
     }): Promise<import("./notification.entity").Notification>;
 }

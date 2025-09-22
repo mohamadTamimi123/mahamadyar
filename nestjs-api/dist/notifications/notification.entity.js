@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Notification = void 0;
 const typeorm_1 = require("typeorm");
 const group_entity_1 = require("../groups/group.entity");
+const user_entity_1 = require("../user/user.entity");
 let Notification = class Notification {
     id;
     group_id;
@@ -20,6 +21,14 @@ let Notification = class Notification {
     title;
     body;
     metadata;
+    requires_approval;
+    is_approved;
+    requested_by_user_id;
+    requestedByUser;
+    approved_by_user_id;
+    approvedByUser;
+    approval_notes;
+    approved_at;
     createdAt;
     updatedAt;
 };
@@ -53,6 +62,40 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'jsonb', nullable: true }),
     __metadata("design:type", Object)
 ], Notification.prototype, "metadata", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], Notification.prototype, "requires_approval", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], Notification.prototype, "is_approved", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int', nullable: true }),
+    __metadata("design:type", Object)
+], Notification.prototype, "requested_by_user_id", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'requested_by_user_id' }),
+    __metadata("design:type", user_entity_1.User)
+], Notification.prototype, "requestedByUser", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int', nullable: true }),
+    __metadata("design:type", Object)
+], Notification.prototype, "approved_by_user_id", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User, { nullable: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'approved_by_user_id' }),
+    __metadata("design:type", user_entity_1.User)
+], Notification.prototype, "approvedByUser", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", Object)
+], Notification.prototype, "approval_notes", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'timestamp', nullable: true }),
+    __metadata("design:type", Object)
+], Notification.prototype, "approved_at", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

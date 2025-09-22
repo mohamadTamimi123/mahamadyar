@@ -61,7 +61,7 @@ let GroupService = class GroupService {
             invite_code: inviteCode,
         });
         const savedGroup = await this.groupRepository.save(group);
-        await this.addMember(savedGroup.id, groupData.created_by_user_id);
+        await this.addMember(savedGroup.id, groupData.created_by_user_id, groupData.created_by_user_id, 'admin');
         const result = await this.findOne(savedGroup.id);
         if (!result) {
             throw new Error('Failed to retrieve created group');
@@ -154,7 +154,7 @@ let GroupService = class GroupService {
         if (!group) {
             throw new common_1.NotFoundException('Invalid invite code');
         }
-        return this.addMember(group.id, userId);
+        return this.addMember(group.id, userId, userId, 'member');
     }
     async sendNotification(groupId, notificationData, senderId) {
         const group = await this.findOne(groupId);

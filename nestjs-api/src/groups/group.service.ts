@@ -63,7 +63,7 @@ export class GroupService {
     const savedGroup = await this.groupRepository.save(group);
 
     // Add creator as a member
-    await this.addMember(savedGroup.id, groupData.created_by_user_id);
+    await this.addMember(savedGroup.id, groupData.created_by_user_id, groupData.created_by_user_id, 'admin');
 
     const result = await this.findOne(savedGroup.id);
     if (!result) {
@@ -184,7 +184,7 @@ export class GroupService {
       throw new NotFoundException('Invalid invite code');
     }
 
-    return this.addMember(group.id, userId);
+    return this.addMember(group.id, userId, userId, 'member');
   }
 
   async sendNotification(groupId: number, notificationData: {

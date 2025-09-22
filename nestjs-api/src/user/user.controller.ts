@@ -10,7 +10,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('admin', 'branch_manager')
   @Get()
   async findAll(): Promise<User[]> {
     return this.userService.findAll();
