@@ -104,10 +104,10 @@ This repository includes a minimal Docker Compose file to run Postgres for local
 
 ### Setup
 
-1. Copy `.env.example` to `.env` and adjust credentials if needed:
+1. Copy `.env.sample` (or `.env.example` if present) to `.env` and adjust credentials if needed:
 
 ```bash
-cp .env.example .env
+cp .env.sample .env || cp .env.example .env
 ```
 
 2. Start the database:
