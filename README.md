@@ -86,16 +86,65 @@ The application uses a simple User entity with the following fields:
 ## Prerequisites
 
 - Node.js (v16 or higher)
-- MySQL database
+- Docker and Docker Compose
+- Postgres database (via Docker Compose in this repo)
 - npm
 
 ## Development
 
-1. Start the MySQL database
-2. Create a database named `nestjs_db`
+1. Start the Postgres database with Docker Compose (see below)
+2. Configure the NestJS API `.env` to connect to Postgres
 3. Start the NestJS API server
 4. Start the Next.js development server
 5. Open the frontend in your browser and navigate to the users page
+
+## Database with Docker Compose (Postgres)
+
+This repository includes a minimal Docker Compose file to run Postgres for local development and future containerization of the stack.
+
+### Setup
+
+1. Copy `.env.example` to `.env` and adjust credentials if needed:
+
+```bash
+cp .env.example .env
+```
+
+2. Start the database:
+
+```bash
+docker compose up -d
+```
+
+This will:
+- Start a Postgres 15 instance
+- Expose port `5432` by default
+- Persist data in a named Docker volume `mohamadyar_postgres_data`
+- Run any SQL files under `docker/init` on first startup
+
+3. Check container health:
+
+```bash
+docker compose ps
+```
+
+4. Connect using `psql`:
+
+```bash
+psql postgresql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME
+```
+
+### Environment variables
+
+See `.env.example` for the following variables:
+
+- `DB_HOST` (default `localhost`)
+- `DB_PORT` (default `5432`)
+- `DB_USER` (default `postgres`)
+- `DB_PASSWORD` (default `postgres`)
+- `DB_NAME` (default `mohamadyar`)
+
+You can also define `DATABASE_URL` if your tools prefer a single URL.
 
 ## Production Deployment
 
