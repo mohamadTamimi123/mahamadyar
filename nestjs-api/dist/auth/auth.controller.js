@@ -14,15 +14,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const invite_request_entity_1 = require("./invite-request.entity");
 const auth_service_1 = require("./auth.service");
 const otp_service_1 = require("./otp.service");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {
     authService;
     otpService;
-    constructor(authService, otpService) {
+    inviteRepo;
+    constructor(authService, otpService, inviteRepo) {
         this.authService = authService;
         this.otpService = otpService;
+        this.inviteRepo = inviteRepo;
     }
     async validateRegistrationCode(body) {
         const result = await this.otpService.validateRegistrationCode(body.registrationCode);
@@ -69,6 +74,20 @@ let AuthController = class AuthController {
     async login(loginDto) {
         return this.authService.login(loginDto);
     }
+    async requestInvite(body) {
+        const req = this.inviteRepo.create({
+            name: body?.name,
+            email: body?.email,
+            message: body?.message ?? null,
+            status: 'pending',
+        });
+        await this.inviteRepo.save(req);
+        return { success: true, id: req.id };
+    }
+    async listInviteRequests() {
+        const items = await this.inviteRepo.find({ order: { createdAt: 'DESC' } });
+        return { items };
+    }
     async getProfile(req) {
         return req.user;
     }
@@ -108,6 +127,19 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
+    (0, common_1.Post)('request-invite'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "requestInvite", null);
+__decorate([
+    (0, common_1.Get)('invite-requests'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "listInviteRequests", null);
+__decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('profile'),
     __param(0, (0, common_1.Request)()),
@@ -126,7 +158,9 @@ __decorate([
 ], AuthController.prototype, "updateProfile", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
+    __param(2, (0, typeorm_1.InjectRepository)(invite_request_entity_1.InviteRequest)),
     __metadata("design:paramtypes", [auth_service_1.AuthService,
-        otp_service_1.OtpService])
+        otp_service_1.OtpService,
+        typeorm_2.Repository])
 ], AuthController);
 //# sourceMappingURL=auth.controller.js.map

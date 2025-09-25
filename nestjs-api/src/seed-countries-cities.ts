@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { CountryService } from './country/country.service';
 
-async function seedDatabase() {
+export async function seedCountriesAndCities() {
   const app = await NestFactory.createApplicationContext(AppModule);
   const countryService = app.get(CountryService);
 
@@ -25,4 +25,6 @@ async function seedDatabase() {
   }
 }
 
-seedDatabase();
+if (require.main === module) {
+  seedCountriesAndCities();
+}

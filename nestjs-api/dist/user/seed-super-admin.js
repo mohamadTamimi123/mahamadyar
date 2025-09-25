@@ -33,6 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.seedSuperAdmin = seedSuperAdmin;
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const bcrypt = __importStar(require("bcryptjs"));
@@ -42,6 +43,10 @@ const people_entity_1 = require("../people/people.entity");
 const photo_entity_1 = require("../photo/photo.entity");
 const country_entity_1 = require("../country/country.entity");
 const city_entity_1 = require("../city/city.entity");
+const family_branch_entity_1 = require("../family-branch/family-branch.entity");
+const group_entity_1 = require("../groups/group.entity");
+const notification_entity_1 = require("../notifications/notification.entity");
+const event_entity_1 = require("../events/event.entity");
 (0, dotenv_1.config)();
 const AppDataSource = new typeorm_1.DataSource({
     type: 'postgres',
@@ -50,10 +55,10 @@ const AppDataSource = new typeorm_1.DataSource({
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_DATABASE || 'nestjs_db',
-    entities: [user_entity_1.User, people_entity_1.People, photo_entity_1.Photo, country_entity_1.Country, city_entity_1.City],
+    entities: [user_entity_1.User, people_entity_1.People, photo_entity_1.Photo, country_entity_1.Country, city_entity_1.City, family_branch_entity_1.FamilyBranch, group_entity_1.Group, notification_entity_1.Notification, event_entity_1.Event],
     synchronize: false,
 });
-async function main() {
+async function seedSuperAdmin() {
     await AppDataSource.initialize();
     const repo = AppDataSource.getRepository(user_entity_1.User);
     const email = process.env.SUPERADMIN_EMAIL || 'admin@example.com';
@@ -75,8 +80,10 @@ async function main() {
     }
     await AppDataSource.destroy();
 }
-main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-});
+if (require.main === module) {
+    seedSuperAdmin().catch((err) => {
+        console.error(err);
+        process.exit(1);
+    });
+}
 //# sourceMappingURL=seed-super-admin.js.map

@@ -7,6 +7,10 @@ import { People } from '../people/people.entity';
 import { Photo } from '../photo/photo.entity';
 import { Country } from '../country/country.entity';
 import { City } from '../city/city.entity';
+import { FamilyBranch } from '../family-branch/family-branch.entity';
+import { Group } from '../groups/group.entity';
+import { Notification } from '../notifications/notification.entity';
+import { Event } from '../events/event.entity';
 
 loadEnv();
 
@@ -17,11 +21,11 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_DATABASE || 'nestjs_db',
-  entities: [User, People, Photo, Country, City],
+  entities: [User, People, Photo, Country, City, FamilyBranch, Group, Notification, Event],
   synchronize: false,
 });
 
-async function main() {
+export async function seedSuperAdmin() {
   await AppDataSource.initialize();
 
   const repo = AppDataSource.getRepository(User);
@@ -49,10 +53,12 @@ async function main() {
   await AppDataSource.destroy();
 }
 
-main().catch((err) => {
-  // eslint-disable-next-line no-console
-  console.error(err);
-  process.exit(1);
-});
+if (require.main === module) {
+  seedSuperAdmin().catch((err) => {
+    // eslint-disable-next-line no-console
+    console.error(err);
+    process.exit(1);
+  });
+}
 
 

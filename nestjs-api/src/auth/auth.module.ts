@@ -8,11 +8,12 @@ import { AuthController } from './auth.controller';
 import { OtpService } from './otp.service';
 import { User } from '../user/user.entity';
 import { People } from '../people/people.entity';
+import { InviteRequest } from './invite-request.entity';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, People]),
+    TypeOrmModule.forFeature([User, People, InviteRequest]),
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

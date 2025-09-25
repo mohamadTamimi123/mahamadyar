@@ -1,4 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards, Request } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InviteRequest } from './invite-request.entity';
 import { AuthService, RegisterDto, LoginDto } from './auth.service';
 import { OtpService } from './otp.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
@@ -9,6 +12,8 @@ export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly otpService: OtpService,
+    @InjectRepository(InviteRequest)
+    private readonly inviteRepo: Repository<InviteRequest>,
   ) {}
 
   @Post('validate-code')
@@ -83,6 +88,25 @@ export class AuthController {
   @Post('login')
   async login(@Body() loginDto: LoginDtoType) {
     return this.authService.login(loginDto);
+  }
+
+  // Minimal endpoint to accept invite requests (can be persisted later)
+  @Post('request-invite')
+  async requestInvite(@Body() body: { name: string; email: string; message?: string }) {
+    const req = this.inviteRepo.create({
+      name: body?.name,
+      email: body?.email,
+      message: body?.message ?? null,
+      status: 'pending',
+    });
+    await this.inviteRepo.save(req);
+    return { success: true, id: req.id };
+  }
+
+  @Get('invite-requests')
+  async listInviteRequests() {
+    const items = await this.inviteRepo.find({ order: { createdAt: 'DESC' } });
+    return { items };
   }
 
   @UseGuards(JwtAuthGuard)

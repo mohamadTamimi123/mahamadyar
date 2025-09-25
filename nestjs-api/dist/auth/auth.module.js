@@ -17,6 +17,7 @@ const auth_controller_1 = require("./auth.controller");
 const otp_service_1 = require("./otp.service");
 const user_entity_1 = require("../user/user.entity");
 const people_entity_1 = require("../people/people.entity");
+const invite_request_entity_1 = require("./invite-request.entity");
 const jwt_strategy_1 = require("./jwt.strategy");
 let AuthModule = class AuthModule {
 };
@@ -24,7 +25,7 @@ exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, people_entity_1.People]),
+            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, people_entity_1.People, invite_request_entity_1.InviteRequest]),
             passport_1.PassportModule,
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],

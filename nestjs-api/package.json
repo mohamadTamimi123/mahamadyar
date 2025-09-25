@@ -22,6 +22,7 @@
     "seed:countries": "node -r ts-node/register src/seed-countries-cities.ts",
     "seed:cities-manual": "node -r ts-node/register src/seed-cities-manual.ts",
     "check:database": "node -r ts-node/register src/check-database.ts",
+    "seed:all": "node -r ts-node/register src/seed-all.ts",
     "drop:tables": "node -r ts-node/register src/drop-tables.ts"
   },
   "dependencies": {

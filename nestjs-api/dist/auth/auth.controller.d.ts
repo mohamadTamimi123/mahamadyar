@@ -1,10 +1,13 @@
+import { Repository } from 'typeorm';
+import { InviteRequest } from './invite-request.entity';
 import { AuthService } from './auth.service';
 import { OtpService } from './otp.service';
 import type { LoginDto as LoginDtoType } from './auth.service';
 export declare class AuthController {
     private readonly authService;
     private readonly otpService;
-    constructor(authService: AuthService, otpService: OtpService);
+    private readonly inviteRepo;
+    constructor(authService: AuthService, otpService: OtpService, inviteRepo: Repository<InviteRequest>);
     validateRegistrationCode(body: {
         registrationCode: string;
     }): Promise<{
@@ -49,6 +52,17 @@ export declare class AuthController {
     login(loginDto: LoginDtoType): Promise<{
         user: import("../user/user.entity").User;
         token: string;
+    }>;
+    requestInvite(body: {
+        name: string;
+        email: string;
+        message?: string;
+    }): Promise<{
+        success: boolean;
+        id: number;
+    }>;
+    listInviteRequests(): Promise<{
+        items: InviteRequest[];
     }>;
     getProfile(req: any): Promise<any>;
     updateProfile(req: any, body: {
